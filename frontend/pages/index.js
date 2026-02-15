@@ -36,11 +36,23 @@ export default function Home() {
             } catch (e) { localStorage.removeItem('timetable_cache'); }
         }
 
+        const fetchWithRetry = async (url, options = {}, retries = 3, backoff = 1000) => {
+            try {
+                const res = await fetch(url, options);
+                if (!res.ok) throw new Error(`Status ${res.status}`);
+                return await res.json();
+            } catch (err) {
+                if (retries > 0) {
+                    await new Promise(r => setTimeout(r, backoff));
+                    return fetchWithRetry(url, options, retries - 1, backoff * 1.5);
+                }
+                throw err;
+            }
+        };
+
         const loadBootstrapData = async () => {
             try {
-                const res = await fetch(`${API_BASE_URL}/bootstrap`);
-                if (!res.ok) throw new Error("Failed to load official files");
-                const data = await res.json();
+                const data = await fetchWithRetry(`${API_BASE_URL}/bootstrap`);
 
                 if (data.faculty) setFaculty(data.faculty);
                 if (data.metadata) setMetadata(data.metadata);
@@ -53,9 +65,8 @@ export default function Home() {
                     });
                 }
             } catch (err) {
-                console.error("Bootstrap failed:", err);
-                // Fallback: the official toggle might not show up, but user can still upload
-                setError("Disconnected from server. Some features may be limited.");
+                console.error("Bootstrap failed after retries:", err);
+                setError("Unable to connect to service. Please refresh in a moment.");
             }
         };
 

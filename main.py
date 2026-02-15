@@ -21,13 +21,14 @@ if os.path.exists(FACULTY_PHOTO_DIR):
     app.mount("/faculty-photos", StaticFiles(directory=FACULTY_PHOTO_DIR), name="faculty-photos")
 
 # CORS setup
+# We use a mix of fixed origins and a fallback to handle multiple Vercel deployment URLs
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",
         "https://easytimetable.vercel.app",
-        "https://timetable-hissamshars-projects.vercel.app" # Common vercel pattern
     ],
+    allow_origin_regex="https://timetable-.*-hissamshars-projects\.vercel\.app", # For vercel branch previews
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
