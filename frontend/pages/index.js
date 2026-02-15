@@ -36,35 +36,30 @@ export default function Home() {
             } catch (e) { localStorage.removeItem('timetable_cache'); }
         }
 
-        fetch(`${API_BASE_URL}/faculty`)
-            .then(r => r.json())
-            .then(data => setFaculty(data))
-            .catch(() => { });
+        const loadBootstrapData = async () => {
+            try {
+                const res = await fetch(`${API_BASE_URL}/bootstrap`);
+                if (!res.ok) throw new Error("Failed to load official files");
+                const data = await res.json();
 
-        fetch(`${API_BASE_URL}/metadata`)
-            .then(r => r.json())
-            .then(data => setMetadata(data))
-            .catch(() => { });
+                if (data.faculty) setFaculty(data.faculty);
+                if (data.metadata) setMetadata(data.metadata);
+                if (data.academic_plan) setAcademicPlan(data.academic_plan);
+                if (data.views) setViews(data.views);
+                if (data.official) {
+                    setOfficialFiles({
+                        timetable: data.official.timetable.exists ? data.official.timetable : null,
+                        datesheet: data.official.datesheet.exists ? data.official.datesheet : null
+                    });
+                }
+            } catch (err) {
+                console.error("Bootstrap failed:", err);
+                // Fallback: the official toggle might not show up, but user can still upload
+                setError("Disconnected from server. Some features may be limited.");
+            }
+        };
 
-        fetch(`${API_BASE_URL}/check-official`)
-            .then(r => r.json())
-            .then(data => {
-                setOfficialFiles({
-                    timetable: data.timetable.exists ? data.timetable : null,
-                    datesheet: data.datesheet.exists ? data.datesheet : null
-                });
-            })
-            .catch(() => { });
-
-        fetch(`${API_BASE_URL}/academic-plan`)
-            .then(r => r.json())
-            .then(data => setAcademicPlan(data))
-            .catch(() => { });
-
-        fetch(`${API_BASE_URL}/views`)
-            .then(r => r.json())
-            .then(data => setViews(data.count))
-            .catch(() => { });
+        loadBootstrapData();
     }, []);
 
     const findFaculty = (teacherName) => {

@@ -34,6 +34,63 @@ os.makedirs(OFFICIAL_PDF_DIR, exist_ok=True)
 
 VIEWS_FILE = "views.json"
 
+@app.get("/bootstrap")
+async def bootstrap():
+    """Returns all initial data needed by the frontend in one request."""
+    try:
+        # 1. Update views
+        views = 0
+        if os.path.exists(VIEWS_FILE):
+            try:
+                with open(VIEWS_FILE, "r") as f:
+                    data = json.load(f)
+                    views = data.get("count", 0)
+            except: pass
+        
+        views += 1
+        try:
+            with open(VIEWS_FILE, "w") as f:
+                json.dump({"count": views}, f)
+        except: pass
+
+        # 2. Check official files
+        timetable = os.path.join(OFFICIAL_PDF_DIR, "timetable.pdf")
+        datesheet = os.path.join(OFFICIAL_PDF_DIR, "datesheet.pdf")
+        
+        official = {
+            "timetable": {"exists": os.path.exists(timetable)},
+            "datesheet": {"exists": os.path.exists(datesheet)}
+        }
+
+        # 3. Load faculty
+        faculty = []
+        if os.path.exists(FACULTY_DATA_FILE):
+            with open(FACULTY_DATA_FILE, "r") as f:
+                faculty = json.load(f)
+
+        # 4. Load metadata
+        metadata = {"teachers": [], "venues": [], "room_aliases": {}}
+        if os.path.exists(METADATA_FILE):
+            with open(METADATA_FILE, "r") as f:
+                metadata = json.load(f)
+
+        # 5. Load academic plan
+        academic_plan = []
+        if os.path.exists(ACADEMIC_PLAN_FILE):
+            with open(ACADEMIC_PLAN_FILE, "r") as f:
+                academic_plan = json.load(f)
+
+        return {
+            "views": views,
+            "official": official,
+            "faculty": faculty,
+            "metadata": metadata,
+            "academic_plan": academic_plan
+        }
+    except Exception as e:
+        print(f"Bootstrap error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 @app.get("/views")
 async def get_views():
     try:
