@@ -75,3 +75,7 @@ INFO:     127.0.0.1:59716 - "GET /check-official HTTP/1.1" 200 OK
 INFO:     127.0.0.1:59718 - "GET /academic-plan HTTP/1.1" 200 OK
 DEBUG: Found 24P-0656 in static index.
 INFO:     127.0.0.1:59694 - "POST /parse HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34252 - "GET /faculty HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34264 - "GET /metadata HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34266 - "GET /check-official HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34274 - "GET /academic-plan HTTP/1.1" 200 OK
