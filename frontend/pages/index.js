@@ -2,6 +2,7 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 import Head from 'next/head';
 
 export default function Home() {
+    const API_BASE_URL = 'https://repulsive-almire-hisamshar-2d198dbd.koyeb.app';
     const [rollNumber, setRollNumber] = useState('');
     const [timetableFile, setTimetableFile] = useState(null);
     const [datesheetFile, setDatesheetFile] = useState(null);
@@ -34,17 +35,17 @@ export default function Home() {
             } catch (e) { localStorage.removeItem('timetable_cache'); }
         }
 
-        fetch('http://localhost:8000/faculty')
+        fetch(`${API_BASE_URL}/faculty`)
             .then(r => r.json())
             .then(data => setFaculty(data))
             .catch(() => { });
 
-        fetch('http://localhost:8000/metadata')
+        fetch(`${API_BASE_URL}/metadata`)
             .then(r => r.json())
             .then(data => setMetadata(data))
             .catch(() => { });
 
-        fetch('http://localhost:8000/check-official')
+        fetch(`${API_BASE_URL}/check-official`)
             .then(r => r.json())
             .then(data => {
                 setOfficialFiles({
@@ -54,7 +55,7 @@ export default function Home() {
             })
             .catch(() => { });
 
-        fetch('http://localhost:8000/academic-plan')
+        fetch(`${API_BASE_URL}/academic-plan`)
             .then(r => r.json())
             .then(data => setAcademicPlan(data))
             .catch(() => { });
@@ -167,7 +168,7 @@ export default function Home() {
         }
 
         try {
-            const res = await fetch('http://localhost:8000/parse', { method: 'POST', body: formData });
+            const res = await fetch(`${API_BASE_URL}/parse`, { method: 'POST', body: formData });
             if (!res.ok) {
                 const errorText = await res.text();
                 let errorMsg = res.statusText;
@@ -187,7 +188,7 @@ export default function Home() {
 
     const performSync = async () => {
         try {
-            const res = await fetch('http://localhost:8000/sync', {
+            const res = await fetch(`${API_BASE_URL}/sync`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(schedule),
@@ -205,7 +206,7 @@ export default function Home() {
         if (!schedule) return;
         setSyncStatus('syncing');
         try {
-            const authRes = await fetch('http://localhost:8000/auth/url');
+            const authRes = await fetch(`${API_BASE_URL}/auth/url`);
             if (!authRes.ok) throw new Error("Failed to check auth status");
             const authData = await authRes.json();
             if (authData.error) throw new Error(authData.error);
@@ -217,7 +218,7 @@ export default function Home() {
                 const timer = setInterval(async () => {
                     if (popup.closed) {
                         clearInterval(timer);
-                        const checkRes = await fetch('http://localhost:8000/auth/url');
+                        const checkRes = await fetch(`${API_BASE_URL}/auth/url`);
                         const checkData = await checkRes.json();
                         if (checkData.authenticated) { setSyncStatus('syncing'); await performSync(); }
                         else setSyncStatus('auth_failed');
@@ -234,7 +235,7 @@ export default function Home() {
     const handleDownloadICS = async () => {
         if (!schedule) return;
         try {
-            const res = await fetch('http://localhost:8000/download-ics', {
+            const res = await fetch(`${API_BASE_URL}/download-ics`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(schedule),
