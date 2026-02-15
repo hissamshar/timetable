@@ -29,10 +29,16 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-OFFICIAL_PDF_DIR = os.path.join(os.path.dirname(__file__), "official_pdfs")
-os.makedirs(OFFICIAL_PDF_DIR, exist_ok=True)
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+OFFICIAL_PDF_DIR = os.path.join(BASE_DIR, "official_pdfs")
+TEMP_DIR = os.path.join(BASE_DIR, "temp_uploads")
+VIEWS_FILE = os.path.join(BASE_DIR, "views.json")
+FACULTY_DATA_FILE = os.path.join(BASE_DIR, "faculty_data.json")
+ACADEMIC_PLAN_FILE = os.path.join(BASE_DIR, "academic_plan.json")
+METADATA_FILE = os.path.join(BASE_DIR, "metadata.json")
 
-VIEWS_FILE = os.path.join(os.path.dirname(__file__), "views.json")
+os.makedirs(OFFICIAL_PDF_DIR, exist_ok=True)
+os.makedirs(TEMP_DIR, exist_ok=True)
 
 @app.get("/bootstrap")
 async def bootstrap():
@@ -88,7 +94,8 @@ async def bootstrap():
             "academic_plan": academic_plan
         }
     except Exception as e:
-        print(f"Bootstrap error: {e}")
+        import traceback
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/views")
@@ -169,41 +176,26 @@ async def parse_schedule(
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-FACULTY_DATA_FILE = os.path.join(os.path.dirname(__file__), "faculty_data.json")
-
 @app.get("/faculty")
 async def get_faculty():
     try:
-        if not os.path.exists(FACULTY_DATA_FILE):
-            return []
-        with open(FACULTY_DATA_FILE, "r") as f:
-            return json.load(f)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-ACADEMIC_PLAN_FILE = os.path.join(os.path.dirname(__file__), "academic_plan.json")
-
-@app.get("/academic-plan")
-async def get_academic_plan():
-    try:
-        if not os.path.exists(ACADEMIC_PLAN_FILE):
-            return []
-        with open(ACADEMIC_PLAN_FILE, "r") as f:
-            return json.load(f)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-METADATA_FILE = os.path.join(os.path.dirname(__file__), "metadata.json")
+        if not os.path.exists(FACULTY_DATA_FILE): return []
+        with open(FACULTY_DATA_FILE, "r") as f: return json.load(f)
+    except Exception as e: raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/metadata")
 async def get_metadata():
     try:
-        if not os.path.exists(METADATA_FILE):
-            return {"teachers": [], "venues": [], "room_aliases": {}}
-        with open(METADATA_FILE, "r") as f:
-            return json.load(f)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        if not os.path.exists(METADATA_FILE): return {"teachers": [], "venues": [], "room_aliases": {}}
+        with open(METADATA_FILE, "r") as f: return json.load(f)
+    except Exception as e: raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/academic-plan")
+async def get_academic_plan():
+    try:
+        if not os.path.exists(ACADEMIC_PLAN_FILE): return []
+        with open(ACADEMIC_PLAN_FILE, "r") as f: return json.load(f)
+    except Exception as e: raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/auth/url")
 async def get_auth_url():
