@@ -29,10 +29,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-OFFICIAL_PDF_DIR = "official_pdfs"
+OFFICIAL_PDF_DIR = os.path.join(os.path.dirname(__file__), "official_pdfs")
 os.makedirs(OFFICIAL_PDF_DIR, exist_ok=True)
 
-VIEWS_FILE = "views.json"
+VIEWS_FILE = os.path.join(os.path.dirname(__file__), "views.json")
 
 @app.get("/bootstrap")
 async def bootstrap():
