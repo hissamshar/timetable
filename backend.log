@@ -79,3 +79,11 @@ INFO:     127.0.0.1:34252 - "GET /faculty HTTP/1.1" 200 OK
 INFO:     127.0.0.1:34264 - "GET /metadata HTTP/1.1" 200 OK
 INFO:     127.0.0.1:34266 - "GET /check-official HTTP/1.1" 200 OK
 INFO:     127.0.0.1:34274 - "GET /academic-plan HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [65579]
+INFO:     Started server process [123145]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.

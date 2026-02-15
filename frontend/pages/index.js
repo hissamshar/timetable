@@ -19,6 +19,7 @@ export default function Home() {
     const [officialFiles, setOfficialFiles] = useState({ timetable: null, datesheet: null });
     const [useOfficial, setUseOfficial] = useState({ timetable: true, datesheet: true });
     const [academicPlan, setAcademicPlan] = useState([]);
+    const [views, setViews] = useState(null);
 
     const timetableRef = useRef(null);
     const datesheetRef = useRef(null);
@@ -58,6 +59,11 @@ export default function Home() {
         fetch(`${API_BASE_URL}/academic-plan`)
             .then(r => r.json())
             .then(data => setAcademicPlan(data))
+            .catch(() => { });
+
+        fetch(`${API_BASE_URL}/views`)
+            .then(r => r.json())
+            .then(data => setViews(data.count))
             .catch(() => { });
     }, []);
 
@@ -317,6 +323,12 @@ export default function Home() {
                 <div className="logo">
                     <span className="logo-icon">📅</span>
                     <span className="logo-text">Easy <span className="logo-accent">Timetable</span></span>
+                    {views !== null && (
+                        <div className="view-counter">
+                            <span className="view-dot"></span>
+                            {views.toLocaleString()} views
+                        </div>
+                    )}
                 </div>
             </header>
 
@@ -836,6 +848,14 @@ export default function Home() {
                     color: #c084fc; font-size: 0.9rem; font-weight: 700; text-transform: uppercase;
                     letter-spacing: 0.05em; box-shadow: 0 0 15px -5px rgba(168, 85, 247, 0.3);
                 }
+
+                .view-counter {
+                    margin-left: 1rem; padding: 0.25rem 0.75rem; background: rgba(255, 255, 255, 0.05);
+                    border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 999px;
+                    font-size: 0.75rem; font-weight: 600; color: var(--text-secondary);
+                    display: flex; align-items: center; gap: 0.5rem;
+                }
+                .view-dot { width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981; }
 
                 @keyframes slideDownInner {
                     from { opacity: 0; transform: translateY(-10px); }

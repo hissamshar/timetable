@@ -32,6 +32,25 @@ app.add_middleware(
 OFFICIAL_PDF_DIR = "official_pdfs"
 os.makedirs(OFFICIAL_PDF_DIR, exist_ok=True)
 
+VIEWS_FILE = "views.json"
+
+@app.get("/views")
+async def get_views():
+    try:
+        views = 0
+        if os.path.exists(VIEWS_FILE):
+            with open(VIEWS_FILE, "r") as f:
+                data = json.load(f)
+                views = data.get("count", 0)
+        
+        views += 1
+        with open(VIEWS_FILE, "w") as f:
+            json.dump({"count": views}, f)
+            
+        return {"count": views}
+    except Exception:
+        return {"count": 0}
+
 @app.get("/check-official")
 async def check_official_files():
     timetable = os.path.join(OFFICIAL_PDF_DIR, "timetable.pdf")
