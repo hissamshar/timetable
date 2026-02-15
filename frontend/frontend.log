@@ -1,0 +1,25 @@
+
+> frontend@0.1.0 dev
+> next dev
+
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.207:3000
+
+✓ Starting...
+✓ Ready in 2.2s
+ GET / 200 in 694ms (compile: 589ms, render: 104ms)
+✓ Compiled in 100ms
+✓ Compiled in 141ms
+✓ Compiled in 166ms
+ GET / 200 in 536ms (compile: 398ms, render: 138ms)
+ GET / 200 in 82ms (compile: 21ms, render: 61ms)
+ GET / 200 in 79ms (compile: 15ms, render: 64ms)
+ GET / 200 in 72ms (compile: 11ms, render: 61ms)
+ GET / 200 in 102ms (compile: 17ms, render: 85ms)
+ GET / 200 in 107ms (compile: 23ms, render: 84ms)
+ GET / 200 in 56ms (compile: 10ms, render: 47ms)
+✓ Compiled in 434ms
+✓ Compiled in 180ms
+ GET / 200 in 310ms (compile: 194ms, render: 116ms)
+ GET / 200 in 74ms (compile: 14ms, render: 59ms)
