@@ -1,0 +1,31 @@
+                                                                            {cls.start_time} – {cls.end_time}
+                                                                        </div>
+                                                                        <div className="class-info">
+                                                                            <div className="class-subject">{cls.subject}</div>
+                                                                            <div className="class-meta">
+                                                                                <span className="meta-item">
+                                                                                    <span className="meta-icon">📍</span> {cls.room || 'TBA'}
+                                                                                </span>
+                                                                                {fac ? (
+                                                                                    <button
+                                                                                        className="teacher-chip"
+                                                                                        onClick={() => setSelectedTeacher(fac)}
+                                                                                    >
+                                                                                        <img
+                                                                                            src={fac.photo_local || fac.photo_url}
+                                                                                            alt=""
+                                                                                            className="teacher-chip-photo"
+                                                                                            onError={(e) => { e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(fac.name)}&background=6366f1&color=fff&size=48`; }}
+                                                                                        />
+                                                                                        <span className="teacher-chip-name">{cls.teacher}</span>
+                                                                                    </button>
+                                                                                ) : (
+                                                                                    <span className="meta-item">
+                                                                                        <span className="meta-icon">👤</span> {cls.teacher}
+                                                                                    </span>
+                                                                                )}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                );
+                                                            })}

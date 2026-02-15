@@ -1,0 +1,194 @@
+[
+    {
+        "id": 1,
+        "week": "1-2",
+        "description": "Communicating classes schedule to all concerned",
+        "date": "Jan 9, 2026",
+        "day": "Fri",
+        "type": "event"
+    },
+    {
+        "id": 2,
+        "week": "-1",
+        "description": "Readmission Test for Academic Warning III students",
+        "date": "Jan 12, 2026",
+        "day": "Mon",
+        "type": "event"
+    },
+    {
+        "id": 3,
+        "week": "-1",
+        "description": "Online Registration of Courses",
+        "date": "Jan 13-17, 2026",
+        "day": "Tue-Sat",
+        "type": "event"
+    },
+    {
+        "id": 4,
+        "week": "-1",
+        "description": "Orientation of new batches (MBA/MS Degree Programs)",
+        "date": "Jan 17, 2026",
+        "day": "Sat",
+        "type": "event"
+    },
+    {
+        "id": 5,
+        "week": "1",
+        "description": "First day of Classes",
+        "date": "Jan 19, 2026",
+        "day": "Mon",
+        "type": "critical"
+    },
+    {
+        "id": 6,
+        "week": "2",
+        "description": "Deadline of Add and Drop of Courses/Labs",
+        "date": "Jan 31, 2026",
+        "day": "Sat",
+        "type": "deadline"
+    },
+    {
+        "id": 7,
+        "week": "3",
+        "description": "Deadline for Semester Freeze",
+        "date": "Feb 6, 2026",
+        "day": "Fri",
+        "type": "deadline"
+    },
+    {
+        "id": 8,
+        "week": "5",
+        "description": "First feedback of faculty/courses",
+        "date": "Feb 16, 2026",
+        "day": "Mon",
+        "type": "event"
+    },
+    {
+        "id": 9,
+        "week": "5-6",
+        "description": "First Sessional Examination",
+        "date": "Feb 21-25, 2026",
+        "day": "Sat-Wed",
+        "type": "exam"
+    },
+    {
+        "id": 10,
+        "week": "7",
+        "description": "Announcement of results of first sessional examinations",
+        "date": "Mar 4, 2026",
+        "day": "Wed",
+        "type": "result"
+    },
+    {
+        "id": 11,
+        "week": "12-13",
+        "description": "Second Sessional Examination",
+        "date": "Apr 9-13, 2026",
+        "day": "Thu-Mon",
+        "type": "exam"
+    },
+    {
+        "id": 12,
+        "week": "13",
+        "description": "Announcement of results of second sessional examinations",
+        "date": "Apr 17, 2026",
+        "day": "Fri",
+        "type": "result"
+    },
+    {
+        "id": 13,
+        "week": "16",
+        "description": "Second feedback of faculty/courses",
+        "date": "May 4, 2026",
+        "day": "Mon",
+        "type": "event"
+    },
+    {
+        "id": 14,
+        "week": "16",
+        "description": "Last Day of Classes",
+        "date": "May 8, 2026",
+        "day": "Fri",
+        "type": "critical"
+    },
+    {
+        "id": 15,
+        "week": "17",
+        "description": "Makeup Week",
+        "date": "May 11-15, 2026",
+        "day": "Mon-Fri",
+        "type": "event"
+    },
+    {
+        "id": 16,
+        "week": "17",
+        "description": "Deadline for the withdrawal from courses",
+        "date": "May 15, 2026",
+        "day": "Fri",
+        "type": "deadline"
+    },
+    {
+        "id": 17,
+        "week": "18-21",
+        "description": "Final Examinations",
+        "date": "May 18 - Jun 12, 2026",
+        "day": "Mon-Fri",
+        "type": "exam"
+    },
+    {
+        "id": 18,
+        "week": "19-21",
+        "description": "Show-up of Final Examination papers",
+        "date": "May 25 - Jun 13, 2026",
+        "day": "Mon-Sat",
+        "type": "event"
+    },
+    {
+        "id": 19,
+        "week": "22",
+        "description": "Announcement of results of final examinations",
+        "date": "Jun 15, 2026",
+        "day": "Mon",
+        "type": "result"
+    },
+    {
+        "id": 101,
+        "week": "3",
+        "description": "Kashmir Day",
+        "date": "Feb 5, 2026",
+        "day": "Thu",
+        "type": "holiday"
+    },
+    {
+        "id": 102,
+        "week": "9",
+        "description": "Eid-ul-Fitr (Subject to Lunar Calendar)",
+        "date": "Mar 19-21, 2026",
+        "day": "Thu-Sat",
+        "type": "holiday"
+    },
+    {
+        "id": 103,
+        "week": "10",
+        "description": "Pakistan Day",
+        "date": "Mar 23, 2026",
+        "day": "Mon",
+        "type": "holiday"
+    },
+    {
+        "id": 104,
+        "week": "15",
+        "description": "Labour Day",
+        "date": "May 1, 2026",
+        "day": "Fri",
+        "type": "holiday"
+    },
+    {
+        "id": 105,
+        "week": "19",
+        "description": "Eid-ul-Azha (Subject to Lunar Calendar)",
+        "date": "May 28-30, 2026",
+        "day": "Thu-Sat",
+        "type": "holiday"
+    }
+]
