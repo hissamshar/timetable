@@ -754,7 +754,7 @@ export default function Home() {
             )}
 
             <footer className="footer">
-                <p>Easy Timetable — Built for students, by students.</p>
+                <p>Easy Timetable — Built for students, by students. <span style={{ opacity: 0.8 }}>Vibe Coded by Hisam Mehboob.</span></p>
             </footer>
 
             <style jsx>{`
