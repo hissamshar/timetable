@@ -23,7 +23,11 @@ if os.path.exists(FACULTY_PHOTO_DIR):
 # CORS setup
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # For development, allow all
+    allow_origins=[
+        "http://localhost:3000",
+        "https://easytimetable.vercel.app",
+        "https://timetable-hissamshars-projects.vercel.app" # Common vercel pattern
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -96,7 +100,15 @@ async def bootstrap():
     except Exception as e:
         import traceback
         traceback.print_exc()
-        raise HTTPException(status_code=500, detail=str(e))
+        # Fallback to empty data instead of crashing the whole request
+        return {
+            "views": 0,
+            "official": {"timetable": {"exists": False}, "datesheet": {"exists": False}},
+            "faculty": [],
+            "metadata": {"teachers": [], "venues": [], "room_aliases": {}},
+            "academic_plan": [],
+            "error": str(e)
+        }
 
 @app.get("/views")
 async def get_views():
@@ -309,4 +321,5 @@ def read_root():
     return {"message": "Easy Timetable API is running"}
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    # Production uvicorn start without reload
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, workers=1)
