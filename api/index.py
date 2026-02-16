@@ -142,21 +142,38 @@ async def parse_schedule(roll_number: str = Form(...)):
 @app.post("/download-ics")
 async def download_ics(schedule: StudentSchedule):
     try:
-        c = Calendar()
-        
+        def format_dt(dt):
+            return dt.strftime("%Y%m%dT%H%M%S")
+
+        ics_content = [
+            "BEGIN:VCALENDAR",
+            "VERSION:2.0",
+            "PRODID:-//Easy Timetable//EN",
+            "CALSCALE:GREGORIAN",
+            "METHOD:PUBLISH"
+        ]
+
+        # Exams
         for exam in schedule.exam_schedule:
-            e = Event()
-            e.name = f"EXAM: {exam.subject}"
             try:
                 clean_date = exam.date.replace(" ", "")
                 dt_date = datetime.strptime(clean_date, "%a,%d,%b,%y").date()
                 start_dt = datetime.combine(dt_date, datetime.strptime(exam.start_time, "%H:%M").time())
                 end_dt = datetime.combine(dt_date, datetime.strptime(exam.end_time, "%H:%M").time())
-                e.begin = start_dt
-                e.end = end_dt
-                c.events.add(e)
+                
+                ics_content.extend([
+                    "BEGIN:VEVENT",
+                    f"SUMMARY:EXAM: {exam.subject}",
+                    f"DTSTART:{format_dt(start_dt)}",
+                    f"DTEND:{format_dt(end_dt)}",
+                    f"DESCRIPTION:Room: {exam.room or 'TBD'}",
+                    f"LOCATION:{exam.room or 'TBD'}",
+                    "STATUS:CONFIRMED",
+                    "END:VEVENT"
+                ])
             except: pass
 
+        # Classes
         semester_start = date(2026, 2, 2)
         day_map = {"Mon": 0, "Tue": 1, "Wed": 2, "Thu": 3, "Fri": 4, "Sat": 5, "Sun": 6}
         
@@ -173,14 +190,19 @@ async def download_ics(schedule: StudentSchedule):
                     start_dt = datetime.combine(current_date, datetime.strptime(cls.start_time, "%H:%M").time())
                     end_dt = datetime.combine(current_date, datetime.strptime(cls.end_time, "%H:%M").time())
                     
-                    e = Event()
-                    e.name = cls.subject
-                    e.begin = start_dt
-                    e.end = end_dt
-                    e.location = cls.room
-                    c.events.add(e)
+                    ics_content.extend([
+                        "BEGIN:VEVENT",
+                        f"SUMMARY:{cls.subject}",
+                        f"DTSTART:{format_dt(start_dt)}",
+                        f"DTEND:{format_dt(end_dt)}",
+                        f"DESCRIPTION:Teacher: {cls.teacher}",
+                        f"LOCATION:{cls.room}",
+                        "STATUS:CONFIRMED",
+                        "END:VEVENT"
+                    ])
                 except: pass
 
-        return Response(content=str(c), media_type="text/calendar", headers={"Content-Disposition": f"attachment; filename=schedule_{schedule.roll_number}.ics"})
+        ics_content.append("END:VCALENDAR")
+        return Response(content="\r\n".join(ics_content), media_type="text/calendar", headers={"Content-Disposition": f"attachment; filename=schedule_{schedule.roll_number}.ics"})
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
