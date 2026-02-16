@@ -2,4 +2,3 @@ fastapi
 python-multipart
 pydantic
 pydantic-settings
-ics
