@@ -135,6 +135,10 @@ async def parse_schedule(roll_number: str = Form(...)):
             if "Probability and Stat" in c['subject'] and "Statistics" not in c['subject']:
                 c['subject'] = c['subject'].replace("Probability and Stat", "Probability and Statistics")
 
+            # Fix Teacher Names
+            if c.get('teacher') == "Hafeez Ur Rehman":
+                c['teacher'] = "Dr. Hafeez-ur Rehman"
+
             # Check if it's a lab
             # - Room contains "Lab"
             # - Subject contains "Lab"
