@@ -128,16 +128,53 @@ async def parse_schedule(roll_number: str = Form(...)):
             
         data = idx["schedules"][roll_number]
         
+        # Process weekly schedule to fix Lab durations and incorrect names
+        weekly_schedule = []
+        for c in data["weekly_schedule"]:
+            # Fix Course Names
+            if "Probability and Stat" in c['subject'] and "Statistics" not in c['subject']:
+                c['subject'] = c['subject'].replace("Probability and Stat", "Probability and Statistics")
+
+            # Check if it's a lab
+            # - Room contains "Lab"
+            # - Subject contains "Lab"
+            # - Subject code starts with "CL" (e.g. CL2006)
+            # - Subject ends with "- Lab"
+            subject_upper = c.get('subject', '').upper()
+            room_upper = c.get('room', '').upper()
+            
+            is_lab = (
+                'LAB' in room_upper or 
+                'LAB' in subject_upper or 
+                subject_upper.startswith('CL') or 
+                subject_upper.endswith('- LAB')
+            )
+            
+            if is_lab:
+                try:
+                    # Parse start time
+                    start_dt = datetime.strptime(c['start_time'], "%H:%M")
+                    # Set end time to start + 3 hours
+                    end_dt = start_dt + timedelta(hours=3)
+                    # Update end time string
+                    c = c.copy() # Don't mutate original if cached
+                    c['end_time'] = end_dt.strftime("%-H:%M") # %-H for no leading zero if possible, or %H
+                    if ':' not in c['end_time']: # Fallback for some systems
+                         c['end_time'] = end_dt.strftime("%H:%M")
+                except Exception as e:
+                    print(f"Error fixing lab time: {e}")
+            
+            weekly_schedule.append(ClassSession(**c))
+
         return StudentSchedule(
             roll_number=roll_number,
-            weekly_schedule=[ClassSession(**c) for c in data["weekly_schedule"]],
+            weekly_schedule=weekly_schedule,
             exam_schedule=[ExamSession(**e) for e in data["exam_schedule"]],
             exam_type=idx.get("exam_type", "Examination Schedule")
         )
     except HTTPException: raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
 @app.post("/api/download-ics")
 @app.post("/download-ics")
 async def download_ics(schedule: StudentSchedule):

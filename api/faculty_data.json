@@ -1,5 +1,14 @@
 [
   {
+    "id": "humanities_hafeez",
+    "name": "Hafeez Ur Rehman",
+    "designation": "Faculty",
+    "department": "Sciences and Humanities",
+    "email": "",
+    "phone": "",
+    "photo_url": ""
+  },
+  {
     "id": "6821",
     "name": "Dr. Qasim Jan",
     "designation": "Associate Professor & HoD (HEC Approved PhD Supervisor)",
