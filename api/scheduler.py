@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import List, Optional
-from datetime import datetime, time
+from datetime import datetime
 
 class ClassSession(BaseModel):
     day: str
@@ -15,7 +15,7 @@ class ExamSession(BaseModel):
     date: str
     start_time: str
     end_time: str
-    room: Optional[str] = None # Room might not be in tentative datesheet
+    room: Optional[str] = None
 
 class StudentSchedule(BaseModel):
     roll_number: str
