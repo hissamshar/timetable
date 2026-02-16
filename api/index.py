@@ -1,23 +1,15 @@
 from fastapi import FastAPI, Form, HTTPException, Response
-from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Optional
 import shutil
 import os
 import json
 from scheduler import ClassSession, ExamSession, StudentSchedule
-from calendar_service import CalendarService
 import datetime
-import uvicorn
 from ics import Calendar, Event
-import dateutil.parser
 
 app = FastAPI(title="Easy Timetable API")
 
-# Mount faculty photos as static files
-FACULTY_PHOTO_DIR = os.path.join(os.path.dirname(__file__), "frontend", "public", "faculty")
-if os.path.exists(FACULTY_PHOTO_DIR):
-    app.mount("/faculty-photos", StaticFiles(directory=FACULTY_PHOTO_DIR), name="faculty-photos")
 
 # CORS setup
 # We use a mix of fixed origins and a fallback to handle multiple Vercel deployment URLs
@@ -36,14 +28,10 @@ app.add_middleware(
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 OFFICIAL_PDF_DIR = os.path.join(BASE_DIR, "official_pdfs")
 TEMP_DIR = os.path.join(BASE_DIR, "temp_uploads")
-VIEWS_FILE = os.path.join(BASE_DIR, "views.json")
+INDEX_FILE = os.path.join(BASE_DIR, "schedules_index.json")
 FACULTY_DATA_FILE = os.path.join(BASE_DIR, "faculty_data.json")
 ACADEMIC_PLAN_FILE = os.path.join(BASE_DIR, "academic_plan.json")
 METADATA_FILE = os.path.join(BASE_DIR, "metadata.json")
-INDEX_FILE = os.path.join(BASE_DIR, "schedules_index.json")
-
-os.makedirs(OFFICIAL_PDF_DIR, exist_ok=True)
-os.makedirs(TEMP_DIR, exist_ok=True)
 
 # Global index cache
 _index_cache = None
@@ -58,24 +46,10 @@ def get_index():
             _index_cache = {"exam_type": "Examination Schedule", "schedules": {}}
     return _index_cache
 
-@app.get("/bootstrap")
+@app.get("/api/bootstrap")
 async def bootstrap():
     """Returns all initial data needed by the frontend in one request."""
     try:
-        # 1. Update views
-        views = 0
-        if os.path.exists(VIEWS_FILE):
-            try:
-                with open(VIEWS_FILE, "r") as f:
-                    data = json.load(f)
-                    views = data.get("count", 0)
-            except: pass
-        
-        views += 1
-        try:
-            with open(VIEWS_FILE, "w") as f:
-                json.dump({"count": views}, f)
-        except: pass
 
         # 2. Check official files
         timetable = os.path.join(OFFICIAL_PDF_DIR, "timetable.pdf")
@@ -110,7 +84,6 @@ async def bootstrap():
                 academic_plan = json.load(f)
 
         return {
-            "views": views,
             "official": official,
             "faculty": faculty,
             "metadata": metadata,
@@ -121,7 +94,6 @@ async def bootstrap():
         traceback.print_exc()
         # Fallback to empty data instead of crashing the whole request
         return {
-            "views": 0,
             "official": {"timetable": {"exists": False}, "datesheet": {"exists": False}},
             "faculty": [],
             "metadata": {"teachers": [], "venues": [], "room_aliases": {}},
@@ -129,24 +101,7 @@ async def bootstrap():
             "error": str(e)
         }
 
-@app.get("/views")
-async def get_views():
-    try:
-        views = 0
-        if os.path.exists(VIEWS_FILE):
-            with open(VIEWS_FILE, "r") as f:
-                data = json.load(f)
-                views = data.get("count", 0)
-        
-        views += 1
-        with open(VIEWS_FILE, "w") as f:
-            json.dump({"count": views}, f)
-            
-        return {"count": views}
-    except Exception:
-        return {"count": 0}
-
-@app.get("/check-official")
+@app.get("/api/check-official")
 async def check_official_files():
     timetable = os.path.join(OFFICIAL_PDF_DIR, "timetable.pdf")
     datesheet = os.path.join(OFFICIAL_PDF_DIR, "datesheet.pdf")
@@ -164,7 +119,7 @@ async def check_official_files():
         }
     }
 
-@app.post("/parse", response_model=StudentSchedule)
+@app.post("/api/parse", response_model=StudentSchedule)
 async def parse_schedule(roll_number: str = Form(...)):
     try:
         idx = get_index()
@@ -188,74 +143,29 @@ async def parse_schedule(roll_number: str = Form(...)):
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/faculty")
+@app.get("/api/faculty")
 async def get_faculty():
     try:
         if not os.path.exists(FACULTY_DATA_FILE): return []
         with open(FACULTY_DATA_FILE, "r") as f: return json.load(f)
     except Exception as e: raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/metadata")
+@app.get("/api/metadata")
 async def get_metadata():
     try:
         if not os.path.exists(METADATA_FILE): return {"teachers": [], "venues": [], "room_aliases": {}}
         with open(METADATA_FILE, "r") as f: return json.load(f)
     except Exception as e: raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/academic-plan")
+@app.get("/api/academic-plan")
 async def get_academic_plan():
     try:
         if not os.path.exists(ACADEMIC_PLAN_FILE): return []
         with open(ACADEMIC_PLAN_FILE, "r") as f: return json.load(f)
     except Exception as e: raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/auth/url")
-async def get_auth_url():
-    try:
-        if not os.path.exists(os.path.join(os.path.dirname(__file__), "credentials.json")):
-            return {"authenticated": False, "error": "Missing credentials.json", "url": None}
-        service = CalendarService()
-        if service.is_authenticated():
-            return {"authenticated": True}
-        url = service.get_auth_url()
-        return {"authenticated": False, "url": url}
-    except Exception as e:
-        # Log error for debugging
-        print(f"Auth URL Error: {e}")
-        return {"authenticated": False, "error": str(e), "url": None}
 
-@app.get("/auth/callback")
-async def auth_callback(code: str):
-    try:
-        service = CalendarService()
-        service.exchange_code(code)
-        return {"message": "Authenticated successfully. You can close this window now."}
-    except Exception as e:
-        print(f"Auth Callback Error: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
-
-@app.post("/sync")
-async def sync_calendar(schedule: StudentSchedule):
-    try:
-        service = CalendarService()
-        if not service.is_authenticated():
-             raise HTTPException(status_code=401, detail="Not authenticated with Google Calendar")
-
-        cal_id = service.create_calendar(f"Spring 2026 - {schedule.roll_number}")
-        
-        # Semester start assumption: Feb 2, 2026
-        semester_start = datetime.date(2026, 2, 2)
-        
-        service.add_weekly_classes(cal_id, schedule.weekly_schedule, semester_start)
-        service.add_exams(cal_id, schedule.exam_schedule)
-        
-        return {"status": "success", "calendar_id": cal_id, "message": "Synced successfully"}
-    except Exception as e:
-        import traceback
-        traceback.print_exc()
-        raise HTTPException(status_code=500, detail=str(e))
-
-@app.post("/download-ics")
+@app.post("/api/download-ics")
 async def download_ics(schedule: StudentSchedule):
     try:
         c = Calendar()
@@ -321,5 +231,5 @@ def read_root():
     return {"message": "Easy Timetable API is running"}
 
 if __name__ == "__main__":
-    # Production uvicorn start without reload
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, workers=1)
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
