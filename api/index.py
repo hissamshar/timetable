@@ -4,21 +4,32 @@ from typing import List, Optional
 import os
 import sys
 import json
-import datetime
-
-# Vercel path safeguard
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-if BASE_DIR not in sys.path:
-    sys.path.append(BASE_DIR)
-
-try:
-    from scheduler import ClassSession, ExamSession, StudentSchedule
-except ImportError:
-    # Fallback for local dev or specific Vercel layouts
-    sys.path.append(os.getcwd())
-    from scheduler import ClassSession, ExamSession, StudentSchedule
-
+from datetime import datetime, date, timedelta
+from pydantic import BaseModel, Field
 from ics import Calendar, Event
+
+# Self-contained models to avoid import issues on Vercel
+class ClassSession(BaseModel):
+    day: str
+    start_time: str
+    end_time: str
+    subject: str
+    room: str
+    teacher: str
+
+class ExamSession(BaseModel):
+    subject: str
+    date: str
+    start_time: str
+    end_time: str
+    room: Optional[str] = None
+
+class StudentSchedule(BaseModel):
+    roll_number: str
+    weekly_schedule: List[ClassSession]
+    exam_schedule: List[ExamSession]
+    exam_type: Optional[str] = None
+    generated_at: datetime = Field(default_factory=datetime.now)
 
 app = FastAPI(title="Easy Timetable API")
 
@@ -31,6 +42,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 INDEX_FILE = os.path.join(BASE_DIR, "schedules_index.json")
 FACULTY_DATA_FILE = os.path.join(BASE_DIR, "faculty_data.json")
 ACADEMIC_PLAN_FILE = os.path.join(BASE_DIR, "academic_plan.json")
@@ -43,8 +55,12 @@ def get_index():
     global _index_cache
     if _index_cache is None:
         if os.path.exists(INDEX_FILE):
-            with open(INDEX_FILE, "r") as f:
-                _index_cache = json.load(f)
+            try:
+                with open(INDEX_FILE, "r") as f:
+                    _index_cache = json.load(f)
+            except Exception as e:
+                print(f"Error loading index: {e}")
+                _index_cache = {"exam_type": "Examination Schedule", "schedules": {}}
         else:
             _index_cache = {"exam_type": "Examination Schedule", "schedules": {}}
     return _index_cache
@@ -122,15 +138,15 @@ async def download_ics(schedule: StudentSchedule):
             e.name = f"EXAM: {exam.subject}"
             try:
                 clean_date = exam.date.replace(" ", "")
-                dt_date = datetime.datetime.strptime(clean_date, "%a,%d,%b,%y").date()
-                start_dt = datetime.datetime.combine(dt_date, datetime.datetime.strptime(exam.start_time, "%H:%M").time())
-                end_dt = datetime.datetime.combine(dt_date, datetime.datetime.strptime(exam.end_time, "%H:%M").time())
+                dt_date = datetime.strptime(clean_date, "%a,%d,%b,%y").date()
+                start_dt = datetime.combine(dt_date, datetime.strptime(exam.start_time, "%H:%M").time())
+                end_dt = datetime.combine(dt_date, datetime.strptime(exam.end_time, "%H:%M").time())
                 e.begin = start_dt
                 e.end = end_dt
                 c.events.add(e)
             except: pass
 
-        semester_start = datetime.date(2026, 2, 2)
+        semester_start = date(2026, 2, 2)
         day_map = {"Mon": 0, "Tue": 1, "Wed": 2, "Thu": 3, "Fri": 4, "Sat": 5, "Sun": 6}
         
         for cls in schedule.weekly_schedule:
@@ -140,11 +156,11 @@ async def download_ics(schedule: StudentSchedule):
             for week in range(16):
                 days_ahead = day_num - semester_start.weekday()
                 if days_ahead < 0: days_ahead += 7
-                current_date = semester_start + datetime.timedelta(days=days_ahead + (week * 7))
+                current_date = semester_start + timedelta(days=days_ahead + (week * 7))
                 
                 try:
-                    start_dt = datetime.datetime.combine(current_date, datetime.datetime.strptime(cls.start_time, "%H:%M").time())
-                    end_dt = datetime.datetime.combine(current_date, datetime.datetime.strptime(cls.end_time, "%H:%M").time())
+                    start_dt = datetime.combine(current_date, datetime.strptime(cls.start_time, "%H:%M").time())
+                    end_dt = datetime.combine(current_date, datetime.strptime(cls.end_time, "%H:%M").time())
                     
                     e = Event()
                     e.name = cls.subject
