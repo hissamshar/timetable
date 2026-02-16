@@ -1,12 +1,11 @@
-from fastapi import FastAPI, UploadFile, File, Form, HTTPException, Response
+from fastapi import FastAPI, Form, HTTPException, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Optional
 import shutil
 import os
 import json
-from pdf_parser import PDFParser
-from scheduler import StudentSchedule
+from scheduler import ClassSession, ExamSession, StudentSchedule
 from calendar_service import CalendarService
 import datetime
 import uvicorn
@@ -41,9 +40,23 @@ VIEWS_FILE = os.path.join(BASE_DIR, "views.json")
 FACULTY_DATA_FILE = os.path.join(BASE_DIR, "faculty_data.json")
 ACADEMIC_PLAN_FILE = os.path.join(BASE_DIR, "academic_plan.json")
 METADATA_FILE = os.path.join(BASE_DIR, "metadata.json")
+INDEX_FILE = os.path.join(BASE_DIR, "schedules_index.json")
 
 os.makedirs(OFFICIAL_PDF_DIR, exist_ok=True)
 os.makedirs(TEMP_DIR, exist_ok=True)
+
+# Global index cache
+_index_cache = None
+
+def get_index():
+    global _index_cache
+    if _index_cache is None:
+        if os.path.exists(INDEX_FILE):
+            with open(INDEX_FILE, "r") as f:
+                _index_cache = json.load(f)
+        else:
+            _index_cache = {"exam_type": "Examination Schedule", "schedules": {}}
+    return _index_cache
 
 @app.get("/bootstrap")
 async def bootstrap():
@@ -68,9 +81,14 @@ async def bootstrap():
         timetable = os.path.join(OFFICIAL_PDF_DIR, "timetable.pdf")
         datesheet = os.path.join(OFFICIAL_PDF_DIR, "datesheet.pdf")
         
+        # Load index to get exam type
+        idx = get_index()
+        
         official = {
             "timetable": {"exists": os.path.exists(timetable)},
-            "datesheet": {"exists": os.path.exists(datesheet)}
+            "datesheet": {"exists": os.path.exists(datesheet)},
+            "exam_type": idx.get("exam_type", "Examination Schedule"),
+            "total_students": len(idx.get("schedules", {}))
         }
 
         # 3. Load faculty
@@ -147,46 +165,27 @@ async def check_official_files():
     }
 
 @app.post("/parse", response_model=StudentSchedule)
-async def parse_schedule(
-    roll_number: str = Form(...),
-    timetable_file: Optional[UploadFile] = File(None),
-    datesheet_file: Optional[UploadFile] = File(None)
-):
+async def parse_schedule(roll_number: str = Form(...)):
     try:
-        timetable_path = None
-        datesheet_path = None
-
-        # 1. Handle Timetable
-        if timetable_file:
-            timetable_path = os.path.join(TEMP_DIR, timetable_file.filename)
-            with open(timetable_path, "wb") as buffer:
-                shutil.copyfileobj(timetable_file.file, buffer)
-        else:
-            # Check for official default
-            official_timetable = os.path.join(OFFICIAL_PDF_DIR, "timetable.pdf")
-            if os.path.exists(official_timetable):
-                timetable_path = official_timetable
-            else:
-                raise HTTPException(status_code=400, detail="Timetable file is required (none uploaded and no official default found)")
-
-        # 2. Handle Datesheet
-        if datesheet_file:
-            datesheet_path = os.path.join(TEMP_DIR, datesheet_file.filename)
-            with open(datesheet_path, "wb") as buffer:
-                shutil.copyfileobj(datesheet_file.file, buffer)
-        else:
-            # Check for official default
-            official_datesheet = os.path.join(OFFICIAL_PDF_DIR, "datesheet.pdf")
-            if os.path.exists(official_datesheet):
-                datesheet_path = official_datesheet
-
-        # Parse
-        parser = PDFParser(timetable_path, datesheet_path)
-        schedule = parser.parse(roll_number)
+        idx = get_index()
+        roll_number = roll_number.strip().upper()
         
-        return schedule
+        if roll_number not in idx.get("schedules", {}):
+            raise HTTPException(status_code=404, detail=f"Roll number {roll_number} not found in the official records.")
+            
+        data = idx["schedules"][roll_number]
         
+        return StudentSchedule(
+            roll_number=roll_number,
+            weekly_schedule=[ClassSession(**c) for c in data["weekly_schedule"]],
+            exam_schedule=[ExamSession(**e) for e in data["exam_schedule"]],
+            exam_type=idx.get("exam_type", "Examination Schedule")
+        )
+        
+    except HTTPException: raise
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/faculty")

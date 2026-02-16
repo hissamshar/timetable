@@ -1,15 +1,8 @@
 # Use an official Python runtime as a parent image
 FROM python:3.10-slim
 
-# Install system dependencies
-# tesseract-ocr: for academic plan/faculty photo OCR
-# libgl1-mesa-glx: required by some image processing libs
-# poppler-utils: for pdfplumber's image conversion
+# Install system dependencies (none needed for pure static service)
 RUN apt-get update && apt-get install -y \
-    tesseract-ocr \
-    libgl1 \
-    libglib2.0-0 \
-    poppler-utils \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set the working directory in the container

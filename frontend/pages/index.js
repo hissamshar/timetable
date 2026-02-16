@@ -4,25 +4,17 @@ import Head from 'next/head';
 export default function Home() {
     const API_BASE_URL = 'https://repulsive-almire-hisamshar-2d198dbd.koyeb.app';
     const [rollNumber, setRollNumber] = useState('');
-    const [timetableFile, setTimetableFile] = useState(null);
-    const [datesheetFile, setDatesheetFile] = useState(null);
-    const [includeExams, setIncludeExams] = useState(false);
     const [schedule, setSchedule] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [activeTab, setActiveTab] = useState('classes');
     const [syncStatus, setSyncStatus] = useState('');
-    const [dragOver, setDragOver] = useState({ timetable: false, datesheet: false });
     const [faculty, setFaculty] = useState([]);
     const [metadata, setMetadata] = useState({ teachers: [], venues: [], room_aliases: {} });
     const [selectedTeacher, setSelectedTeacher] = useState(null);
-    const [officialFiles, setOfficialFiles] = useState({ timetable: null, datesheet: null });
-    const [useOfficial, setUseOfficial] = useState({ timetable: true, datesheet: true });
     const [academicPlan, setAcademicPlan] = useState([]);
     const [views, setViews] = useState(null);
-
-    const timetableRef = useRef(null);
-    const datesheetRef = useRef(null);
+    const [officialInfo, setOfficialInfo] = useState({ exam_type: '', total_students: 0 });
 
     // Load faculty data, metadata, and cached schedule on mount
     useEffect(() => {
@@ -59,9 +51,9 @@ export default function Home() {
                 if (data.academic_plan) setAcademicPlan(data.academic_plan);
                 if (data.views) setViews(data.views);
                 if (data.official) {
-                    setOfficialFiles({
-                        timetable: data.official.timetable.exists ? data.official.timetable : null,
-                        datesheet: data.official.datesheet.exists ? data.official.datesheet : null
+                    setOfficialInfo({
+                        exam_type: data.official.exam_type,
+                        total_students: data.official.total_students
                     });
                 }
             } catch (err) {
@@ -131,40 +123,8 @@ export default function Home() {
             isPlaceholder: true
         };
     };
-    const handleDrop = useCallback((e, type) => {
-        e.preventDefault();
-        setDragOver(prev => ({ ...prev, [type]: false }));
-        const file = e.dataTransfer.files[0];
-        if (file && file.type === 'application/pdf') {
-            if (type === 'timetable') setTimetableFile(file);
-            if (type === 'datesheet') setDatesheetFile(file);
-        }
-    }, []);
-
-    const handleDragOver = useCallback((e, type) => {
-        e.preventDefault();
-        setDragOver(prev => ({ ...prev, [type]: true }));
-    }, []);
-
-    const handleDragLeave = useCallback((e, type) => {
-        e.preventDefault();
-        setDragOver(prev => ({ ...prev, [type]: false }));
-    }, []);
-
-    const handleFileChange = (e, type) => {
-        const file = e.target.files[0];
-        if (type === 'timetable') setTimetableFile(file);
-        if (type === 'datesheet') setDatesheetFile(file);
-    };
-
     const handleExtract = async () => {
         if (!rollNumber) { setError('Please enter a Roll Number.'); return; }
-
-        const needTimetable = !useOfficial.timetable || !officialFiles.timetable;
-        if (needTimetable && !timetableFile) { setError('Please upload the Timetable PDF or use the official one.'); return; }
-
-        const needDatesheet = includeExams && (!useOfficial.datesheet || !officialFiles.datesheet);
-        if (needDatesheet && !datesheetFile) { setError('Please upload the Datesheet PDF or use the official one.'); return; }
 
         setLoading(true);
         setError('');
@@ -172,12 +132,6 @@ export default function Home() {
 
         const formData = new FormData();
         formData.append('roll_number', rollNumber);
-        if (timetableFile && !useOfficial.timetable) {
-            formData.append('timetable_file', timetableFile);
-        }
-        if (includeExams && datesheetFile && !useOfficial.datesheet) {
-            formData.append('datesheet_file', datesheetFile);
-        }
 
         try {
             const res = await fetch(`${API_BASE_URL}/parse`, { method: 'POST', body: formData });
@@ -185,7 +139,7 @@ export default function Home() {
                 const errorText = await res.text();
                 let errorMsg = res.statusText;
                 try { const ej = JSON.parse(errorText); if (ej.detail) errorMsg = ej.detail; } catch { }
-                throw new Error(`Failed to parse schedule: ${errorMsg}`);
+                throw new Error(errorMsg);
             }
             const data = await res.json();
             setSchedule(data);
@@ -285,31 +239,6 @@ export default function Home() {
         return null;
     };
 
-    const FileDropZone = ({ type, file, fileRef, label, icon }) => (
-        <div
-            className={`drop-zone ${dragOver[type] ? 'drag-active' : ''} ${file ? 'has-file' : ''}`}
-            onDrop={(e) => handleDrop(e, type)}
-            onDragOver={(e) => handleDragOver(e, type)}
-            onDragLeave={(e) => handleDragLeave(e, type)}
-            onClick={() => fileRef.current?.click()}
-        >
-            <input ref={fileRef} type="file" accept=".pdf" onChange={(e) => handleFileChange(e, type)} style={{ display: 'none' }} />
-            <div className="drop-zone-icon">{icon}</div>
-            <div className="drop-zone-text">
-                {file ? (
-                    <>
-                        <span className="file-name">{file.name}</span>
-                        <span className="file-size">{(file.size / 1024).toFixed(1)} KB</span>
-                    </>
-                ) : (
-                    <>
-                        <span className="drop-label">{label}</span>
-                        <span className="drop-hint">Drag & drop or click to browse</span>
-                    </>
-                )}
-            </div>
-        </div>
-    );
 
 
 
@@ -319,7 +248,7 @@ export default function Home() {
         <div className="app">
             <Head>
                 <title>Easy Timetable</title>
-                <meta name="description" content="Upload your university PDFs to generate a personalized class & exam schedule." />
+                <meta name="description" content="View and sync your university class & exam schedule instantly." />
             </Head>
 
             <div className="bg-orb bg-orb-1" />
@@ -345,7 +274,7 @@ export default function Home() {
                         <span className="hero-gradient">Organized Instantly</span>
                     </h1>
                     <p className="hero-subtitle">
-                        Upload your university timetable PDF to extract, view, and sync your personalized schedule.
+                        Enter your roll number to instantly view and sync your personalized {officialInfo.exam_type || 'schedule'}.
                     </p>
                 </section>
 
@@ -356,114 +285,42 @@ export default function Home() {
                             Get Started
                         </h2>
 
-                        <div className="input-wrapper">
-                            <label className="input-label">Roll Number</label>
-                            <div className="text-input-container">
-                                <span className="input-icon">🆔</span>
-                                <input
-                                    id="roll-number-input"
-                                    type="text"
-                                    className="text-input"
-                                    value={rollNumber}
-                                    onChange={(e) => setRollNumber(e.target.value)}
-                                    placeholder="e.g. 24P-0529"
-                                />
+                        <div className="search-container">
+                            <div className="input-wrapper">
+                                <label className="input-label">Roll Number</label>
+                                <div className="text-input-container large">
+                                    <span className="input-icon">🆔</span>
+                                    <input
+                                        id="roll-number-input"
+                                        type="text"
+                                        className="text-input"
+                                        value={rollNumber}
+                                        onChange={(e) => setRollNumber(e.target.value)}
+                                        onKeyPress={(e) => e.key === 'Enter' && handleExtract()}
+                                        placeholder="e.g. 24P-0529"
+                                    />
+                                    <button
+                                        className={`extract-btn ${loading ? 'loading' : ''}`}
+                                        onClick={handleExtract}
+                                        disabled={loading}
+                                    >
+                                        {loading ? <span className="loader"></span> : 'Search'}
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="file-grid single">
-                            {officialFiles.timetable ? (
-                                <div className="official-status-card">
-                                    <div className="official-info">
-                                        <span className="official-icon">✅</span>
-                                        <div className="official-text">
-                                            <div className="official-label">Official Timetable detected</div>
-                                            <div className="official-sub">Spring 2026 Season</div>
-                                        </div>
-                                    </div>
-                                    <label className="toggle-container mini">
-                                        <input
-                                            type="checkbox"
-                                            checked={useOfficial.timetable}
-                                            onChange={(e) => setUseOfficial(prev => ({ ...prev, timetable: e.target.checked }))}
-                                            className="toggle-input"
-                                        />
-                                        <span className="toggle-slider" />
-                                        <span className="toggle-label">Use Default</span>
-                                    </label>
-                                </div>
-                            ) : null}
-
-                            {(!officialFiles.timetable || !useOfficial.timetable) && (
-                                <FileDropZone
-                                    type="timetable"
-                                    file={timetableFile}
-                                    fileRef={timetableRef}
-                                    label="Student Timetable PDF"
-                                    icon="📄"
-                                />
-                            )}
-                        </div>
-
-                        {/* Optional exams toggle */}
-                        <div className="toggle-row">
-                            <label className="toggle-container" htmlFor="include-exams">
-                                <input
-                                    id="include-exams"
-                                    type="checkbox"
-                                    checked={includeExams}
-                                    onChange={(e) => setIncludeExams(e.target.checked)}
-                                    className="toggle-input"
-                                />
-                                <span className="toggle-slider" />
-                                <span className="toggle-label">Include Exam Datesheet</span>
-                            </label>
-                        </div>
-
-                        {includeExams && (
-                            <div className="file-grid single fade-in">
-                                {officialFiles.datesheet ? (
-                                    <div className="official-status-card">
-                                        <div className="official-info">
-                                            <span className="official-icon">📝</span>
-                                            <div className="official-text">
-                                                <div className="official-label">Official Datesheet detected</div>
-                                                <div className="official-sub">Tentative Sessional 1</div>
-                                            </div>
-                                        </div>
-                                        <label className="toggle-container mini">
-                                            <input
-                                                type="checkbox"
-                                                checked={useOfficial.datesheet}
-                                                onChange={(e) => setUseOfficial(prev => ({ ...prev, datesheet: e.target.checked }))}
-                                                className="toggle-input"
-                                            />
-                                            <span className="toggle-slider" />
-                                            <span className="toggle-label">Use Default</span>
-                                        </label>
-                                    </div>
-                                ) : null}
-
-                                {(!officialFiles.datesheet || !useOfficial.datesheet) && (
-                                    <FileDropZone
-                                        type="datesheet"
-                                        file={datesheetFile}
-                                        fileRef={datesheetRef}
-                                        label="Exam Datesheet PDF"
-                                        icon="📝"
-                                    />
-                                )}
+                        {error && (
+                            <div className="error-message">
+                                <span className="error-icon">⚠</span>
+                                {error}
                             </div>
                         )}
 
-                        <button id="extract-btn" className="btn btn-primary" onClick={handleExtract} disabled={loading}>
-                            {loading ? (<><span className="spinner" /> Extracting...</>) : (<><span className="btn-icon">⚡</span> Extract Schedule</>)}
-                        </button>
-
-                        {error && (
-                            <div className="error-banner">
-                                <span className="error-icon">⚠</span>
-                                {error}
+                        {officialInfo.total_students > 0 && (
+                            <div className="official-status-footer">
+                                <span className="status-dot"></span>
+                                Currently indexing {officialInfo.total_students} student schedules
                             </div>
                         )}
                     </div>
@@ -926,23 +783,75 @@ export default function Home() {
                 .text-input { flex: 1; background: transparent; border: none; outline: none; padding: 0.9rem 0; font-size: 1rem; font-family: 'Inter', sans-serif; color: var(--text-primary); }
                 .text-input::placeholder { color: var(--text-muted); }
 
-                .file-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
-                .file-grid.single { grid-template-columns: 1fr; }
-                .drop-zone {
-                    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem;
-                    padding: 2rem 1rem; border: 2px dashed var(--border-subtle); border-radius: var(--radius-lg);
-                    background: rgba(255,255,255,0.01); cursor: pointer; transition: all 0.3s ease;
-                    text-align: center; min-height: 120px;
+                /* Search UI */
+                .search-container { margin: 1.5rem 0 1rem; }
+                .text-input-container.large {
+                    display: flex; gap: 0.5rem;
+                    background: rgba(255,255,255,0.05);
+                    border: 1px solid var(--border-subtle);
+                    border-radius: var(--radius-md);
+                    padding: 0.5rem 0.5rem 0.5rem 1rem;
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 }
-                .drop-zone:hover { border-color: var(--accent-primary); background: rgba(99,102,241,0.04); }
-                .drop-zone.drag-active { border-color: var(--accent-primary); background: rgba(99,102,241,0.08); box-shadow: var(--shadow-glow); transform: scale(1.02); }
-                .drop-zone.has-file { border-color: var(--accent-success); border-style: solid; background: rgba(16,185,129,0.04); }
-                .drop-zone-icon { font-size: 2rem; }
-                .drop-zone-text { display: flex; flex-direction: column; gap: 0.25rem; }
-                .drop-label { font-weight: 600; font-size: 0.95rem; color: var(--text-primary); }
-                .drop-hint { font-size: 0.8rem; color: var(--text-muted); }
-                .file-name { font-weight: 600; color: var(--accent-success); font-size: 0.9rem; word-break: break-all; }
-                .file-size { font-size: 0.75rem; color: var(--text-muted); }
+                .text-input-container.large:focus-within {
+                    border-color: var(--accent-primary);
+                    background: rgba(255,255,255,0.08);
+                    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+                    transform: translateY(-2px);
+                }
+                .text-input-container.large .text-input {
+                    flex: 1; background: transparent; border: none;
+                    color: white; font-size: 1.1rem; outline: none;
+                    padding: 0.5rem 0;
+                }
+                .extract-btn {
+                    padding: 0 1.5rem; border: none; border-radius: var(--radius-sm);
+                    background: var(--gradient-primary); color: white;
+                    font-weight: 600; cursor: pointer; transition: all 0.2s;
+                    display: flex; align-items: center; justify-content: center;
+                    min-width: 100px;
+                }
+                .extract-btn:hover:not(:disabled) { opacity: 0.9; transform: scale(1.02); }
+                .extract-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+                
+                .official-status-footer {
+                    margin-top: 1.5rem; padding-top: 1.25rem;
+                    border-top: 1px solid var(--border-subtle);
+                    display: flex; align-items: center; gap: 0.6rem;
+                    font-size: 0.8rem; color: var(--text-muted);
+                }
+                .status-dot {
+                    width: 8px; height: 8px; border-radius: 50%;
+                    background: var(--accent-success);
+                    box-shadow: 0 0 10px var(--accent-success);
+                    animation: pulse-green 2s infinite;
+                }
+                @keyframes pulse-green {
+                    0% { opacity: 1; transform: scale(1); }
+                    50% { opacity: 0.5; transform: scale(0.8); }
+                    100% { opacity: 1; transform: scale(1); }
+                }
+
+                .error-message {
+                    display: flex; align-items: center; gap: 0.6rem;
+                    margin-top: 1rem; padding: 0.85rem 1rem;
+                    background: rgba(239, 68, 68, 0.08);
+                    border: 1px solid rgba(239, 68, 68, 0.2);
+                    border-radius: var(--radius-md);
+                    color: #fca5a5; font-size: 0.9rem;
+                    animation: shake 0.4s ease-in-out;
+                }
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    25% { transform: translateX(-4px); }
+                    75% { transform: translateX(4px); }
+                }
+                
+                .loader {
+                    width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.3);
+                    border-top-color: white; border-radius: 50%;
+                    animation: spin 0.6s linear infinite;
+                }
 
                 /* Toggle */
                 .toggle-row { margin-bottom: 1.5rem; }
@@ -979,7 +888,6 @@ export default function Home() {
                 .btn-outline:hover { background: rgba(255,255,255,0.05); border-color: var(--text-muted); transform: translateY(-2px); }
                 .spinner { width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.6s linear infinite; }
 
-                .error-banner { display: flex; align-items: center; gap: 0.6rem; margin-top: 1rem; padding: 0.85rem 1rem; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: var(--radius-md); color: #fca5a5; font-size: 0.9rem; }
 
                 .results-section { margin-top: 1rem; }
                 .fade-in { animation: fadeInUp 0.5s ease forwards; }
@@ -1120,7 +1028,8 @@ export default function Home() {
                     .class-card { flex-direction: column; gap: 0.5rem; }
                     .class-time { min-width: auto; }
                     .actions-bar { flex-direction: column; }
-                    .btn { width: 100%; }
+                    .extract-btn { padding: 0.85rem 1.5rem; }
+                    .text-input-container.large { flex-direction: column; padding: 1rem; }
                     .exam-card { flex-direction: column; align-items: flex-start; }
                 }
             `}</style>
