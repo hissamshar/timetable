@@ -3,7 +3,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Optional
 import shutil
 import os
+import sys
 import json
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+if BASE_DIR not in sys.path:
+    sys.path.append(BASE_DIR)
 from scheduler import ClassSession, ExamSession, StudentSchedule
 import datetime
 from ics import Calendar, Event
@@ -25,7 +29,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 OFFICIAL_PDF_DIR = os.path.join(BASE_DIR, "official_pdfs")
 TEMP_DIR = os.path.join(BASE_DIR, "temp_uploads")
 INDEX_FILE = os.path.join(BASE_DIR, "schedules_index.json")
