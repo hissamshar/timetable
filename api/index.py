@@ -6,7 +6,7 @@ import sys
 import json
 from datetime import datetime, date, timedelta
 from pydantic import BaseModel, Field
-from ics import Calendar, Event
+# from ics import Calendar, Event
 
 # Self-contained models to avoid import issues on Vercel
 class ClassSession(BaseModel):
