@@ -354,7 +354,7 @@ export default function Home() {
                                     </div>
                                 )}
 
-                                {activeTab === 'exams' && includeExams && (
+                                {activeTab === 'exams' && schedule.exam_schedule && schedule.exam_schedule.length > 0 && (
                                     <div className="schedule-grid">
                                         <div className="exam-type-header">
                                             <span className="exam-type-badge">{schedule.exam_type || 'Examination Schedule'}</span>
