@@ -1,8 +1,38 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Form, HTTPException, Response
 from fastapi.middleware.cors import CORSMiddleware
+from typing import List, Optional
+import os
+import sys
+import json
+from datetime import datetime, date, timedelta
+from pydantic import BaseModel, Field
+
+# Self-contained models to avoid import issues on Vercel
+class ClassSession(BaseModel):
+    day: str
+    start_time: str
+    end_time: str
+    subject: str
+    room: str
+    teacher: str
+
+class ExamSession(BaseModel):
+    subject: str
+    date: str
+    start_time: str
+    end_time: str
+    room: Optional[str] = None
+
+class StudentSchedule(BaseModel):
+    roll_number: str
+    weekly_schedule: List[ClassSession]
+    exam_schedule: List[ExamSession]
+    exam_type: Optional[str] = None
+    generated_at: datetime = Field(default_factory=datetime.now)
 
 app = FastAPI()
 
+# CORS setup
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -11,15 +41,102 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/api")
-@app.get("/api/health")
-def health():
-    return {"status": "ok", "message": "Minimalist API is running"}
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+INDEX_FILE = os.path.join(BASE_DIR, "schedules_index.json")
+FACULTY_DATA_FILE = os.path.join(BASE_DIR, "faculty_data.json")
+ACADEMIC_PLAN_FILE = os.path.join(BASE_DIR, "academic_plan.json")
+METADATA_FILE = os.path.join(BASE_DIR, "metadata.json")
 
+# Global index cache
+_index_cache = None
+
+def get_index():
+    global _index_cache
+    if _index_cache is None:
+        if os.path.exists(INDEX_FILE):
+            try:
+                with open(INDEX_FILE, "r") as f:
+                    _index_cache = json.load(f)
+            except Exception as e:
+                print(f"Error loading index: {e}")
+                _index_cache = {"exam_type": "Examination Schedule", "schedules": {}}
+        else:
+            _index_cache = {"exam_type": "Examination Schedule", "schedules": {}}
+    return _index_cache
+
+# Handle both /api and /
 @app.get("/")
-def root():
-    return {"message": "Root of API function reached"}
+@app.get("/api")
+def health_check():
+    return {"status": "ok", "message": "Easy Timetable API is running via Vercel api/index.py"}
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+# Handle /api/bootstrap and /bootstrap
+@app.get("/bootstrap")
+@app.get("/api/bootstrap")
+async def bootstrap():
+    try:
+        idx = get_index()
+        
+        official = {
+            "timetable": {"exists": True},
+            "datesheet": {"exists": True},
+            "exam_type": idx.get("exam_type", "Examination Schedule"),
+            "total_students": len(idx.get("schedules", {}))
+        }
+
+        faculty = []
+        if os.path.exists(FACULTY_DATA_FILE):
+            with open(FACULTY_DATA_FILE, "r") as f:
+                faculty = json.load(f)
+
+        metadata = {"teachers": [], "venues": [], "room_aliases": {}}
+        if os.path.exists(METADATA_FILE):
+            with open(METADATA_FILE, "r") as f:
+                metadata = json.load(f)
+
+        academic_plan = []
+        if os.path.exists(ACADEMIC_PLAN_FILE):
+            with open(ACADEMIC_PLAN_FILE, "r") as f:
+                academic_plan = json.load(f)
+
+        return {
+            "official": official,
+            "faculty": faculty,
+            "metadata": metadata,
+            "academic_plan": academic_plan
+        }
+    except Exception as e:
+        return {
+            "official": {"timetable": {"exists": False}, "datesheet": {"exists": False}},
+            "faculty": [],
+            "metadata": {"teachers": [], "venues": [], "room_aliases": {}},
+            "academic_plan": [],
+            "error": str(e)
+        }
+
+# Handle /api/parse and /parse
+@app.post("/parse")
+@app.post("/api/parse")
+async def parse_schedule(roll_number: str = Form(...)):
+    try:
+        idx = get_index()
+        roll_number = roll_number.strip().upper()
+        
+        if roll_number not in idx.get("schedules", {}):
+            raise HTTPException(status_code=404, detail=f"Roll number {roll_number} not found.")
+            
+        data = idx["schedules"][roll_number]
+        
+        return StudentSchedule(
+            roll_number=roll_number,
+            weekly_schedule=[ClassSession(**c) for c in data["weekly_schedule"]],
+            exam_schedule=[ExamSession(**e) for e in data["exam_schedule"]],
+            exam_type=idx.get("exam_type", "Examination Schedule")
+        )
+    except HTTPException: raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/health")
+def legacy_health():
+    return {"status": "ok", "message": "Legacy health route reached"}
