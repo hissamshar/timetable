@@ -98,7 +98,12 @@ def get_index():
 @app.get("/api")
 @app.get("/api/")
 def health_check():
-    return {"status": "ok", "message": "Easy Timetable API is running via Vercel api/index.py"}
+    return {
+        "status": "online",
+        "supabase_configured": supabase is not None,
+        "supabase_url_preview": SUPABASE_URL[:15] if SUPABASE_URL else None,
+        "python_version": "3.12"
+    }
 
 # Handle /api/bootstrap and /bootstrap
 @app.get("/bootstrap")
