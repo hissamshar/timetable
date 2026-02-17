@@ -146,8 +146,8 @@ async def parse_schedule(roll_number: str = Form(...)):
             for old_name, new_name in name_fixes.items():
                 if c['subject'] == old_name:
                     c['subject'] = new_name
-                elif old_name in c['subject'] and len(c['subject']) < len(new_name) + 5: # Handle partial matches/truncations
-                    c['subject'] = c['subject'].replace(old_name, new_name)
+                elif c['subject'].startswith(old_name) and new_name not in c['subject']:
+                    c['subject'] = new_name
 
             # Fix Teacher Names
             if c.get('teacher') == "Hafeez Ur Rehman":
