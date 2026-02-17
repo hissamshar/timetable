@@ -217,7 +217,6 @@ export default function Home() {
                             <div className="input-wrapper">
                                 <label className="input-label">Roll Number</label>
                                 <div className="text-input-container large">
-                                    <span className="input-icon">🆔</span>
                                     <input
                                         id="roll-number-input"
                                         type="text"
@@ -579,7 +578,7 @@ export default function Home() {
                     font-size: 1rem;
                 }
 
-                .acad-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem; }
+                .acad-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
                 .acad-card { 
                     background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05);
                     border-radius: var(--radius-lg); display: flex; overflow: hidden; position: relative;
@@ -815,7 +814,9 @@ export default function Home() {
                 .results-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem; }
                 .results-header .section-title { margin-bottom: 0; }
 
-                .tab-bar { display: flex; gap: 0.5rem; background: rgba(255,255,255,0.03); border-radius: var(--radius-md); padding: 4px; }
+                .tab-bar { display: flex; gap: 0.5rem; background: rgba(255,255,255,0.03); border-radius: var(--radius-md); padding: 4px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
+                .tab-bar::-webkit-scrollbar { display: none; }
+                .tab-btn { flex-shrink: 0; }
                 .tab-btn {
                     display: flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem;
                     border: none; border-radius: var(--radius-sm); background: transparent;
@@ -942,16 +943,22 @@ export default function Home() {
                 .footer { position: relative; z-index: 1; text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid var(--border-subtle); }
 
                 @media (max-width: 640px) {
-                    .hero-title { font-size: 2rem; }
-                    .glass-card { padding: 1.25rem; }
-                    .file-grid { grid-template-columns: 1fr; }
-                    .results-header { flex-direction: column; }
-                    .class-card { flex-direction: column; gap: 0.5rem; }
-                    .class-time { min-width: auto; }
+                    .hero-title { font-size: 1.8rem; }
+                    .hero-subtitle { font-size: 0.95rem; }
+                    .main { padding: 1rem 1rem 3rem; }
+                    .glass-card { padding: 1.25rem; border-radius: var(--radius-lg); }
+                    .results-header { flex-direction: column; align-items: stretch; }
+                    .class-card { flex-direction: column; gap: 0.6rem; padding: 1rem; }
+                    .class-time { min-width: auto; font-size: 0.8rem; }
+                    .class-meta { gap: 0.75rem; }
                     .actions-bar { flex-direction: column; }
-                    .extract-btn { padding: 0.85rem 1.5rem; }
-                    .text-input-container.large { flex-direction: column; padding: 1rem; }
+                    .extract-btn { width: 100%; padding: 0.9rem; }
+                    .text-input-container.large { flex-direction: column; padding: 0.5rem; border-radius: var(--radius-lg); gap: 0.5rem; }
+                    .text-input-container.large .text-input { padding: 0.75rem; text-align: center; }
                     .exam-card { flex-direction: column; align-items: flex-start; }
+                    .acad-grid { grid-template-columns: 1fr; }
+                    .acad-card { flex-direction: column; }
+                    .acad-date-side { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 0.75rem; flex-direction: row; gap: 1rem; min-width: auto; justify-content: flex-start; }
                 }
             `}</style>
         </div>

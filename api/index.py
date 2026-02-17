@@ -139,6 +139,7 @@ async def parse_schedule(roll_number: str = Form(...)):
             name_fixes = {
                 "SS1015 - Pakistan Studies|2Hr": "SS1015 - Pakistan Studies",
                 "AL2002 - Artificial Intellige": "AL2002 - Artificial Intelligence - Lab",
+                "AI2002 - Artificial Intellige": "AI2002 - Artificial Intelligence",
                 "MT1008 - Multivariable Calcul": "MT1008 - Multivariable Calculus",
                 "CL2006 - Operating Systems -": "CL2006 - Operating Systems - Lab",
                 "CL2005 - Database Systems - L": "CL2005 - Database Systems - Lab"
