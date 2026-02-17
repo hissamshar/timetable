@@ -100,10 +100,11 @@ def get_index():
 @app.get("/api")
 @app.get("/api/")
 def health_check():
+    env_keys = list(os.environ.keys())
     return {
         "status": "online",
         "supabase_configured": supabase is not None,
-        "supabase_url_preview": SUPABASE_URL[:15] if SUPABASE_URL else None,
+        "available_keys": [k for k in env_keys if "SUPABASE" in k or "GROQ" in k or "GMAIL" in k],
         "python_version": "3.12"
     }
 
