@@ -189,10 +189,9 @@ export default function Home() {
             <div className="bg-orb bg-orb-2" />
 
             <header className="header">
-                <div className="logo">
-                    <span className="logo-icon">📅</span>
+                <a href="/" className="logo" onClick={(e) => { e.preventDefault(); localStorage.removeItem('timetable_cache'); setSchedule(null); setError(''); setRollNumber(''); setActiveTab('classes'); window.scrollTo(0, 0); }}>
                     <span className="logo-text">Easy <span className="logo-accent">Timetable</span></span>
-                </div>
+                </a>
             </header>
 
             <main className="main">
@@ -202,7 +201,7 @@ export default function Home() {
                         <span className="hero-gradient">Organized Instantly</span>
                     </h1>
                     <p className="hero-subtitle">
-                        Enter your roll number to instantly view and download your personalized {officialInfo.exam_type || 'schedule'}.
+                        Enter your roll number to instantly view your personalized schedule.
                     </p>
                 </section>
 
@@ -670,7 +669,7 @@ export default function Home() {
                     border-bottom: 1px solid var(--border-subtle);
                     padding: 1rem 2rem;
                 }
-                .logo { display: flex; align-items: center; gap: 0.75rem; max-width: 1000px; margin: 0 auto; }
+                .logo { display: flex; align-items: center; gap: 0.75rem; max-width: 1000px; margin: 0 auto; text-decoration: none; cursor: pointer; }
                 .logo-icon { font-size: 1.5rem; }
                 .logo-text { font-size: 1.2rem; font-weight: 700; color: var(--text-primary); letter-spacing: -0.02em; }
                 .logo-accent { background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
