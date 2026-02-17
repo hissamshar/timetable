@@ -264,8 +264,8 @@ async def trigger_sync(request_id: Optional[str] = None):
     # Basic security check for Vercel Cron
     # In production, check for a CRON_SECRET header or token
     try:
-        from .sync_emails import sync
-        sync()
+        import sync_emails
+        sync_emails.sync()
         return {"status": "success", "message": "Email sync triggered"}
     except Exception as e:
         return {"status": "error", "message": str(e)}
