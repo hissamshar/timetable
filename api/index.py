@@ -138,6 +138,8 @@ async def parse_schedule(roll_number: str = Form(...)):
             # Fix Teacher Names
             if c.get('teacher') == "Hafeez Ur Rehman":
                 c['teacher'] = "Dr. Hafeez-ur Rehman"
+            elif c.get('teacher') == "Askar Ali":
+                c['teacher'] = "Dr. Askar Ali"
 
             # Check if it's a lab
             # - Room contains "Lab"
