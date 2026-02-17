@@ -134,6 +134,20 @@ async def parse_schedule(roll_number: str = Form(...)):
             # Fix Course Names
             if "Probability and Stat" in c['subject'] and "Statistics" not in c['subject']:
                 c['subject'] = c['subject'].replace("Probability and Stat", "Probability and Statistics")
+            
+            # Additional naming fixes
+            name_fixes = {
+                "SS1015 - Pakistan Studies|2Hr": "SS1015 - Pakistan Studies",
+                "AL2002 - Artificial Intellige": "AL2002 - Artificial Intelligence - Lab",
+                "MT1008 - Multivariable Calcul": "MT1008 - Multivariable Calculus",
+                "CL2006 - Operating Systems -": "CL2006 - Operating Systems - Lab",
+                "CL2005 - Database Systems - L": "CL2005 - Database Systems - Lab"
+            }
+            for old_name, new_name in name_fixes.items():
+                if c['subject'] == old_name:
+                    c['subject'] = new_name
+                elif old_name in c['subject'] and len(c['subject']) < len(new_name) + 5: # Handle partial matches/truncations
+                    c['subject'] = c['subject'].replace(old_name, new_name)
 
             # Fix Teacher Names
             if c.get('teacher') == "Hafeez Ur Rehman":
