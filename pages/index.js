@@ -13,6 +13,10 @@ export default function Home() {
     const [selectedTeacher, setSelectedTeacher] = useState(null);
     const [academicPlan, setAcademicPlan] = useState([]);
     const [officialInfo, setOfficialInfo] = useState({ exam_type: '', total_students: 0 });
+    const [selectedDay, setSelectedDay] = useState(() => {
+        const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        return days[new Date().getDay()] || 'Mon';
+    });
 
     // Load faculty data, metadata, and cached schedule on mount
     useEffect(() => {
@@ -295,61 +299,82 @@ export default function Home() {
                                         {schedule.weekly_schedule.length === 0 ? (
                                             <p className="empty-state">No classes found for this roll number.</p>
                                         ) : (
-                                            dayOrder.filter(day => schedule.weekly_schedule.some(c => c.day === day)).map(day => (
-                                                <div key={day} className="day-group">
-                                                    <div className="day-header">
-                                                        <span className="day-name">{day}</span>
-                                                        <span className="day-count">
-                                                            {schedule.weekly_schedule.filter(c => c.day === day).length} classes
-                                                        </span>
-                                                    </div>
-                                                    <div className="class-cards">
-                                                        {schedule.weekly_schedule
-                                                            .filter(c => c.day === day)
-                                                            .sort((a, b) => {
-                                                                const getVal = (t) => {
-                                                                    const [h, m] = t.split(':').map(Number);
-                                                                    return (h < 8 ? h + 12 : h) * 60 + m;
-                                                                };
-                                                                return getVal(a.start_time) - getVal(b.start_time);
-                                                            })
-                                                            .map((cls, idx) => {
-                                                                const fac = findFaculty(cls.teacher);
-                                                                return (
-                                                                    <div key={idx} className="class-card">
-                                                                        <div className="class-time">
-                                                                            <span className="time-dot" />
-                                                                            {cls.start_time} – {cls.end_time}
-                                                                        </div>
-                                                                        <div className="class-info">
-                                                                            <div className="class-subject">{cls.subject}</div>
-                                                                            <div className="class-meta">
-                                                                                <span className="meta-item">
-                                                                                    <span className="meta-icon">📍</span> {cls.room || 'TBA'}
-                                                                                </span>
-                                                                                <button
-                                                                                    className={`teacher-chip ${fac.isPlaceholder ? 'placeholder' : ''}`}
-                                                                                    onClick={() => setSelectedTeacher(fac)}
-                                                                                >
-                                                                                    <img
-                                                                                        src={fac.photo_local || fac.photo_url}
-                                                                                        alt=""
-                                                                                        className="teacher-chip-photo"
-                                                                                        onError={(e) => {
-                                                                                            const bgColor = fac.isPlaceholder ? '94a3b8' : '6366f1';
-                                                                                            e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(fac.name)}&background=${bgColor}&color=fff&size=48`;
-                                                                                        }}
-                                                                                    />
-                                                                                    <span className="teacher-chip-name">{cls.teacher}</span>
-                                                                                </button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                );
-                                                            })}
-                                                    </div>
+                                            <>
+                                                <div className="day-nav-bar">
+                                                    <button
+                                                        className={`day-nav-btn ${selectedDay === 'All' ? 'active' : ''}`}
+                                                        onClick={() => setSelectedDay('All')}
+                                                    >All</button>
+                                                    {dayOrder.filter(day => schedule.weekly_schedule.some(c => c.day === day)).map(day => (
+                                                        <button
+                                                            key={day}
+                                                            className={`day-nav-btn ${selectedDay === day ? 'active' : ''}`}
+                                                            onClick={() => setSelectedDay(day)}
+                                                        >{day}</button>
+                                                    ))}
                                                 </div>
-                                            ))
+                                                {dayOrder
+                                                    .filter(day => schedule.weekly_schedule.some(c => c.day === day))
+                                                    .filter(day => selectedDay === 'All' || day === selectedDay)
+                                                    .map(day => (
+                                                        <div key={day} className="day-group">
+                                                            <div className="day-header">
+                                                                <span className="day-name">{day}</span>
+                                                                <span className="day-count">
+                                                                    {schedule.weekly_schedule.filter(c => c.day === day).length} classes
+                                                                </span>
+                                                            </div>
+                                                            <div className="class-cards">
+                                                                {schedule.weekly_schedule
+                                                                    .filter(c => c.day === day)
+                                                                    .sort((a, b) => {
+                                                                        const getVal = (t) => {
+                                                                            const [h, m] = t.split(':').map(Number);
+                                                                            return (h < 8 ? h + 12 : h) * 60 + m;
+                                                                        };
+                                                                        return getVal(a.start_time) - getVal(b.start_time);
+                                                                    })
+                                                                    .map((cls, idx) => {
+                                                                        const fac = findFaculty(cls.teacher);
+                                                                        return (
+                                                                            <div key={idx} className="class-card">
+                                                                                <div className="class-time">
+                                                                                    <span className="time-dot" />
+                                                                                    {cls.start_time} – {cls.end_time}
+                                                                                </div>
+                                                                                <div className="class-info">
+                                                                                    <div className="class-subject">{cls.subject}</div>
+                                                                                    <div className="class-meta">
+                                                                                        <span className="meta-item">
+                                                                                            <span className="meta-icon">📍</span> {cls.room || 'TBA'}
+                                                                                        </span>
+                                                                                        <button
+                                                                                            className={`teacher-chip ${fac.isPlaceholder ? 'placeholder' : ''}`}
+                                                                                            onClick={() => setSelectedTeacher(fac)}
+                                                                                        >
+                                                                                            <img
+                                                                                                src={fac.photo_local || fac.photo_url}
+                                                                                                alt=""
+                                                                                                className="teacher-chip-photo"
+                                                                                                onError={(e) => {
+                                                                                                    const bgColor = fac.isPlaceholder ? '94a3b8' : '6366f1';
+                                                                                                    e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(fac.name)}&background=${bgColor}&color=fff&size=48`;
+                                                                                                }}
+                                                                                            />
+                                                                                            <span className="teacher-chip-name">{cls.teacher}</span>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        );
+                                                                    })}
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                {selectedDay !== 'All' && !schedule.weekly_schedule.some(c => c.day === selectedDay) && (
+                                                    <p className="empty-state">No classes on {selectedDay}.</p>
+                                                )}
+                                            </>
                                         )}
                                     </div>
                                 )}
@@ -830,6 +855,30 @@ export default function Home() {
                 .tab-count { background: rgba(255,255,255,0.15); padding: 0.1rem 0.45rem; border-radius: 999px; font-size: 0.7rem; font-weight: 700; }
 
                 .schedule-grid { display: flex; flex-direction: column; gap: 1.5rem; }
+
+                /* Day navigation bar */
+                .day-nav-bar {
+                    position: sticky; top: 60px; z-index: 50;
+                    display: flex; gap: 0.35rem; padding: 6px;
+                    background: rgba(10, 10, 18, 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+                    border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
+                    margin-bottom: 0.5rem;
+                    overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;
+                }
+                .day-nav-bar::-webkit-scrollbar { display: none; }
+                .day-nav-btn {
+                    flex: 1; min-width: 48px; padding: 0.5rem 0.75rem; border: none;
+                    border-radius: var(--radius-sm); background: transparent;
+                    color: var(--text-muted); font-size: 0.8rem; font-weight: 600;
+                    font-family: 'Inter', sans-serif; cursor: pointer;
+                    transition: all 0.2s; white-space: nowrap;
+                }
+                .day-nav-btn:hover { color: var(--text-secondary); background: rgba(255,255,255,0.05); }
+                .day-nav-btn.active {
+                    background: var(--accent-primary); color: white;
+                    box-shadow: 0 2px 8px rgba(99,102,241,0.3);
+                }
+
                 .day-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-subtle); }
                 .day-name { font-size: 1rem; font-weight: 700; color: var(--accent-primary); letter-spacing: 0.02em; }
                 .day-count { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
