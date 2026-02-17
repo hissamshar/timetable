@@ -188,15 +188,18 @@ async def parse_schedule(roll_number: str = Form(...)):
 
             # Check for Live Updates matching this specific class session
             for update in live_data:
-                # Normalize times to handle '9:30' vs '09:30'
-                t1 = c['start_time'].lstrip('0')
-                t2 = update['original_time'].lstrip('0')
+                # Normalize values for rock-solid matching
+                cur_code = (course_code or "").strip().upper()
+                upd_code = (update['course_code'] or "").strip().upper()
                 
-                if (course_code == update['course_code'] and 
+                t1 = c['start_time'].lstrip('0').strip()
+                t2 = update['original_time'].lstrip('0').strip()
+                
+                if (cur_code == upd_code and 
                     c['day'] == update['original_day'] and 
                     t1.startswith(t2)):
                     
-                    print(f"MATCH! {course_code} on {c['day']} at {c['start_time']}")
+                    print(f"MATCH FOUND: {cur_code} on {c['day']} at {c['start_time']}")
                     c['live_status'] = update['status']
                     c['live_reason'] = update['reason']
                     if update['status'] == 'RESCHEDULED':
