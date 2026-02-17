@@ -18,6 +18,7 @@ export default function Home() {
         return days[new Date().getDay()] || 'Mon';
     });
     const [viewCount, setViewCount] = useState(null);
+    const [expandedGroups, setExpandedGroups] = useState({});
 
     // Load faculty data, metadata, and cached schedule on mount
     useEffect(() => {
@@ -316,15 +317,53 @@ export default function Home() {
                                             <span className="live-label">LIVE UPDATES</span>
                                         </div>
                                         <div className="live-alerts-list">
-                                            {schedule.live_updates.map((update, idx) => (
-                                                <div key={idx} className={`live-alert-card ${update.status.toLowerCase()}`}>
-                                                    <span className="alert-badge">{update.status}</span>
-                                                    <span className="alert-text">
-                                                        <strong>{update.course_code}</strong>: {update.reason}
-                                                        {update.status === 'RESCHEDULED' && ` (Moved to ${update.new_day} ${update.new_time})`}
-                                                    </span>
-                                                </div>
-                                            ))}
+                                            {(() => {
+                                                // Group updates by Teacher + Course
+                                                const groups = {};
+                                                schedule.live_updates.forEach(upd => {
+                                                    const key = `${upd.teacher || 'Unknown'}-${upd.course_code}`;
+                                                    if (!groups[key]) groups[key] = {
+                                                        teacher: upd.teacher || 'Unknown',
+                                                        course_code: upd.course_code,
+                                                        status: upd.status,
+                                                        items: []
+                                                    };
+                                                    groups[key].items.push(upd);
+                                                });
+
+                                                return Object.values(groups).map((group, gIdx) => (
+                                                    <div key={gIdx} className={`live-group-container ${group.status.toLowerCase()}`}>
+                                                        <div
+                                                            className="live-group-header"
+                                                            onClick={() => setExpandedGroups(prev => ({ ...prev, [gIdx]: !prev[gIdx] }))}
+                                                        >
+                                                            <div className="group-info">
+                                                                <span className="alert-badge">{group.status}</span>
+                                                                <span className="group-text">
+                                                                    <strong>{group.course_code}</strong> – {group.teacher}
+                                                                </span>
+                                                            </div>
+                                                            <span className={`expand-icon ${expandedGroups[gIdx] ? 'open' : ''}`}>▼</span>
+                                                        </div>
+
+                                                        {expandedGroups[gIdx] && (
+                                                            <div className="group-details fade-in">
+                                                                {group.items.map((item, iIdx) => (
+                                                                    <div key={iIdx} className="detail-item">
+                                                                        <div className="detail-header">
+                                                                            <span className="detail-day">{item.original_day} {item.original_time}</span>
+                                                                            {item.status === 'RESCHEDULED' && (
+                                                                                <span className="detail-new">➔ {item.new_day} {item.new_time} {item.new_room && `@ ${item.new_room}`}</span>
+                                                                            )}
+                                                                        </div>
+                                                                        <div className="detail-reason">{item.reason}</div>
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                ));
+                                            })()}
                                         </div>
                                     </div>
                                 )}
@@ -915,21 +954,44 @@ export default function Home() {
                 .btn-outline:hover { background: rgba(255,255,255,0.05); border-color: var(--text-muted); transform: translateY(-2px); }
                 .spinner { width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.6s linear infinite; }
 
-                /* Live Updates Styling */
-                .live-alerts-feed { margin-bottom: 1.5rem; background: rgba(99, 102, 241, 0.05); border: 1px dashed rgba(99, 102, 241, 0.3); border-radius: var(--radius-md); padding: 1rem; }
+                /* Live Updates Grouped Styling */
+                .live-group-container { 
+                    margin-bottom: 0.5rem; border-radius: var(--radius-sm); 
+                    overflow: hidden; border-left: 4px solid transparent;
+                    background: rgba(255, 255, 255, 0.02);
+                }
+                .live-group-container.canceled { border-left-color: #ef4444; background: rgba(239, 68, 68, 0.05); }
+                .live-group-container.rescheduled { border-left-color: #10b981; background: rgba(16, 185, 129, 0.05); }
+                
+                .live-group-header { 
+                    padding: 0.75rem 1rem; cursor: pointer; display: flex; 
+                    align-items: center; justify-content: space-between;
+                    transition: background 0.2s;
+                }
+                .live-group-header:hover { background: rgba(255, 255, 255, 0.05); }
+                .group-info { display: flex; align-items: center; gap: 0.75rem; }
+                .group-text { font-size: 0.9rem; color: var(--text-primary); }
+                .expand-icon { font-size: 0.7rem; color: var(--text-muted); transition: transform 0.3s; }
+                .expand-icon.open { transform: rotate(180deg); }
+
+                .group-details { padding: 0.5rem 1rem 1rem 3rem; border-top: 1px solid rgba(255, 255, 255, 0.05); display: flex; flex-direction: column; gap: 0.75rem; }
+                .detail-item { font-size: 0.8rem; }
+                .detail-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.2rem; }
+                .detail-day { font-weight: 700; color: var(--text-secondary); }
+                .detail-new { color: #10b981; font-weight: 600; }
+                .detail-reason { color: var(--text-muted); font-style: italic; font-size: 0.75rem; }
+
+                .live-alerts-feed { margin-bottom: 1.5rem; background: rgba(99, 102, 241, 0.03); border: 1px dashed rgba(99, 102, 241, 0.2); border-radius: var(--radius-md); padding: 1rem; }
                 .live-alerts-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.8rem; }
+
                 .live-dot { width: 8px; height: 8px; border-radius: 50%; background: #ef4444; }
                 .live-dot.pulse { animation: pulse-red 1.5s infinite; }
                 .live-dot.live { background: #10b981; animation: pulse-green 1.5s infinite; }
                 .live-label { font-size: 0.7rem; font-weight: 800; color: #fca5a5; letter-spacing: 0.1em; }
                 .live-alerts-list { display: flex; flex-direction: column; gap: 0.5rem; }
-                .live-alert-card { padding: 0.6rem 0.8rem; border-radius: var(--radius-sm); font-size: 0.85rem; display: flex; align-items: center; gap: 0.75rem; border-left: 3px solid transparent; }
-                .live-alert-card.canceled { background: rgba(239, 68, 68, 0.1); border-left-color: #ef4444; }
-                .live-alert-card.rescheduled { background: rgba(16, 185, 129, 0.1); border-left-color: #10b981; }
                 .alert-badge { font-size: 0.65rem; font-weight: 800; padding: 0.1rem 0.4rem; border-radius: 4px; text-transform: uppercase; }
                 .canceled .alert-badge { background: #ef4444; color: white; }
                 .rescheduled .alert-badge { background: #10b981; color: white; }
-                .alert-text { color: var(--text-secondary); }
 
                 @keyframes pulse-red {
                     0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }

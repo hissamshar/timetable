@@ -25,6 +25,7 @@ class LiveUpdate(BaseModel):
     id: str
     status: str
     course_code: str
+    teacher: Optional[str] = None # Added
     original_day: str
     original_time: str
     new_day: Optional[str] = None
@@ -262,23 +263,35 @@ async def parse_schedule(roll_number: str = Form(...)):
             
             weekly_schedule.append(ClassSession(**c))
 
+        # Get current day for "disappearing" logic
+        day_map = {'Mon':0, 'Tue':1, 'Wed':2, 'Thu':3, 'Fri':4, 'Sat':5, 'Sun':6}
+        cur_day_idx = datetime.now().weekday()
+        days_in_week = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+
         # Filter live updates for this student vs global campus events
         personal_updates = []
         campus_events = []
         
+        # Determine student's course codes
+        student_course_codes = []
+        for s in weekly_schedule:
+            match = re.match(r"^([A-Z]{2,3}\d{4})", s.subject)
+            if match:
+                student_course_codes.append(match.group(1))
+
         for l in live_data:
+            # Skip if the day has passed (within the current week)
+            update_day = l.get('original_day', 'Mon')[:3]
+            update_day_idx = day_map.get(update_day, 0)
+            if update_day_idx < cur_day_idx:
+                continue
+
             if l.get('status') == 'EVENT':
                 campus_events.append(LiveUpdate(**l))
             else:
-                # Class changes: Only include if they match a course in the student's schedule
-                is_relevant = False
-                for c in weekly_schedule:
-                    if c.live_status: # Already matched in the loop above
-                         # Actually, let's just collect all class changes for now or check if course_code matches
-                         pass
-                # A better way: check if course_code matches any course in weekly_schedule
-                student_course_codes = [re.match(r"^([A-Z]{2,3}\d{4})", s.subject).group(1) for s in weekly_schedule if re.match(r"^([A-Z]{2,3}\d{4})", s.subject)]
-                if l['course_code'] in student_course_codes:
+                # Class changes: Only include if it matches a student's course code
+                upd_code = l.get('course_code', '').strip().upper()
+                if upd_code in student_course_codes:
                     personal_updates.append(LiveUpdate(**l))
 
         return StudentSchedule(

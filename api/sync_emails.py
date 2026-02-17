@@ -32,9 +32,11 @@ def get_email_content():
         mail.login(GMAIL_USER, GMAIL_PASS)
         mail.select("inbox")
 
-        # Search for emails from university portal or common subjects
-        # Adjust search criteria as needed
-        status, messages = mail.search(None, '(OR SUBJECT "Reschedule" SUBJECT "Cancelled")')
+        # Get today's date in IMAP format (01-Jan-2024)
+        today_imap = datetime.now().strftime("%d-%b-%Y")
+        
+        # Only search for today's emails
+        status, messages = mail.search(None, f'(SINCE "{today_imap}")')
         
         email_ids = messages[0].split()
         if not email_ids:
@@ -82,14 +84,16 @@ def parse_with_ai(email_list):
     Return a JSON object with a key "updates" containing a list of objects.
     
     STRICT INSTRUCTIONS:
-    1. **Class Changes**: Handle cancellations and reschedules as before.
-    2. **Campus Events**: Extract society events, seminars, or workshops. 
-       - For events, set `status` to 'EVENT'.
-       - Use the event title (e.g., 'ACM Coding Contest') as `course_code`.
-       - Most events happen on **Wednesday** during the free slot (**11:00 AM - 2:00 PM**) unless specified.
+    1. **Class Changes**: Handle cancellations and reschedules.
+       - Extract the **Teacher's Name** from the signature or text.
+    2. **Campus Events**: Society events, seminars, or workshops. 
+       - Set `status` to 'EVENT'.
+       - Use the event title as `course_code`.
+       - Events on **Wednesday** during the free slot (**11:00 AM - 2:00 PM**) are common; check if they are mentioned.
     3. If an email lists multiple sections or days, CREATE A SEPARATE OBJECT FOR EACH.
     4. Each object MUST have these EXACT keys:
        - course_code (string: course code or event title)
+       - teacher (string: Name of the professor or society lead who sent the email)
        - status (string: 'CANCELED', 'RESCHEDULED', or 'EVENT')
        - original_day (string: Mon, Tue, Wed, Thu, Fri, Sat)
        - original_time (string: HH:MM, mandatory)
