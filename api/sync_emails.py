@@ -6,7 +6,7 @@ import json
 import re
 from datetime import datetime
 from supabase import create_client, Client
-import google.generativeai as genai
+from groq import Groq
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -16,16 +16,15 @@ GMAIL_USER = os.environ.get("GMAIL_USER")
 GMAIL_PASS = os.environ.get("GMAIL_PASS") # APP PASSWORD
 SUPABASE_URL = os.environ.get("SUPABASE_URL")
 SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
 
-if not all([GMAIL_USER, GMAIL_PASS, SUPABASE_URL, SUPABASE_KEY, GEMINI_API_KEY]):
-    print("Error: Missing environment variables. Please set GMAIL_USER, GMAIL_PASS, SUPABASE_URL, SUPABASE_KEY, and GEMINI_API_KEY in Vercel.")
+if not all([GMAIL_USER, GMAIL_PASS, SUPABASE_URL, SUPABASE_KEY, GROQ_API_KEY]):
+    print("Error: Missing environment variables. Please set GMAIL_USER, GMAIL_PASS, SUPABASE_URL, SUPABASE_KEY, and GROQ_API_KEY in Vercel.")
     exit(1)
 
 # Initialize Clients
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
-genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-1.5-flash')
+groq_client = Groq(api_key=GROQ_API_KEY)
 
 def get_email_content():
     try:
@@ -93,13 +92,31 @@ def parse_with_ai(email_list):
     """
     
     try:
-        response = model.generate_content(prompt)
-        # Clean response if it contains markdown code blocks
-        text = response.text.replace('```json', '').replace('```', '').strip()
-        data = json.loads(text)
-        return data
+        chat_completion = groq_client.chat.completions.create(
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are a university timetable assistant. Extract structured JSON data from email text."
+                },
+                {
+                    "role": "user",
+                    "content": prompt,
+                }
+            ],
+            model="llama-3.3-70b-versatile",
+            response_format={"type": "json_object"},
+        )
+        data = json.loads(chat_completion.choices[0].message.content)
+        # Ensure it's a list if it's nested under a key like "updates"
+        if isinstance(data, dict):
+            for key in ["updates", "classes", "events"]:
+                if key in data and isinstance(data[key], list):
+                    return data[key]
+            if "course_code" in data: # Single object
+                return [data]
+        return data if isinstance(data, list) else []
     except Exception as e:
-        print(f"AI Error: {e}")
+        print(f"Groq Error: {e}")
         return []
 
 def sync():
