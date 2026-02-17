@@ -257,9 +257,11 @@ export default function Home() {
                     <section className="results-section fade-in">
                         <div className="glass-card">
                             <div className="results-header">
-                                <h2 className="section-title">
-                                    <span className="section-icon">📊</span>
-                                    Schedule for <span className="highlight">{schedule.roll_number}</span>
+                                <div className="results-title-row">
+                                    <h2 className="section-title">
+                                        <span className="section-icon">📊</span>
+                                        Schedule for <span className="highlight">{schedule.roll_number}</span>
+                                    </h2>
                                     <button
                                         className="btn-text-small"
                                         onClick={() => { localStorage.removeItem('timetable_cache'); setSchedule(null); }}
@@ -267,7 +269,7 @@ export default function Home() {
                                     >
                                         ✕ Clear
                                     </button>
-                                </h2>
+                                </div>
                                 <div className="tab-bar">
                                     <button className={`tab-btn ${activeTab === 'classes' ? 'active' : ''}`} onClick={() => setActiveTab('classes')}>
                                         <span className="tab-icon">📚</span> Classes
@@ -811,7 +813,8 @@ export default function Home() {
 
                 .results-section { margin-top: 1rem; }
                 .fade-in { animation: fadeInUp 0.5s ease forwards; }
-                .results-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem; }
+                .results-header { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 0.5rem; }
+                .results-title-row { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; }
                 .results-header .section-title { margin-bottom: 0; }
 
                 .tab-bar { display: flex; gap: 0.5rem; background: rgba(255,255,255,0.03); border-radius: var(--radius-md); padding: 4px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
@@ -932,9 +935,9 @@ export default function Home() {
 
                 .btn-text-small {
                     background: transparent; border: 1px solid var(--border-subtle);
-                    color: var(--text-muted); font-size: 0.7rem; padding: 0.2rem 0.5rem;
-                    border-radius: var(--radius-sm); cursor: pointer; margin-left: 1rem;
-                    transition: all 0.2s; vertical-align: middle;
+                    color: var(--text-muted); font-size: 0.7rem; padding: 0.25rem 0.6rem;
+                    border-radius: var(--radius-sm); cursor: pointer; flex-shrink: 0;
+                    transition: all 0.2s; white-space: nowrap;
                 }
                 .btn-text-small:hover { border-color: var(--accent-error); color: var(--accent-error); background: rgba(239,68,68,0.05); }
 
@@ -943,22 +946,66 @@ export default function Home() {
                 .footer { position: relative; z-index: 1; text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid var(--border-subtle); }
 
                 @media (max-width: 640px) {
-                    .hero-title { font-size: 1.8rem; }
-                    .hero-subtitle { font-size: 0.95rem; }
-                    .main { padding: 1rem 1rem 3rem; }
-                    .glass-card { padding: 1.25rem; border-radius: var(--radius-lg); }
-                    .results-header { flex-direction: column; align-items: stretch; }
-                    .class-card { flex-direction: column; gap: 0.6rem; padding: 1rem; }
-                    .class-time { min-width: auto; font-size: 0.8rem; }
-                    .class-meta { gap: 0.75rem; }
-                    .actions-bar { flex-direction: column; }
-                    .extract-btn { width: 100%; padding: 0.9rem; }
+                    .hero { padding: 2rem 0 1.5rem; }
+                    .hero-title { font-size: 1.75rem; }
+                    .hero-subtitle { font-size: 0.9rem; }
+                    .header { padding: 0.75rem 1rem; }
+                    .main { padding: 0.75rem 0.75rem 3rem; }
+                    .glass-card { padding: 1rem; border-radius: var(--radius-lg); }
+
+                    /* Search input */
                     .text-input-container.large { flex-direction: column; padding: 0.5rem; border-radius: var(--radius-lg); gap: 0.5rem; }
-                    .text-input-container.large .text-input { padding: 0.75rem; text-align: center; }
+                    .text-input-container.large .text-input { padding: 0.7rem 0.5rem; text-align: center; font-size: 1rem; }
+                    .extract-btn { width: 100%; padding: 0.85rem; border-radius: var(--radius-sm); }
+
+                    /* Results header */
+                    .results-title-row { flex-wrap: nowrap; }
+                    .section-title { font-size: 1.1rem; gap: 0.4rem; }
+                    .section-icon { font-size: 1rem; }
+
+                    /* Tab bar */
+                    .tab-bar { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; gap: 0.25rem; padding: 3px; }
+                    .tab-btn { padding: 0.45rem 0.65rem; font-size: 0.75rem; gap: 0.3rem; white-space: nowrap; }
+                    .tab-icon { font-size: 0.8rem; }
+                    .tab-count { font-size: 0.6rem; padding: 0.1rem 0.35rem; }
+
+                    /* Schedule cards */
+                    .class-card { flex-direction: column; gap: 0.5rem; padding: 0.85rem; }
+                    .class-card:hover { transform: none; }
+                    .class-time { min-width: auto; font-size: 0.8rem; }
+                    .class-subject { font-size: 0.9rem; word-break: break-word; }
+                    .class-meta { gap: 0.5rem; flex-direction: column; align-items: flex-start; }
+                    .teacher-chip { font-size: 0.75rem; }
+                    .teacher-chip-photo { width: 20px; height: 20px; }
+
+                    /* Exam cards */
                     .exam-card { flex-direction: column; align-items: flex-start; }
-                    .acad-grid { grid-template-columns: 1fr; }
+                    .exam-date-badge { min-width: auto; width: 100%; flex-direction: row; justify-content: center; gap: 0.5rem; }
+
+                    /* Academic Plan */
+                    .acad-container { gap: 1.5rem; padding: 0.25rem; }
+                    .acad-section-title { font-size: 0.95rem; gap: 0.5rem; }
+                    .acad-section-icon { width: 28px; height: 28px; font-size: 0.85rem; }
+                    .acad-grid { grid-template-columns: 1fr; gap: 0.75rem; }
                     .acad-card { flex-direction: column; }
-                    .acad-date-side { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 0.75rem; flex-direction: row; gap: 1rem; min-width: auto; justify-content: flex-start; }
+                    .acad-date-side { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 0.6rem 0.75rem; flex-direction: row; gap: 0.75rem; min-width: auto; justify-content: flex-start; }
+                    .acad-week { font-size: 0.65rem; }
+                    .acad-day { font-size: 0.95rem; }
+                    .acad-main { padding: 0.85rem; }
+                    .acad-desc { font-size: 0.9rem; word-break: break-word; }
+                    .acad-badge { font-size: 0.6rem; }
+
+                    /* Actions */
+                    .actions-bar { flex-direction: column; }
+                    .btn { padding: 0.8rem 1.2rem; font-size: 0.9rem; }
+
+                    /* Modal */
+                    .modal-card { padding: 1.5rem; max-width: calc(100vw - 2rem); }
+                    .modal-photo { width: 80px; height: 80px; }
+                    .modal-name { font-size: 1.05rem; }
+
+                    /* Footer */
+                    .footer { padding: 1.5rem 1rem; font-size: 0.75rem; }
                 }
             `}</style>
         </div>
