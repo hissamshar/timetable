@@ -155,11 +155,13 @@ async def parse_schedule(roll_number: str = Form(...)):
         if roll_number not in idx.get("schedules", {}):
             raise HTTPException(status_code=404, detail=f"Roll number {roll_number} not found.")
             
+        data = idx["schedules"][roll_number]
+        
         # Fetch Live Updates from Supabase
         live_data = []
         if supabase:
             try:
-                # Get updates that haven't expired or were created in the last 7 days
+                # Get all updates (sync script manages freshness)
                 res = supabase.table("live_updates").select("*").execute()
                 live_data = res.data or []
             except Exception as e:
@@ -167,16 +169,21 @@ async def parse_schedule(roll_number: str = Form(...)):
 
         # Process weekly schedule to fix Lab durations and incorrect names
         weekly_schedule = []
-        for c in data["weekly_schedule"]:
+        for c_orig in data["weekly_schedule"]:
+            c = c_orig.copy() # Work on a copy
             # Extract Course Code (e.g., CS2001)
             course_code_match = re.match(r"^([A-Z]{2,3}\d{4})", c['subject'])
             course_code = course_code_match.group(1) if course_code_match else None
 
             # Check for Live Updates matching this specific class session
             for update in live_data:
+                # Normalize times to handle '9:30' vs '09:30'
+                t1 = c['start_time'].lstrip('0')
+                t2 = update['original_time'].lstrip('0')
+                
                 if (course_code == update['course_code'] and 
                     c['day'] == update['original_day'] and 
-                    c['start_time'].startswith(update['original_time'])):
+                    t1.startswith(t2)):
                     
                     c['live_status'] = update['status']
                     c['live_reason'] = update['reason']

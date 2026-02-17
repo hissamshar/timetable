@@ -80,15 +80,20 @@ def parse_with_ai(email_list):
     TODAY'S DATE: {today}
 
     Return a JSON object with a key "updates" containing a list of objects.
-    Each object MUST have these EXACT keys:
-    - course_code (string: e.g. CS2004, MT2005, SE3001)
-    - status (string: 'CANCELED' or 'RESCHEDULED')
-    - original_day (string: Mon, Tue, etc.)
-    - original_time (string: HH:MM, estimate if not sure)
-    - new_day (optional string)
-    - new_time (optional string)
-    - new_room (optional string)
-    - reason (string)
+    
+    STRICT INSTRUCTIONS:
+    1. If an email lists multiple sections (e.g. BCS-4A, 4B) or multiple days/times, CREATE A SEPARATE OBJECT FOR EACH ONE.
+    2. If an email says "Today's classes are cancelled", and you don't see a time, try to find the teacher's typical slots or use common slots (8:30, 9:30, 11:00, 12:30, 2:00, 3:30, 5:00) if they are mentioned broadly.
+    3. Course Code is required.
+    4. Each object MUST have these EXACT keys:
+       - course_code (string: e.g. CS2004, MT2005, SE3001)
+       - status (string: 'CANCELED' or 'RESCHEDULED')
+       - original_day (string: Mon, Tue, Wed, Thu, Fri, Sat)
+       - original_time (string: HH:MM, mandatory)
+       - new_day (optional string)
+       - new_time (optional string)
+       - new_room (optional string)
+       - reason (string)
 
     COURSE MAPPING REFERENCE:
     - Probability and Statistics -> MT2005
@@ -101,6 +106,8 @@ def parse_with_ai(email_list):
     - COAL -> CS2004
     - Database Systems -> CS2005
     - Pakistan Studies -> SS1015
+    - Software Engineering -> SE3001
+    - Artificial Intelligence -> AI2002
 
     Emails:
     {json.dumps(email_list)}
