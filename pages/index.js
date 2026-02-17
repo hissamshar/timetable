@@ -17,6 +17,7 @@ export default function Home() {
         const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         return days[new Date().getDay()] || 'Mon';
     });
+    const [viewCount, setViewCount] = useState(null);
 
     // Load faculty data, metadata, and cached schedule on mount
     useEffect(() => {
@@ -64,6 +65,12 @@ export default function Home() {
         };
 
         loadBootstrapData();
+
+        // Track visitor count
+        fetch('https://api.counterapi.dev/v1/easytimetable/visits/up')
+            .then(r => r.json())
+            .then(d => { if (d.count) setViewCount(d.count); })
+            .catch(() => { });
     }, []);
 
     const findFaculty = (teacherName) => {
@@ -193,9 +200,17 @@ export default function Home() {
             <div className="bg-orb bg-orb-2" />
 
             <header className="header">
-                <a href="/" className="logo" onClick={(e) => { e.preventDefault(); localStorage.removeItem('timetable_cache'); setSchedule(null); setError(''); setRollNumber(''); setActiveTab('classes'); window.scrollTo(0, 0); }}>
-                    <span className="logo-text">Easy <span className="logo-accent">Timetable</span></span>
-                </a>
+                <div className="header-inner">
+                    {viewCount !== null && (
+                        <div className="view-counter">
+                            <span className="view-dot" />
+                            {viewCount.toLocaleString()} visits
+                        </div>
+                    )}
+                    <a href="/" className="logo" onClick={(e) => { e.preventDefault(); localStorage.removeItem('timetable_cache'); setSchedule(null); setError(''); setRollNumber(''); setActiveTab('classes'); window.scrollTo(0, 0); }}>
+                        <span className="logo-text">Easy <span className="logo-accent">Timetable</span></span>
+                    </a>
+                </div>
             </header>
 
             <main className="main">
@@ -659,7 +674,7 @@ export default function Home() {
                 }
 
                 .view-counter {
-                    margin-left: 1rem; padding: 0.25rem 0.75rem; background: rgba(255, 255, 255, 0.05);
+                    padding: 0.25rem 0.75rem; background: rgba(255, 255, 255, 0.05);
                     border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 999px;
                     font-size: 0.75rem; font-weight: 600; color: var(--text-secondary);
                     display: flex; align-items: center; gap: 0.5rem;
@@ -694,7 +709,8 @@ export default function Home() {
                     border-bottom: 1px solid var(--border-subtle);
                     padding: 1rem 2rem;
                 }
-                .logo { display: flex; align-items: center; gap: 0.75rem; max-width: 1000px; margin: 0 auto; text-decoration: none; cursor: pointer; }
+                .header-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1000px; margin: 0 auto; }
+                .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; cursor: pointer; }
                 .logo-icon { font-size: 1.5rem; }
                 .logo-text { font-size: 1.2rem; font-weight: 700; color: var(--text-primary); letter-spacing: -0.02em; }
                 .logo-accent { background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
