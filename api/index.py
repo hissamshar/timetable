@@ -161,11 +161,14 @@ async def parse_schedule(roll_number: str = Form(...)):
         live_data = []
         if supabase:
             try:
-                # Get all updates (sync script manages freshness)
+                print(f"Fetching updates from Supabase: {SUPABASE_URL}")
                 res = supabase.table("live_updates").select("*").execute()
                 live_data = res.data or []
+                print(f"Found {len(live_data)} updates in Supabase.")
             except Exception as e:
                 print(f"Supabase error: {e}")
+        else:
+            print("Supabase client is NOT initialized!")
 
         # Process weekly schedule to fix Lab durations and incorrect names
         weekly_schedule = []
@@ -185,6 +188,7 @@ async def parse_schedule(roll_number: str = Form(...)):
                     c['day'] == update['original_day'] and 
                     t1.startswith(t2)):
                     
+                    print(f"MATCH! {course_code} on {c['day']} at {c['start_time']}")
                     c['live_status'] = update['status']
                     c['live_reason'] = update['reason']
                     if update['status'] == 'RESCHEDULED':
