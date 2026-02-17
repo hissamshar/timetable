@@ -4,11 +4,35 @@ from typing import List, Optional
 import os
 import sys
 import json
+import re
 from datetime import datetime, date, timedelta
 from pydantic import BaseModel, Field
 # from ics import Calendar, Event
+from supabase import create_client, Client
+from dotenv import load_dotenv
+
+load_dotenv()
+
+SUPABASE_URL = os.environ.get("SUPABASE_URL")
+SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
+supabase: Optional[Client] = None
+
+if SUPABASE_URL and SUPABASE_KEY:
+    supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 # Self-contained models to avoid import issues on Vercel
+class LiveUpdate(BaseModel):
+    id: str
+    status: str
+    course_code: str
+    original_day: str
+    original_time: str
+    new_day: Optional[str] = None
+    new_time: Optional[str] = None
+    new_room: Optional[str] = None
+    reason: Optional[str] = None
+    created_at: str
+
 class ClassSession(BaseModel):
     day: str
     start_time: str
@@ -16,6 +40,10 @@ class ClassSession(BaseModel):
     subject: str
     room: str
     teacher: str
+    live_status: Optional[str] = None # Added for live updates
+    live_reason: Optional[str] = None # Added for live updates
+    live_new_time: Optional[str] = None # Added for live updates
+    live_new_room: Optional[str] = None # Added for live updates
 
 class ExamSession(BaseModel):
     subject: str
@@ -28,6 +56,7 @@ class StudentSchedule(BaseModel):
     roll_number: str
     weekly_schedule: List[ClassSession]
     exam_schedule: List[ExamSession]
+    live_updates: List[LiveUpdate] = [] # Added for frontend alerts
     exam_type: Optional[str] = None
     generated_at: datetime = Field(default_factory=datetime.now)
 
@@ -126,11 +155,35 @@ async def parse_schedule(roll_number: str = Form(...)):
         if roll_number not in idx.get("schedules", {}):
             raise HTTPException(status_code=404, detail=f"Roll number {roll_number} not found.")
             
-        data = idx["schedules"][roll_number]
-        
+        # Fetch Live Updates from Supabase
+        live_data = []
+        if supabase:
+            try:
+                # Get updates that haven't expired or were created in the last 7 days
+                res = supabase.table("live_updates").select("*").execute()
+                live_data = res.data or []
+            except Exception as e:
+                print(f"Supabase error: {e}")
+
         # Process weekly schedule to fix Lab durations and incorrect names
         weekly_schedule = []
         for c in data["weekly_schedule"]:
+            # Extract Course Code (e.g., CS2001)
+            course_code_match = re.match(r"^([A-Z]{2,3}\d{4})", c['subject'])
+            course_code = course_code_match.group(1) if course_code_match else None
+
+            # Check for Live Updates matching this specific class session
+            for update in live_data:
+                if (course_code == update['course_code'] and 
+                    c['day'] == update['original_day'] and 
+                    c['start_time'].startswith(update['original_time'])):
+                    
+                    c['live_status'] = update['status']
+                    c['live_reason'] = update['reason']
+                    if update['status'] == 'RESCHEDULED':
+                        c['live_new_time'] = f"{update.get('new_day', c['day'])} {update.get('new_time', '')}"
+                        c['live_new_room'] = update.get('new_room')
+
             # Fix Course Names
             if "Probability and Stat" in c['subject'] and "Statistics" not in c['subject']:
                 c['subject'] = c['subject'].replace("Probability and Stat", "Probability and Statistics")
@@ -191,11 +244,25 @@ async def parse_schedule(roll_number: str = Form(...)):
             roll_number=roll_number,
             weekly_schedule=weekly_schedule,
             exam_schedule=[ExamSession(**e) for e in data["exam_schedule"]],
+            live_updates=[LiveUpdate(**l) for l in live_data],
             exam_type=idx.get("exam_type", "Examination Schedule")
         )
     except HTTPException: raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/sync")
+@app.get("/api/sync")
+async def trigger_sync(request_id: Optional[str] = None):
+    # Basic security check for Vercel Cron
+    # In production, check for a CRON_SECRET header or token
+    try:
+        from .sync_emails import sync
+        sync()
+        return {"status": "success", "message": "Email sync triggered"}
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
+
 @app.post("/api/download-ics")
 @app.post("/download-ics")
 async def download_ics(schedule: StudentSchedule):

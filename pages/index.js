@@ -309,6 +309,25 @@ export default function Home() {
                             </div>
 
                             <div className="tab-content">
+                                {schedule.live_updates && schedule.live_updates.length > 0 && (
+                                    <div className="live-alerts-feed">
+                                        <div className="live-alerts-header">
+                                            <span className="live-dot pulse" />
+                                            <span className="live-label">LIVE UPDATES</span>
+                                        </div>
+                                        <div className="live-alerts-list">
+                                            {schedule.live_updates.map((update, idx) => (
+                                                <div key={idx} className={`live-alert-card ${update.status.toLowerCase()}`}>
+                                                    <span className="alert-badge">{update.status}</span>
+                                                    <span className="alert-text">
+                                                        <strong>{update.course_code}</strong>: {update.reason}
+                                                        {update.status === 'RESCHEDULED' && ` (Moved to ${update.new_day} ${update.new_time})`}
+                                                    </span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
                                 {activeTab === 'classes' && (
                                     <div className="schedule-grid">
                                         {schedule.weekly_schedule.length === 0 ? (
@@ -351,33 +370,54 @@ export default function Home() {
                                                                     })
                                                                     .map((cls, idx) => {
                                                                         const fac = findFaculty(cls.teacher);
+                                                                        const isCanceled = cls.live_status === 'CANCELED';
+                                                                        const isRescheduled = cls.live_status === 'RESCHEDULED';
+
                                                                         return (
-                                                                            <div key={idx} className="class-card">
+                                                                            <div key={idx} className={`class-card ${isCanceled ? 'canceled' : ''} ${isRescheduled ? 'rescheduled' : ''}`}>
+                                                                                {cls.live_status && (
+                                                                                    <div className="live-status-tag">
+                                                                                        {cls.live_status} {cls.live_reason && `– ${cls.live_reason}`}
+                                                                                    </div>
+                                                                                )}
                                                                                 <div className="class-time">
-                                                                                    <span className="time-dot" />
-                                                                                    {cls.start_time} – {cls.end_time}
+                                                                                    <span className={`time-dot ${cls.live_status ? 'live' : ''}`} />
+                                                                                    {isRescheduled ? (
+                                                                                        <span className="reschedule-times">
+                                                                                            <span className="old-time">{cls.start_time}</span>
+                                                                                            <span className="new-time">➔ {cls.live_new_time}</span>
+                                                                                        </span>
+                                                                                    ) : (
+                                                                                        `${cls.start_time} – ${cls.end_time}`
+                                                                                    )}
                                                                                 </div>
                                                                                 <div className="class-info">
-                                                                                    <div className="class-subject">{cls.subject}</div>
+                                                                                    <div className="class-subject">
+                                                                                        {cls.subject}
+                                                                                        {isCanceled && <span className="cancel-line"></span>}
+                                                                                    </div>
                                                                                     <div className="class-meta">
                                                                                         <span className="meta-item">
-                                                                                            <span className="meta-icon">📍</span> {cls.room || 'TBA'}
+                                                                                            <span className="meta-icon">📍</span>
+                                                                                            {isRescheduled && cls.live_new_room ? <span className="new-room">{cls.live_new_room}</span> : (cls.room || 'TBA')}
                                                                                         </span>
-                                                                                        <button
-                                                                                            className={`teacher-chip ${fac.isPlaceholder ? 'placeholder' : ''}`}
-                                                                                            onClick={() => setSelectedTeacher(fac)}
-                                                                                        >
-                                                                                            <img
-                                                                                                src={fac.photo_local || fac.photo_url}
-                                                                                                alt=""
-                                                                                                className="teacher-chip-photo"
-                                                                                                onError={(e) => {
-                                                                                                    const bgColor = fac.isPlaceholder ? '94a3b8' : '6366f1';
-                                                                                                    e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(fac.name)}&background=${bgColor}&color=fff&size=48`;
-                                                                                                }}
-                                                                                            />
-                                                                                            <span className="teacher-chip-name">{cls.teacher}</span>
-                                                                                        </button>
+                                                                                        {!isCanceled && (
+                                                                                            <button
+                                                                                                className={`teacher-chip ${fac.isPlaceholder ? 'placeholder' : ''}`}
+                                                                                                onClick={() => setSelectedTeacher(fac)}
+                                                                                            >
+                                                                                                <img
+                                                                                                    src={fac.photo_local || fac.photo_url}
+                                                                                                    alt=""
+                                                                                                    className="teacher-chip-photo"
+                                                                                                    onError={(e) => {
+                                                                                                        const bgColor = fac.isPlaceholder ? '94a3b8' : '6366f1';
+                                                                                                        e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(fac.name)}&background=${bgColor}&color=fff&size=48`;
+                                                                                                    }}
+                                                                                                />
+                                                                                                <span className="teacher-chip-name">{cls.teacher}</span>
+                                                                                            </button>
+                                                                                        )}
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -849,6 +889,44 @@ export default function Home() {
                 .btn-outline { background: transparent; color: var(--text-primary); border: 1px solid var(--border-subtle); }
                 .btn-outline:hover { background: rgba(255,255,255,0.05); border-color: var(--text-muted); transform: translateY(-2px); }
                 .spinner { width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.6s linear infinite; }
+
+                /* Live Updates Styling */
+                .live-alerts-feed { margin-bottom: 1.5rem; background: rgba(99, 102, 241, 0.05); border: 1px dashed rgba(99, 102, 241, 0.3); border-radius: var(--radius-md); padding: 1rem; }
+                .live-alerts-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.8rem; }
+                .live-dot { width: 8px; height: 8px; border-radius: 50%; background: #ef4444; }
+                .live-dot.pulse { animation: pulse-red 1.5s infinite; }
+                .live-dot.live { background: #10b981; animation: pulse-green 1.5s infinite; }
+                .live-label { font-size: 0.7rem; font-weight: 800; color: #fca5a5; letter-spacing: 0.1em; }
+                .live-alerts-list { display: flex; flex-direction: column; gap: 0.5rem; }
+                .live-alert-card { padding: 0.6rem 0.8rem; border-radius: var(--radius-sm); font-size: 0.85rem; display: flex; align-items: center; gap: 0.75rem; border-left: 3px solid transparent; }
+                .live-alert-card.canceled { background: rgba(239, 68, 68, 0.1); border-left-color: #ef4444; }
+                .live-alert-card.rescheduled { background: rgba(16, 185, 129, 0.1); border-left-color: #10b981; }
+                .alert-badge { font-size: 0.65rem; font-weight: 800; padding: 0.1rem 0.4rem; border-radius: 4px; text-transform: uppercase; }
+                .canceled .alert-badge { background: #ef4444; color: white; }
+                .rescheduled .alert-badge { background: #10b981; color: white; }
+                .alert-text { color: var(--text-secondary); }
+
+                @keyframes pulse-red {
+                    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+                    70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
+                    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+                }
+
+                .class-card.canceled { opacity: 0.7; position: relative; }
+                .class-card.canceled::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(239, 68, 68, 0.03); pointer-events: none; }
+                .class-card.rescheduled { border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.02); }
+                .live-status-tag { 
+                    font-size: 0.65rem; font-weight: 800; color: white; background: #ef4444; 
+                    padding: 0.2rem 0.6rem; border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+                    position: absolute; top: 0; right: 1.5rem; text-transform: uppercase;
+                }
+                .rescheduled .live-status-tag { background: #10b981; }
+                .cancel-line { content: ''; position: absolute; left: 0; right: 0; height: 1.5px; background: rgba(239, 68, 68, 0.5); top: 50%; transform: rotate(-2deg); }
+                .reschedule-times { display: flex; flex-direction: column; line-height: 1.2; }
+                .old-time { text-decoration: line-through; opacity: 0.5; font-size: 0.75rem; }
+                .new-time { color: #10b981; }
+                .new-room { color: #10b981; font-weight: 700; }
+
 
 
                 .results-section { margin-top: 1rem; }
