@@ -31,6 +31,7 @@ class LiveUpdate(BaseModel):
     new_time: Optional[str] = None
     new_room: Optional[str] = None
     reason: Optional[str] = None
+    description: Optional[str] = None # Added for events
     created_at: str
 
 class ClassSession(BaseModel):
@@ -57,6 +58,7 @@ class StudentSchedule(BaseModel):
     weekly_schedule: List[ClassSession]
     exam_schedule: List[ExamSession]
     live_updates: List[LiveUpdate] = [] # Added for frontend alerts
+    campus_events: List[LiveUpdate] = [] # New: Dedicated list for events
     exam_type: Optional[str] = None
     generated_at: datetime = Field(default_factory=datetime.now)
 
@@ -256,11 +258,31 @@ async def parse_schedule(roll_number: str = Form(...)):
             
             weekly_schedule.append(ClassSession(**c))
 
+        # Filter live updates for this student vs global campus events
+        personal_updates = []
+        campus_events = []
+        
+        for l in live_data:
+            if l.get('status') == 'EVENT':
+                campus_events.append(LiveUpdate(**l))
+            else:
+                # Class changes: Only include if they match a course in the student's schedule
+                is_relevant = False
+                for c in weekly_schedule:
+                    if c.live_status: # Already matched in the loop above
+                         # Actually, let's just collect all class changes for now or check if course_code matches
+                         pass
+                # A better way: check if course_code matches any course in weekly_schedule
+                student_course_codes = [re.match(r"^([A-Z]{2,3}\d{4})", s.subject).group(1) for s in weekly_schedule if re.match(r"^([A-Z]{2,3}\d{4})", s.subject)]
+                if l['course_code'] in student_course_codes:
+                    personal_updates.append(LiveUpdate(**l))
+
         return StudentSchedule(
             roll_number=roll_number,
             weekly_schedule=weekly_schedule,
             exam_schedule=[ExamSession(**e) for e in data["exam_schedule"]],
-            live_updates=[LiveUpdate(**l) for l in live_data],
+            live_updates=personal_updates,
+            campus_events=campus_events,
             exam_type=idx.get("exam_type", "Examination Schedule")
         )
     except HTTPException: raise

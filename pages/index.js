@@ -328,6 +328,31 @@ export default function Home() {
                                         </div>
                                     </div>
                                 )}
+                                {schedule.campus_events && schedule.campus_events.length > 0 && (
+                                    <div className="campus-events-section fade-in">
+                                        <div className="section-title">
+                                            <span className="section-icon">🎪</span> Campus Events & Society Meetings
+                                        </div>
+                                        <div className="events-grid">
+                                            {schedule.campus_events.map((event, idx) => (
+                                                <div key={idx} className="event-card">
+                                                    <div className="event-badge">
+                                                        <span className="event-dot pulse" /> EVENT
+                                                    </div>
+                                                    <div className="event-details">
+                                                        <div className="event-title">{event.course_code}</div>
+                                                        <div className="event-meta">
+                                                            <span className="meta-item">📅 {event.original_day}</span>
+                                                            <span className="meta-item">⏰ {event.original_time}</span>
+                                                            {event.new_room && <span className="meta-item">📍 {event.new_room}</span>}
+                                                        </div>
+                                                        <div className="event-desc">{event.description || event.reason}</div>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
                                 {activeTab === 'classes' && (
                                     <div className="schedule-grid">
                                         {schedule.weekly_schedule.length === 0 ? (
@@ -911,6 +936,32 @@ export default function Home() {
                     70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
                     100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
                 }
+
+                @keyframes pulse-blue {
+                    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+                    70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(59, 130, 246, 0); }
+                    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+                }
+
+                /* Campus Events Styles */
+                .campus-events-section { margin-top: 1.5rem; margin-bottom: 2rem; }
+                .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+                .event-card { 
+                    background: rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.2); 
+                    border-radius: var(--radius-md); padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem;
+                    transition: all 0.2s; position: relative; overflow: hidden;
+                }
+                .event-card:hover { transform: translateY(-3px); border-color: rgba(59, 130, 246, 0.4); background: rgba(59, 130, 246, 0.08); }
+                .event-badge { 
+                    display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.2rem 0.5rem; 
+                    background: rgba(59, 130, 246, 0.2); color: #60a5fa; font-size: 0.65rem; 
+                    font-weight: 800; border-radius: 4px; align-self: flex-start; letter-spacing: 0.05em;
+                }
+                .event-dot { width: 6px; height: 6px; border-radius: 50%; background: #3b82f6; }
+                .event-dot.pulse { animation: pulse-blue 1.5s infinite; }
+                .event-title { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); line-height: 1.3; }
+                .event-meta { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+                .event-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; opacity: 0.9; }
 
                 .class-card.canceled { opacity: 0.7; position: relative; }
                 .class-card.canceled::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(239, 68, 68, 0.03); pointer-events: none; }
