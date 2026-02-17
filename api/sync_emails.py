@@ -165,6 +165,12 @@ def parse_with_ai(email_list):
                 u["original_time"] = time_match.group(1)
             else:
                 continue # Skip if no time found
+
+            # Map teacher and description into the existing 'reason' column
+            teacher = u.pop("teacher", "Unknown")
+            description = u.pop("description", "")
+            orig_reason = u.get("reason", "")
+            u["reason"] = f"[{teacher}] {description or orig_reason}".strip()
             
             processed.append(u)
         return processed

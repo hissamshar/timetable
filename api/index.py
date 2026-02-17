@@ -25,15 +25,26 @@ class LiveUpdate(BaseModel):
     id: str
     status: str
     course_code: str
-    teacher: Optional[str] = None # Added
     original_day: str
     original_time: str
     new_day: Optional[str] = None
     new_time: Optional[str] = None
     new_room: Optional[str] = None
     reason: Optional[str] = None
-    description: Optional[str] = None # Added for events
+    teacher: Optional[str] = None # Added for display
+    description: Optional[str] = None # Added for display
     created_at: str
+
+    @property
+    def extracted_teacher(self):
+        if not self.reason: return "Unknown"
+        match = re.match(r"^\[(.*?)\]", self.reason)
+        return match.group(1) if match else "Unknown"
+
+    @property
+    def cleaned_reason(self):
+        if not self.reason: return ""
+        return re.sub(r"^\[.*?\]\s*", "", self.reason)
 
 class ClassSession(BaseModel):
     day: str
@@ -286,13 +297,18 @@ async def parse_schedule(roll_number: str = Form(...)):
             if update_day_idx < cur_day_idx:
                 continue
 
+            # Populate fields for frontend
+            obj = LiveUpdate(**l)
+            obj.teacher = obj.extracted_teacher
+            obj.description = obj.cleaned_reason
+
             if l.get('status') == 'EVENT':
-                campus_events.append(LiveUpdate(**l))
+                campus_events.append(obj)
             else:
                 # Class changes: Only include if it matches a student's course code
                 upd_code = l.get('course_code', '').strip().upper()
                 if upd_code in student_course_codes:
-                    personal_updates.append(LiveUpdate(**l))
+                    personal_updates.append(obj)
 
         return StudentSchedule(
             roll_number=roll_number,
