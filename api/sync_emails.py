@@ -60,6 +60,7 @@ def get_email_content():
                         body = msg.get_payload(decode=True).decode()
                     
                     recent_emails.append({"subject": subject, "body": body})
+                    print(f"Found email: {subject}")
         
         mail.logout()
         return recent_emails
@@ -71,24 +72,38 @@ def parse_with_ai(email_list):
     if not email_list:
         return []
     
+    today = datetime.now().strftime("%A, %d %B %Y")
     prompt = f"""
     You are an assistant for a University Timetable app. 
     Analyze the following emails and extract structured information about class cancellations or reschedules.
     
-    Format each update as a JSON object with these fields:
-    - course_code: (e.g., CS2001)
-    - status: (either 'CANCELED' or 'RESCHEDULED')
-    - original_day: (Mon, Tue, Wed, Thu, Fri, Sat, Sun)
-    - original_time: (HH:MM format, 24-hr)
-    - new_day: (if rescheduled, Mon, Tue, etc.)
-    - new_time: (if rescheduled, HH:MM format)
-    - new_room: (if mentioned)
-    - reason: (short reason)
+    TODAY'S DATE: {today}
+
+    Return a JSON object with a key "updates" containing a list of objects.
+    Each object MUST have these EXACT keys:
+    - course_code (string: e.g. CS2004, MT2005, SE3001)
+    - status (string: 'CANCELED' or 'RESCHEDULED')
+    - original_day (string: Mon, Tue, etc.)
+    - original_time (string: HH:MM, estimate if not sure)
+    - new_day (optional string)
+    - new_time (optional string)
+    - new_room (optional string)
+    - reason (string)
+
+    COURSE MAPPING REFERENCE:
+    - Probability and Statistics -> MT2005
+    - Software Requirements Engineering -> SE3001
+    - Cloud Computing -> CS4075
+    - Software Design and Architecture -> SE3002
+    - Fundamentals of Software Project Management -> SE4002
+    - Operating Systems -> CS2006
+    - Compiler Construction -> CS4031
+    - COAL -> CS2004
+    - Database Systems -> CS2005
+    - Pakistan Studies -> SS1015
 
     Emails:
     {json.dumps(email_list)}
-
-    Return ONLY a JSON array of objects. If an email is not about a specific class change, ignore it.
     """
     
     try:
@@ -106,15 +121,39 @@ def parse_with_ai(email_list):
             model="llama-3.3-70b-versatile",
             response_format={"type": "json_object"},
         )
-        data = json.loads(chat_completion.choices[0].message.content)
+        raw_content = chat_completion.choices[0].message.content
+        print(f"Raw AI Response: {raw_content}")
+        data = json.loads(raw_content)
+        updates = []
         # Ensure it's a list if it's nested under a key like "updates"
         if isinstance(data, dict):
             for key in ["updates", "classes", "events"]:
                 if key in data and isinstance(data[key], list):
-                    return data[key]
-            if "course_code" in data: # Single object
-                return [data]
-        return data if isinstance(data, list) else []
+                    updates = data[key]
+                    break
+            if not updates and "course_code" in data:
+                updates = [data]
+        elif isinstance(data, list):
+            updates = data
+
+        # Post-process updates
+        day_map = {"Monday": "Mon", "Tuesday": "Tue", "Wednesday": "Wed", "Thursday": "Thu", "Friday": "Fri", "Saturday": "Sat", "Sunday": "Sun"}
+        processed = []
+        for u in updates:
+            # Normalize Day
+            u["original_day"] = day_map.get(u.get("original_day"), u.get("original_day"))
+            if u["original_day"] not in day_map.values():
+                continue # Skip invalid days
+            
+            # Normalize Time (e.g., "9:30 AM" -> "9:30")
+            time_match = re.search(r"(\d{1,2}:\d{2})", u.get("original_time", ""))
+            if time_match:
+                u["original_time"] = time_match.group(1)
+            else:
+                continue # Skip if no time found
+            
+            processed.append(u)
+        return processed
     except Exception as e:
         print(f"Groq Error: {e}")
         return []
@@ -128,8 +167,10 @@ def sync():
 
     print(f"Processing {len(emails)} emails with AI...")
     updates = parse_with_ai(emails)
+    print(f"AI returned {len(updates)} updates.")
     
     for update in updates:
+        print(f"Applying update for {update.get('course_code')}...")
         try:
             # Check if this update already exists (prevent duplicates)
             existing = supabase.table("live_updates")\
