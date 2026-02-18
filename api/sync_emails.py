@@ -43,8 +43,8 @@ def get_email_content():
             return []
 
         recent_emails = []
-        # Check last 5 relevant emails
-        for e_id in email_ids[-5:]:
+        # Check last 20 relevant emails to ensure we don't miss anything
+        for e_id in email_ids[-20:]:
             res, msg = mail.fetch(e_id, "(RFC822)")
             for response in msg:
                 if isinstance(response, tuple):
@@ -115,6 +115,14 @@ def parse_with_ai(email_list):
     - Pakistan Studies -> SS1015
     - Software Engineering -> SE3001
     - Artificial Intelligence -> AI2002
+    - Generative AI -> AI4009
+
+    PROACTIVE TEACHER EXTRACTION:
+    - Look closely at the signature (end of email).
+    - Look for "Warm regards,", "Regards,", "Best,", "Thanks,", etc. followed by a name.
+    - If the email is forwarded, look for the 'From:' field within the body.
+    - DO NOT return 'Unknown' if there is ANY name present that looks like an instructor.
+    - If no name is found at all, look for the course name/code and guess if possible, but prioritize finding the actual name.
 
     Emails:
     {json.dumps(email_list)}
