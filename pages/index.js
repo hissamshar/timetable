@@ -367,31 +367,6 @@ export default function Home() {
                                         </div>
                                     </div>
                                 )}
-                                {schedule.campus_events && schedule.campus_events.length > 0 && (
-                                    <div className="campus-events-section fade-in">
-                                        <div className="section-title">
-                                            <span className="section-icon">🎪</span> Campus Events & Society Meetings
-                                        </div>
-                                        <div className="events-grid">
-                                            {schedule.campus_events.map((event, idx) => (
-                                                <div key={idx} className="event-card">
-                                                    <div className="event-badge">
-                                                        <span className="event-dot pulse" /> EVENT
-                                                    </div>
-                                                    <div className="event-details">
-                                                        <div className="event-title">{event.course_code}</div>
-                                                        <div className="event-meta">
-                                                            <span className="meta-item">📅 {event.original_day}</span>
-                                                            <span className="meta-item">⏰ {event.original_time}</span>
-                                                            {event.new_room && <span className="meta-item">📍 {event.new_room}</span>}
-                                                        </div>
-                                                        <div className="event-desc">{event.description || event.reason}</div>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
                                 {activeTab === 'classes' && (
                                     <div className="schedule-grid">
                                         {schedule.weekly_schedule.length === 0 ? (
@@ -629,6 +604,32 @@ export default function Home() {
                                                         </div>
                                                     </div>
                                                 ))}
+                                        </div>
+                                    </div>
+                                )}
+
+                                {schedule.campus_events && schedule.campus_events.length > 0 && (
+                                    <div className="campus-events-section fade-in">
+                                        <div className="section-title">
+                                            <span className="section-icon">🎪</span> Campus Events & Society Meetings
+                                        </div>
+                                        <div className="events-grid">
+                                            {schedule.campus_events.map((event, idx) => (
+                                                <div key={idx} className="event-card">
+                                                    <div className="event-badge">
+                                                        <span className="event-dot pulse" /> EVENT
+                                                    </div>
+                                                    <div className="event-details">
+                                                        <div className="event-title">{event.course_code}</div>
+                                                        <div className="event-meta">
+                                                            <span className="meta-item">📅 {event.original_day}</span>
+                                                            <span className="meta-item">⏰ {event.original_time}</span>
+                                                            {event.new_room && <span className="meta-item">📍 {event.new_room}</span>}
+                                                        </div>
+                                                        <div className="event-desc">{event.description || event.reason}</div>
+                                                    </div>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                 )}
