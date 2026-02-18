@@ -32,11 +32,10 @@ def get_email_content():
         mail.login(GMAIL_USER, GMAIL_PASS)
         mail.select("inbox")
 
-        # Get today's date in IMAP format (01-Jan-2024)
-        today_imap = datetime.now().strftime("%d-%b-%Y")
-        
-        # Only search for today's emails
-        status, messages = mail.search(None, f'(SINCE "{today_imap}")')
+        # Search for recent emails (last 2 days to avoid timezone issues)
+        from datetime import timedelta
+        since_date = (datetime.now() - timedelta(days=2)).strftime("%d-%b-%Y")
+        status, messages = mail.search(None, f'(SINCE "{since_date}")')
         
         email_ids = messages[0].split()
         if not email_ids:
