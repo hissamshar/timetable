@@ -300,6 +300,12 @@ export default function Home() {
                                             <span className="tab-count">{schedule.exam_schedule.length}</span>
                                         </button>
                                     )}
+                                    {schedule.campus_events && schedule.campus_events.length > 0 && (
+                                        <button className={`tab-btn ${activeTab === 'events' ? 'active' : ''}`} onClick={() => setActiveTab('events')}>
+                                            <span className="tab-icon">🎪</span> Events
+                                            <span className="tab-count">{schedule.campus_events.length}</span>
+                                        </button>
+                                    )}
                                     {academicPlan.length > 0 && (
                                         <button className={`tab-btn ${activeTab === 'academic' ? 'active' : ''}`} onClick={() => setActiveTab('academic')}>
                                             <span className="tab-icon">📅</span> Academic Plan
@@ -364,6 +370,31 @@ export default function Home() {
                                                     </div>
                                                 ));
                                             })()}
+                                        </div>
+                                    </div>
+                                )}
+                                {activeTab === 'events' && schedule.campus_events && schedule.campus_events.length > 0 && (
+                                    <div className="campus-events-section fade-in">
+                                        <div className="section-title">
+                                            <span className="section-icon">🎪</span> Campus Events & Society Meetings
+                                        </div>
+                                        <div className="events-grid">
+                                            {schedule.campus_events.map((event, idx) => (
+                                                <div key={idx} className="event-card">
+                                                    <div className="event-badge">
+                                                        <span className="event-dot pulse" /> EVENT
+                                                    </div>
+                                                    <div className="event-details">
+                                                        <div className="event-title">{event.course_code}</div>
+                                                        <div className="event-meta">
+                                                            <span className="meta-item">📅 {event.original_day}</span>
+                                                            <span className="meta-item">⏰ {event.original_time}</span>
+                                                            {event.new_room && <span className="meta-item">📍 {event.new_room}</span>}
+                                                        </div>
+                                                        <div className="event-desc">{event.description || event.reason}</div>
+                                                    </div>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                 )}
@@ -604,32 +635,6 @@ export default function Home() {
                                                         </div>
                                                     </div>
                                                 ))}
-                                        </div>
-                                    </div>
-                                )}
-
-                                {schedule.campus_events && schedule.campus_events.length > 0 && (
-                                    <div className="campus-events-section fade-in">
-                                        <div className="section-title">
-                                            <span className="section-icon">🎪</span> Campus Events & Society Meetings
-                                        </div>
-                                        <div className="events-grid">
-                                            {schedule.campus_events.map((event, idx) => (
-                                                <div key={idx} className="event-card">
-                                                    <div className="event-badge">
-                                                        <span className="event-dot pulse" /> EVENT
-                                                    </div>
-                                                    <div className="event-details">
-                                                        <div className="event-title">{event.course_code}</div>
-                                                        <div className="event-meta">
-                                                            <span className="meta-item">📅 {event.original_day}</span>
-                                                            <span className="meta-item">⏰ {event.original_time}</span>
-                                                            {event.new_room && <span className="meta-item">📍 {event.new_room}</span>}
-                                                        </div>
-                                                        <div className="event-desc">{event.description || event.reason}</div>
-                                                    </div>
-                                                </div>
-                                            ))}
                                         </div>
                                     </div>
                                 )}
