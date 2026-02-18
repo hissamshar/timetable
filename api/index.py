@@ -199,45 +199,64 @@ async def parse_schedule(roll_number: str = Form(...)):
             course_code = course_code_match.group(1) if course_code_match else None
 
             # Extract Section (e.g., BCS-4B) from subject "CS2006,BCS-4B: ..."
-            section_match = re.search(r",\s*([A-Z0-9-]+)", c['subject'])
-            section = section_match.group(1).strip().upper() if section_match else None
+            # Normalize dashes in section: \u2013 is en-dash
+            section_match = re.search(r",\s*([A-Za-z0-9\u2013-]+)", c['subject'])
+            section = section_match.group(1).strip().upper().replace("\u2013", "-") if section_match else None
 
             # Check for Live Updates matching this specific class session
             for update in live_data:
                 # Normalize values for rock-solid matching
                 cur_code = (course_code or "").strip().upper()
                 upd_code = (update['course_code'] or "").strip().upper()
-                upd_reason = (update.get('reason') or "").strip().upper()
-                
-                # Try to find a section in the update's course_code or reason
-                upd_section = None
-                if section:
-                    # Look for the section (e.g., "BCS-4B") in the update fields
-                    if section in upd_code or section in upd_reason:
-                        upd_section = section
+                # Normalize update reason: convert en-dashes to hyphens for matching
+                upd_reason = (update.get('reason') or "").strip().upper().replace("\u2013", "-")
+                upd_text = upd_code + " " + upd_reason
                 
                 t1 = c['start_time'].lstrip('0').strip()
                 t2 = update['original_time'].lstrip('0').strip()
                 
+                # Ramzan Time Mapping (Shifted -> Regular)
+                # Emails often use regular times even during Ramzan
+                reverse_map = {
+                    "9:10": "9:30",
+                    "10:20": "11:00",
+                    "11:30": "12:30",
+                    "3:10": "3:30"
+                }
+                t1_regular = reverse_map.get(t1, t1)
+                
                 # Match logic:
                 # 1. Course Code MUST match
                 # 2. Day MUST match
-                # 3. Time MUST match (starts with for robustness)
-                # 4. Section MUST match if we found one in the update
+                # 3. Time MUST match (direct or via regular time mapping)
                 code_match = cur_code == upd_code
                 day_match = c['day'] == update['original_day']
-                time_match = t1.startswith(t2)
+                time_match = t1.startswith(t2) or t1_regular.startswith(t2) or t2.startswith(t1)
                 
+                # 4. Section Criteria:
                 # If a section is specified in the update, it MUST match the current class's section
                 # If no section is found in the update, we fall back to general course-level match
                 section_criteria = True
                 if section:
-                    # If the update mentions ANY section, it must be OUR section
-                    # We check if the update reason contains brackets like [BCS-4B] or [BSCS-4B]
-                    all_sections_in_upd = re.findall(r"([A-Z0-9-]{3,})", upd_code + " " + upd_reason)
-                    if any(s for s in all_sections_in_upd if s != cur_code and s != "PHD"):
-                         # Update mentions a section. Check if it's ours.
+                    # Extract potential sections from update text (e.g. BCS-4B, BAI-2A)
+                    # We look for patterns like XXX-NX or XXX-N
+                    all_sections_in_upd = re.findall(r"([A-Z]{2,4}-[0-9][A-Z]?)", upd_text)
+                    
+                    if all_sections_in_upd:
+                         # The update explicitly mentions some sections.
+                         # It must mention OUR section for it to apply to us.
                          section_criteria = (section in all_sections_in_upd)
+                    else:
+                        # No specific section pattern found, but let's check for direct inclusion 
+                        # of the section string (e.g. "BCS-4C") just in case
+                        if any(char in upd_text for char in ["-", "–"]): # Optimization
+                            if section in upd_text:
+                                section_criteria = True
+                            elif any(s in upd_text for s in ["BCS", "BSE", "BAI", "BDS"]) and "-" in upd_text:
+                                # Reason mentions a section but not ours?
+                                # This is tricky. If they say "BCS-4B cancelled" and we are "BCS-4C", we should skip.
+                                # Let's stick to the findall for now as it's safer.
+                                pass
 
                 if (code_match and day_match and time_match and section_criteria):
                     
