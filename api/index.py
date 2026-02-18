@@ -329,9 +329,11 @@ async def parse_schedule(roll_number: str = Form(...)):
             
             weekly_schedule.append(ClassSession(**c))
 
-        # Get current day for "disappearing" logic
+        # Get current day for "disappearing" logic (Standardize to PKT UTC+5)
+        # Vercel is UTC, but campus is PKT.
+        pkt_now = datetime.utcnow() + timedelta(hours=5)
+        cur_day_idx = pkt_now.weekday()
         day_map = {'Mon':0, 'Tue':1, 'Wed':2, 'Thu':3, 'Fri':4, 'Sat':5, 'Sun':6}
-        cur_day_idx = datetime.now().weekday()
         days_in_week = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
         # Filter live updates for this student vs global campus events
