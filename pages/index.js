@@ -302,7 +302,7 @@ export default function Home() {
                                     )}
                                     {schedule.campus_events && schedule.campus_events.length > 0 && (
                                         <button className={`tab-btn ${activeTab === 'events' ? 'active' : ''}`} onClick={() => setActiveTab('events')}>
-                                            <span className="tab-icon">🎪</span> Events
+                                            <span className="tab-icon">📢</span> News
                                             <span className="tab-count">{schedule.campus_events.length}</span>
                                         </button>
                                     )}
@@ -376,22 +376,25 @@ export default function Home() {
                                 {activeTab === 'events' && schedule.campus_events && schedule.campus_events.length > 0 && (
                                     <div className="campus-events-section fade-in">
                                         <div className="section-title">
-                                            <span className="section-icon">🎪</span> Campus Events & Society Meetings
+                                            <span className="section-icon">🗞️</span> Campus News & Updates
                                         </div>
                                         <div className="events-grid">
-                                            {schedule.campus_events.map((event, idx) => (
-                                                <div key={idx} className="event-card">
+                                            {schedule.campus_events.map((item, idx) => (
+                                                <div key={idx} className={`event-card ${item.status === 'NEWS' ? 'news-card' : ''}`}>
                                                     <div className="event-badge">
-                                                        <span className="event-dot pulse" /> EVENT
+                                                        <span className="event-dot pulse" /> {item.status}
                                                     </div>
                                                     <div className="event-details">
-                                                        <div className="event-title">{event.course_code}</div>
+                                                        <div className="event-title">{item.course_code}</div>
                                                         <div className="event-meta">
-                                                            <span className="meta-item">📅 {event.original_day}</span>
-                                                            <span className="meta-item">⏰ {event.original_time}</span>
-                                                            {event.new_room && <span className="meta-item">📍 {event.new_room}</span>}
+                                                            {item.original_day !== 'N/A' && <span className="meta-item">📅 {item.original_day}</span>}
+                                                            {item.original_time !== 'N/A' && <span className="meta-item">⏰ {item.original_time}</span>}
+                                                            {item.new_room && <span className="meta-item">📍 {item.new_room}</span>}
                                                         </div>
-                                                        <div className="event-desc">{event.description || event.reason}</div>
+                                                        <div className="event-desc">{item.description || item.reason}</div>
+                                                        {item.teacher && item.teacher !== 'Unknown' && (
+                                                            <div className="event-teacher">Sent by: {item.teacher}</div>
+                                                        )}
                                                     </div>
                                                 </div>
                                             ))}
