@@ -182,25 +182,25 @@ def parse_with_ai(email_list):
         processed = []
         for u in updates:
             # Normalize Day
-            if u.get("status") == "NEWS":
-                u["original_day"] = "N/A"
+            if u.get("status") in ["NEWS", "EVENT"]:
+                u["original_day"] = day_map.get(u.get("original_day"), u.get("original_day"))
+                if u["original_day"] not in day_map.values() and u["original_day"] != "N/A":
+                    u["original_day"] = "N/A"
             else:
                 u["original_day"] = day_map.get(u.get("original_day"), u.get("original_day"))
                 if u["original_day"] not in day_map.values():
-                    continue # Skip invalid days
-            
-            # Normalize Time (e.g., "9:30 AM" -> "9:30")
-            if u.get("status") == "NEWS":
+                    continue
+
+            # Normalize Time
+            time_match = re.search(r"(\d{1,2}:\d{2})", str(u.get("original_time", "")))
+            if time_match:
+                u["original_time"] = time_match.group(1)
+            elif u.get("status") in ["NEWS", "EVENT"]:
                 u["original_time"] = "N/A"
+            elif any(keyword in (u.get("reason", "") + u.get("status", "")).lower() for keyword in ["today", "cancel", "canceled", "cancelled"]):
+                u["original_time"] = "ANY"
             else:
-                time_match = re.search(r"(\d{1,2}:\d{2})", str(u.get("original_time", "")))
-                if time_match:
-                    u["original_time"] = time_match.group(1)
-                elif any(keyword in (u.get("reason", "") + u.get("status", "")).lower() for keyword in ["today", "cancel", "canceled", "cancelled"]):
-                    # If no time is found but it's a cancellation for "today", use 'ANY'
-                    u["original_time"] = "ANY"
-                else:
-                    continue # Skip if no time found and not clearly 'today'
+                continue
 
             # Map teacher and description into the existing 'reason' column
             teacher = u.pop("teacher", "Unknown")
