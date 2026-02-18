@@ -19,6 +19,30 @@ export default function Home() {
     });
     const [viewCount, setViewCount] = useState(null);
     const [expandedGroups, setExpandedGroups] = useState({});
+    const [syncing, setSyncing] = useState(false);
+    const [syncCooldown, setSyncCooldown] = useState(0);
+
+    // Cooldown timer effect
+    useEffect(() => {
+        let timer;
+        if (syncCooldown > 0) {
+            timer = setInterval(() => {
+                setSyncCooldown(prev => prev - 1);
+            }, 1000);
+        }
+        return () => clearInterval(timer);
+    }, [syncCooldown]);
+
+    // Check last sync on mount to restore cooldown
+    useEffect(() => {
+        const lastSync = localStorage.getItem('last_sync_time');
+        if (lastSync) {
+            const elapsed = Math.floor((Date.now() - parseInt(lastSync)) / 1000);
+            if (elapsed < 300) {
+                setSyncCooldown(300 - elapsed);
+            }
+        }
+    }, []);
 
     // Load faculty data, metadata, and cached schedule on mount
     useEffect(() => {
@@ -161,10 +185,26 @@ export default function Home() {
         }
     };
 
+    const handleSync = async () => {
+        if (syncing || syncCooldown > 0) return;
 
-
-
-
+        setSyncing(true);
+        try {
+            const res = await fetch(`${API_BASE_URL}/sync`);
+            if (res.ok) {
+                localStorage.setItem('last_sync_time', Date.now().toString());
+                setSyncCooldown(300);
+                // Refresh data if available
+                if (rollNumber) {
+                    handleExtract();
+                }
+            }
+        } catch (e) {
+            console.error("Sync failed:", e);
+        } finally {
+            setSyncing(false);
+        }
+    };
     const handleDownloadICS = async () => {
         if (!schedule) return;
         try {
@@ -281,13 +321,24 @@ export default function Home() {
                                         <span className="section-icon">📊</span>
                                         Schedule for <span className="highlight">{schedule.roll_number}</span>
                                     </h2>
-                                    <button
-                                        className="btn-text-small"
-                                        onClick={() => { localStorage.removeItem('timetable_cache'); setSchedule(null); }}
-                                        title="Clear local cache and start over"
-                                    >
-                                        ✕ Clear
-                                    </button>
+                                    <div className="action-buttons">
+                                        <button
+                                            className={`sync-btn ${syncing ? 'syncing' : ''} ${syncCooldown > 0 ? 'cooldown' : ''}`}
+                                            onClick={handleSync}
+                                            disabled={syncing || syncCooldown > 0}
+                                            title={syncCooldown > 0 ? `Please wait ${Math.floor(syncCooldown / 60)}m ${syncCooldown % 60}s` : 'Fetch latest updates from email'}
+                                        >
+                                            <span className="sync-icon">🔄</span>
+                                            {syncing ? 'Syncing...' : syncCooldown > 0 ? `${Math.floor(syncCooldown / 60)}:${(syncCooldown % 60).toString().padStart(2, '0')}` : 'Sync News'}
+                                        </button>
+                                        <button
+                                            className="btn-text-small"
+                                            onClick={() => { localStorage.removeItem('timetable_cache'); setSchedule(null); }}
+                                            title="Clear local cache and start over"
+                                        >
+                                            ✕ Clear
+                                        </button>
+                                    </div>
                                 </div>
                                 <div className="tab-bar">
                                     <button className={`tab-btn ${activeTab === 'classes' ? 'active' : ''}`} onClick={() => setActiveTab('classes')}>
@@ -1143,8 +1194,24 @@ export default function Home() {
                 }
 
                 .day-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-subtle); }
-                .day-name { font-size: 1rem; font-weight: 700; color: var(--accent-primary); letter-spacing: 0.02em; }
                 .day-count { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+                .action-buttons { display: flex; align-items: center; gap: 0.75rem; }
+                .sync-btn {
+                    display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.85rem;
+                    background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3);
+                    border-radius: var(--radius-sm); color: #60a5fa; font-size: 0.75rem; font-weight: 700;
+                    cursor: pointer; transition: all 0.2s;
+                }
+                .sync-btn:hover:not(:disabled) { background: rgba(59, 130, 246, 0.2); border-color: #60a5fa; box-shadow: 0 0 12px rgba(59, 130, 246, 0.2); }
+                .sync-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+                .sync-btn.syncing .sync-icon { display: inline-block; animation: spin 1s linear infinite; }
+                .sync-btn.cooldown { color: var(--text-muted); background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
+                
+                @keyframes spin {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                }
 
                 .class-cards { display: flex; flex-direction: column; gap: 0.6rem; }
                 .class-card {
