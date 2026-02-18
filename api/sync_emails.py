@@ -45,19 +45,30 @@ def get_email_content():
         recent_emails = []
         # Check last 30 relevant emails to ensure we don't miss anything
         for e_id in email_ids[-30:]:
-            res, msg = mail.fetch(e_id, "(RFC822)")
-            for response in msg:
+            res, msg_data = mail.fetch(e_id, "(RFC822)")
+            for response in msg_data:
                 if isinstance(response, tuple):
                     msg = email.message_from_bytes(response[1])
-                    subject = decode_header(msg["Subject"])[0][0]
+                    
+                    # Strict sender verification
+                    sender = msg.get("From", "").lower()
+                    allowed_senders = ["students@pwr.nu.edu.pk", "mod.pwr@nu.edu.pk"]
+                    if not any(trusted in sender for trusted in allowed_senders):
+                        continue
+
+                    subject_info = decode_header(msg["Subject"])[0]
+                    subject = subject_info[0]
                     if isinstance(subject, bytes):
-                        subject = subject.decode()
+                        subject = subject.decode(subject_info[1] or 'utf-8', errors='replace')
                     
                     body = ""
                     if msg.is_multipart():
                         for part in msg.walk():
                             if part.get_content_type() == "text/plain":
-                                body = part.get_payload(decode=True).decode()
+                                try:
+                                    body = part.get_payload(decode=True).decode()
+                                except:
+                                    pass
                     else:
                         body = msg.get_payload(decode=True).decode()
                     
