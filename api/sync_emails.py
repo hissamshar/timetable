@@ -104,6 +104,7 @@ def parse_with_ai(email_list):
 
     COURSE MAPPING REFERENCE (Class Changes):
     - Probability and Statistics -> MT2005
+    - Probability & Statistics -> MT2005
     - Software Requirements Engineering -> SE3001
     - Cloud Computing -> CS4075
     - Software Design and Architecture -> SE3002
@@ -116,6 +117,7 @@ def parse_with_ai(email_list):
     - Software Engineering -> SE3001
     - Artificial Intelligence -> AI2002
     - Generative AI -> AI4009
+    - GenAI -> AI4009
 
     PROACTIVE TEACHER EXTRACTION:
     - Look closely at the signature (end of email).
@@ -168,11 +170,14 @@ def parse_with_ai(email_list):
                 continue # Skip invalid days
             
             # Normalize Time (e.g., "9:30 AM" -> "9:30")
-            time_match = re.search(r"(\d{1,2}:\d{2})", u.get("original_time", ""))
+            time_match = re.search(r"(\d{1,2}:\d{2})", str(u.get("original_time", "")))
             if time_match:
                 u["original_time"] = time_match.group(1)
+            elif any(keyword in u.get("reason", "").lower() + u.get("status", "").lower() for keyword in ["today", "lecture cancelled", "lecture is cancelled"]):
+                # If no time is found but "today" is implied, use 'ANY' as a wildcard
+                u["original_time"] = "ANY"
             else:
-                continue # Skip if no time found
+                continue # Skip if no time found and not clearly 'today'
 
             # Map teacher and description into the existing 'reason' column
             teacher = u.pop("teacher", "Unknown")

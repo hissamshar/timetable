@@ -213,7 +213,7 @@ async def parse_schedule(roll_number: str = Form(...)):
                 upd_text = upd_code + " " + upd_reason
                 
                 t1 = c['start_time'].lstrip('0').strip()
-                t2 = update['original_time'].lstrip('0').strip()
+                t2 = (update.get('original_time') or "").lstrip('0').strip()
                 
                 # Ramzan Time Mapping (Shifted -> Regular)
                 # Emails often use regular times even during Ramzan
@@ -228,10 +228,14 @@ async def parse_schedule(roll_number: str = Form(...)):
                 # Match logic:
                 # 1. Course Code MUST match
                 # 2. Day MUST match
-                # 3. Time MUST match (direct or via regular time mapping)
+                # 3. Time MUST match (direct or via regular time mapping) OR use 'ANY' wildcard
                 code_match = cur_code == upd_code
                 day_match = c['day'] == update['original_day']
-                time_match = t1.startswith(t2) or t1_regular.startswith(t2) or t2.startswith(t1)
+                
+                # Flexibility for "Today's class is cancelled" without explicit time
+                is_any_time = t2.upper() == "ANY"
+                time_match = is_any_time or t1.startswith(t2) or t1_regular.startswith(t2) or t2.startswith(t1)
+
                 
                 # 4. Section Criteria:
                 # If a section is specified in the update, it MUST match the current class's section
