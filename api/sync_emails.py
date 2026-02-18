@@ -92,15 +92,21 @@ def parse_with_ai(email_list):
        - Events on **Wednesday** during the free slot (**11:00 AM - 2:00 PM**) are common; check if they are mentioned.
     3. If an email lists multiple sections or days, CREATE A SEPARATE OBJECT FOR EACH.
     4. Each object MUST have these EXACT keys:
-       - course_code (string: course code or event title)
+       - course_code (string: course code, event title, or short news headline)
        - teacher (string: Name of the professor or society lead who sent the email)
-       - status (string: 'CANCELED', 'RESCHEDULED', or 'EVENT')
-       - original_day (string: Mon, Tue, Wed, Thu, Fri, Sat)
-       - original_time (string: HH:MM, mandatory)
+       - status (string: 'CANCELED', 'RESCHEDULED', 'EVENT', or 'NEWS')
+       - original_day (string: Mon, Tue, Wed, Thu, Fri, Sat, or 'N/A' for News)
+       - original_time (string: HH:MM, mandatory for classes, 'ANY' for today's classes, or 'N/A' for News)
        - new_day (optional string)
        - new_time (optional string)
        - new_room (optional string)
-       - reason (string: for class changes) / description (string: for events)
+       - reason (string: for class changes) / description (string: for events and news)
+
+    NEWS & ANNOUNCEMENT INSTRUCTIONS:
+    - If an email is about a deadline, feedback form, registration, or general info (not a class time change).
+    - Set `status` to 'NEWS'.
+    - Use a catchy short headline as `course_code`.
+    - Use 'N/A' for `original_day` and `original_time`.
 
     COURSE MAPPING REFERENCE (Class Changes):
     - Probability and Statistics -> MT2005
@@ -165,19 +171,25 @@ def parse_with_ai(email_list):
         processed = []
         for u in updates:
             # Normalize Day
-            u["original_day"] = day_map.get(u.get("original_day"), u.get("original_day"))
-            if u["original_day"] not in day_map.values():
-                continue # Skip invalid days
+            if u.get("status") == "NEWS":
+                u["original_day"] = "N/A"
+            else:
+                u["original_day"] = day_map.get(u.get("original_day"), u.get("original_day"))
+                if u["original_day"] not in day_map.values():
+                    continue # Skip invalid days
             
             # Normalize Time (e.g., "9:30 AM" -> "9:30")
-            time_match = re.search(r"(\d{1,2}:\d{2})", str(u.get("original_time", "")))
-            if time_match:
-                u["original_time"] = time_match.group(1)
-            elif any(keyword in (u.get("reason", "") + u.get("status", "")).lower() for keyword in ["today", "cancel", "canceled", "cancelled"]):
-                # If no time is found but it's a cancellation for "today", use 'ANY'
-                u["original_time"] = "ANY"
+            if u.get("status") == "NEWS":
+                u["original_time"] = "N/A"
             else:
-                continue # Skip if no time found and not clearly 'today'
+                time_match = re.search(r"(\d{1,2}:\d{2})", str(u.get("original_time", "")))
+                if time_match:
+                    u["original_time"] = time_match.group(1)
+                elif any(keyword in (u.get("reason", "") + u.get("status", "")).lower() for keyword in ["today", "cancel", "canceled", "cancelled"]):
+                    # If no time is found but it's a cancellation for "today", use 'ANY'
+                    u["original_time"] = "ANY"
+                else:
+                    continue # Skip if no time found and not clearly 'today'
 
             # Map teacher and description into the existing 'reason' column
             teacher = u.pop("teacher", "Unknown")
@@ -199,7 +211,7 @@ def sync():
         return
 
     # Filter for relevant emails to save tokens
-    keywords = ["cancel", "resched", "lecture", "class", "meeting", "event", "venue", "room", "timetable", "schedule"]
+    keywords = ["cancel", "resched", "lecture", "class", "meeting", "event", "venue", "room", "timetable", "schedule", "feedback", "registration", "deadline", "opening", "survey", "form"]
     relevant_emails = []
     for e in all_emails:
         subj = e["subject"].lower()

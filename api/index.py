@@ -347,17 +347,19 @@ async def parse_schedule(roll_number: str = Form(...)):
 
         for l in live_data:
             # Skip if the day has passed (within the current week)
+            # NEWS items might have 'N/A' for day, we should show them unless they are old
             update_day = l.get('original_day', 'Mon')[:3]
-            update_day_idx = day_map.get(update_day, 0)
-            if update_day_idx < cur_day_idx:
-                continue
+            if update_day != 'N/A':
+                update_day_idx = day_map.get(update_day, 0)
+                if update_day_idx < cur_day_idx:
+                    continue
 
             # Populate fields for frontend
             obj = LiveUpdate(**l)
             obj.teacher = obj.extracted_teacher
             obj.description = obj.cleaned_reason
 
-            if l.get('status') == 'EVENT':
+            if l.get('status') in ['EVENT', 'NEWS']:
                 campus_events.append(obj)
             else:
                 # Class changes: Only include if it matches a student's course code
