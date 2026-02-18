@@ -375,30 +375,60 @@ export default function Home() {
                                 )}
                                 {activeTab === 'events' && schedule.campus_events && schedule.campus_events.length > 0 && (
                                     <div className="campus-events-section fade-in">
-                                        <div className="section-title">
-                                            <span className="section-icon">🗞️</span> Campus News & Updates
-                                        </div>
-                                        <div className="events-grid">
-                                            {schedule.campus_events.map((item, idx) => (
-                                                <div key={idx} className={`event-card ${item.status === 'NEWS' ? 'news-card' : ''}`}>
-                                                    <div className="event-badge">
-                                                        <span className="event-dot pulse" /> {item.status}
-                                                    </div>
-                                                    <div className="event-details">
-                                                        <div className="event-title">{item.course_code}</div>
-                                                        <div className="event-meta">
-                                                            {item.original_day !== 'N/A' && <span className="meta-item">📅 {item.original_day}</span>}
-                                                            {item.original_time !== 'N/A' && <span className="meta-item">⏰ {item.original_time}</span>}
-                                                            {item.new_room && <span className="meta-item">📍 {item.new_room}</span>}
-                                                        </div>
-                                                        <div className="event-desc">{item.description || item.reason}</div>
-                                                        {item.teacher && item.teacher !== 'Unknown' && (
-                                                            <div className="event-teacher">Sent by: {item.teacher}</div>
-                                                        )}
-                                                    </div>
+                                        {/* News Category */}
+                                        {schedule.campus_events.some(i => i.status === 'NEWS') && (
+                                            <div className="news-category" style={{ marginBottom: '2.5rem' }}>
+                                                <div className="sub-section-title">
+                                                    <span className="section-icon">🗞️</span> Campus News & Announcements
                                                 </div>
-                                            ))}
-                                        </div>
+                                                <div className="events-grid">
+                                                    {schedule.campus_events.filter(i => i.status === 'NEWS').map((item, idx) => (
+                                                        <div key={idx} className="event-card news-card">
+                                                            <div className="event-badge news-badge">
+                                                                <span className="event-dot pulse news-dot" /> NEWS
+                                                            </div>
+                                                            <div className="event-details">
+                                                                <div className="event-title">{item.course_code}</div>
+                                                                <div className="event-desc">{item.description || item.reason}</div>
+                                                                {item.teacher && item.teacher !== 'Unknown' && (
+                                                                    <div className="event-teacher">Sent by: {item.teacher}</div>
+                                                                )}
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        {/* Events Category */}
+                                        {schedule.campus_events.some(i => i.status === 'EVENT') && (
+                                            <div className="events-category">
+                                                <div className="sub-section-title">
+                                                    <span className="section-icon">🎪</span> Upcoming Events & Meetings
+                                                </div>
+                                                <div className="events-grid">
+                                                    {schedule.campus_events.filter(i => i.status === 'EVENT').map((item, idx) => (
+                                                        <div key={idx} className="event-card">
+                                                            <div className="event-badge">
+                                                                <span className="event-dot pulse" /> EVENT
+                                                            </div>
+                                                            <div className="event-details">
+                                                                <div className="event-title">{item.course_code}</div>
+                                                                <div className="event-meta">
+                                                                    {item.original_day !== 'N/A' && <span className="meta-item">📅 {item.original_day}</span>}
+                                                                    {item.original_time !== 'N/A' && <span className="meta-item">⏰ {item.original_time}</span>}
+                                                                    {item.new_room && <span className="meta-item">📍 {item.new_room}</span>}
+                                                                </div>
+                                                                <div className="event-desc">{item.description || item.reason}</div>
+                                                                {item.teacher && item.teacher !== 'Unknown' && (
+                                                                    <div className="event-teacher">Sent by: {item.teacher}</div>
+                                                                )}
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 )}
                                 {activeTab === 'classes' && (
@@ -1014,6 +1044,12 @@ export default function Home() {
                     100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
                 }
 
+                @keyframes pulse-green {
+                    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+                    70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+                    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+                }
+
                 /* Campus Events Styles */
                 .campus-events-section { margin-top: 1.5rem; margin-bottom: 2rem; }
                 .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
@@ -1030,6 +1066,17 @@ export default function Home() {
                 }
                 .event-dot { width: 6px; height: 6px; border-radius: 50%; background: #3b82f6; }
                 .event-dot.pulse { animation: pulse-blue 1.5s infinite; }
+                .sub-section-title { 
+                    display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;
+                    font-size: 0.85rem; font-weight: 800; color: var(--text-muted); 
+                    text-transform: uppercase; letter-spacing: 0.05em; padding-left: 0.25rem;
+                }
+                .news-card { background: rgba(16, 185, 129, 0.05); border-color: rgba(16, 185, 129, 0.2); }
+                .news-card:hover { border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.08); }
+                .news-badge { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+                .news-dot { background: #10b981; }
+                .news-dot.pulse { animation: pulse-green 1.5s infinite; }
+                .event-teacher { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); font-style: italic; margin-top: 0.25rem; }
                 .event-title { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); line-height: 1.3; }
                 .event-meta { display: flex; gap: 0.8rem; flex-wrap: wrap; }
                 .event-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; opacity: 0.9; }
