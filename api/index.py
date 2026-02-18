@@ -198,18 +198,48 @@ async def parse_schedule(roll_number: str = Form(...)):
             course_code_match = re.match(r"^([A-Z]{2,3}\d{4})", c['subject'])
             course_code = course_code_match.group(1) if course_code_match else None
 
+            # Extract Section (e.g., BCS-4B) from subject "CS2006,BCS-4B: ..."
+            section_match = re.search(r",\s*([A-Z0-9-]+)", c['subject'])
+            section = section_match.group(1).strip().upper() if section_match else None
+
             # Check for Live Updates matching this specific class session
             for update in live_data:
                 # Normalize values for rock-solid matching
                 cur_code = (course_code or "").strip().upper()
                 upd_code = (update['course_code'] or "").strip().upper()
+                upd_reason = (update.get('reason') or "").strip().upper()
+                
+                # Try to find a section in the update's course_code or reason
+                upd_section = None
+                if section:
+                    # Look for the section (e.g., "BCS-4B") in the update fields
+                    if section in upd_code or section in upd_reason:
+                        upd_section = section
                 
                 t1 = c['start_time'].lstrip('0').strip()
                 t2 = update['original_time'].lstrip('0').strip()
                 
-                if (cur_code == upd_code and 
-                    c['day'] == update['original_day'] and 
-                    t1.startswith(t2)):
+                # Match logic:
+                # 1. Course Code MUST match
+                # 2. Day MUST match
+                # 3. Time MUST match (starts with for robustness)
+                # 4. Section MUST match if we found one in the update
+                code_match = cur_code == upd_code
+                day_match = c['day'] == update['original_day']
+                time_match = t1.startswith(t2)
+                
+                # If a section is specified in the update, it MUST match the current class's section
+                # If no section is found in the update, we fall back to general course-level match
+                section_criteria = True
+                if section:
+                    # If the update mentions ANY section, it must be OUR section
+                    # We check if the update reason contains brackets like [BCS-4B] or [BSCS-4B]
+                    all_sections_in_upd = re.findall(r"([A-Z0-9-]{3,})", upd_code + " " + upd_reason)
+                    if any(s for s in all_sections_in_upd if s != cur_code and s != "PHD"):
+                         # Update mentions a section. Check if it's ours.
+                         section_criteria = (section in all_sections_in_upd)
+
+                if (code_match and day_match and time_match and section_criteria):
                     
                     print(f"MATCH FOUND: {cur_code} on {c['day']} at {c['start_time']}")
                     c['live_status'] = update['status']
