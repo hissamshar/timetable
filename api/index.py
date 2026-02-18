@@ -190,6 +190,20 @@ async def parse_schedule(roll_number: str = Form(...)):
         else:
             print("Supabase client is NOT initialized!")
 
+        # Load faculty names for verification
+        official_teacher_names = set()
+        if os.path.exists(FACULTY_DATA_FILE):
+            try:
+                with open(FACULTY_DATA_FILE, "r") as f:
+                    faculty_list = json.load(f)
+                    for f_member in faculty_list:
+                        name = f_member.get('name', '')
+                        # Normalize: Remove Dr., Mr., etc. and lowercase for better matching
+                        clean_name = re.sub(r"^(Dr\.|Mr\.|Ms\.|Sheikh)\s+", "", name, flags=re.IGNORECASE).strip().lower()
+                        official_teacher_names.add(clean_name)
+            except Exception as e:
+                print(f"Error loading faculty names: {e}")
+
         # Process weekly schedule to fix Lab durations and incorrect names
         weekly_schedule = []
         for c_orig in data["weekly_schedule"]:
@@ -358,6 +372,12 @@ async def parse_schedule(roll_number: str = Form(...)):
             obj = LiveUpdate(**l)
             obj.teacher = obj.extracted_teacher
             obj.description = obj.cleaned_reason
+
+            # VERIFICATION: Only show updates from officially recognized teachers
+            normalized_upd_teacher = re.sub(r"^(Dr\.|Mr\.|Ms\.|Sheikh)\s+", "", obj.teacher, flags=re.IGNORECASE).strip().lower()
+            if normalized_upd_teacher not in official_teacher_names and obj.teacher != "Unknown":
+                print(f"SKIPPING UPDATE: Teacher '{obj.teacher}' not found in faculty list.")
+                continue
 
             if l.get('status') in ['EVENT', 'NEWS']:
                 campus_events.append(obj)
