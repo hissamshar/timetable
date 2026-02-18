@@ -312,10 +312,27 @@ async def parse_schedule(roll_number: str = Form(...)):
                 if upd_code in student_course_codes:
                     personal_updates.append(obj)
 
+        # Format and sort exam schedule
+        exam_sessions = []
+        for e in data.get("exam_schedule", []):
+            try:
+                # Input: Mon,23,Feb,26
+                dt = datetime.strptime(e["date"], "%a,%d,%b,%y")
+                e["date"] = dt.strftime("%a, %d %b %Y")
+            except:
+                pass
+            exam_sessions.append(ExamSession(**e))
+            
+        # Sort chronologically
+        try:
+            exam_sessions.sort(key=lambda x: datetime.strptime(x.date, "%a, %d %b %Y") if "," in x.date else datetime.min)
+        except:
+            pass
+
         return StudentSchedule(
             roll_number=roll_number,
             weekly_schedule=weekly_schedule,
-            exam_schedule=[ExamSession(**e) for e in data["exam_schedule"]],
+            exam_schedule=exam_sessions,
             live_updates=personal_updates,
             campus_events=campus_events,
             exam_type=idx.get("exam_type", "Examination Schedule")
