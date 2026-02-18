@@ -251,18 +251,48 @@ def sync():
         print(f"Applying update for {update.get('course_code')}...")
         try:
             # Check if this update already exists (prevent duplicates)
-            existing = supabase.table("live_updates")\
-                .select("*")\
-                .eq("course_code", update["course_code"])\
-                .eq("original_day", update["original_day"])\
-                .eq("original_time", update["original_time"])\
-                .execute()
+            duplicate = False
             
-            if not existing.data:
+            # Extract teacher name from the reason field for matching
+            match = re.search(r"^\[(.*?)\]", update.get("reason", ""))
+            cur_teacher = match.group(1) if match else "Unknown"
+
+            if update["status"] == "NEWS":
+                # Stricter check for news: same teacher + similar headline
+                existing_news = supabase.table("live_updates")\
+                    .select("*")\
+                    .eq("status", "NEWS")\
+                    .execute()
+                
+                new_title = update["course_code"].lower()
+                for item in existing_news.data:
+                    # Extract teacher from existing item's reason
+                    old_reason = item.get("reason", "")
+                    old_teacher_match = re.search(r"^\[(.*?)\]", old_reason)
+                    old_teacher = old_teacher_match.group(1) if old_teacher_match else "Unknown"
+                    
+                    if cur_teacher == old_teacher:
+                        old_title = item["course_code"].lower()
+                        # If one title is inside the other or they share a long prefix, it's a duplicate
+                        if new_title in old_title or old_title in new_title or new_title[:15] == old_title[:15]:
+                            duplicate = True
+                            break
+            else:
+                # Standard check for class/event updates (exact time/day/code)
+                existing = supabase.table("live_updates")\
+                    .select("*")\
+                    .eq("course_code", update["course_code"])\
+                    .eq("original_day", update["original_day"])\
+                    .eq("original_time", update["original_time"])\
+                    .execute()
+                if existing.data:
+                    duplicate = True
+
+            if not duplicate:
                 supabase.table("live_updates").insert(update).execute()
                 print(f"Inserted update for {update['course_code']}")
             else:
-                print(f"Update for {update['course_code']} already exists.")
+                print(f"Update for {update['course_code']} already exists (duplicate detected).")
         except Exception as e:
             print(f"Database Error: {e}")
 
