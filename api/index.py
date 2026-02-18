@@ -262,8 +262,10 @@ async def parse_schedule(roll_number: str = Form(...)):
                 try:
                     # Parse start time
                     start_dt = datetime.strptime(c['start_time'], "%H:%M")
-                    # Set end time to start + 3 hours
-                    end_dt = start_dt + timedelta(hours=3)
+                    # Set end time - In Ramzan, labs are squashed. 
+                    # Two slots of 65 mins + 5 min break = 135 mins = 2h 15m
+                    # e.g., 8:00 -> 10:15
+                    end_dt = start_dt + timedelta(hours=2, minutes=15)
                     # Update end time string
                     c = c.copy() # Don't mutate original if cached
                     c['end_time'] = end_dt.strftime("%-H:%M") # %-H for no leading zero if possible, or %H
