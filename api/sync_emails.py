@@ -43,8 +43,8 @@ def get_email_content():
             return []
 
         recent_emails = []
-        # Check last 20 relevant emails to ensure we don't miss anything
-        for e_id in email_ids[-20:]:
+        # Check last 30 relevant emails to ensure we don't miss anything
+        for e_id in email_ids[-30:]:
             res, msg = mail.fetch(e_id, "(RFC822)")
             for response in msg:
                 if isinstance(response, tuple):
@@ -146,7 +146,7 @@ def parse_with_ai(email_list):
             response_format={"type": "json_object"},
         )
         raw_content = chat_completion.choices[0].message.content
-        print(f"Raw AI Response: {raw_content}")
+        print(f"AI Response: {raw_content}")
         data = json.loads(raw_content)
         updates = []
         # Ensure it's a list if it's nested under a key like "updates"
@@ -173,8 +173,8 @@ def parse_with_ai(email_list):
             time_match = re.search(r"(\d{1,2}:\d{2})", str(u.get("original_time", "")))
             if time_match:
                 u["original_time"] = time_match.group(1)
-            elif any(keyword in u.get("reason", "").lower() + u.get("status", "").lower() for keyword in ["today", "lecture cancelled", "lecture is cancelled"]):
-                # If no time is found but "today" is implied, use 'ANY' as a wildcard
+            elif any(keyword in (u.get("reason", "") + u.get("status", "")).lower() for keyword in ["today", "cancel", "canceled", "cancelled"]):
+                # If no time is found but it's a cancellation for "today", use 'ANY'
                 u["original_time"] = "ANY"
             else:
                 continue # Skip if no time found and not clearly 'today'
@@ -193,16 +193,38 @@ def parse_with_ai(email_list):
 
 def sync():
     print("Fetching emails...")
-    emails = get_email_content()
-    if not emails:
+    all_emails = get_email_content()
+    if not all_emails:
         print("No relevant emails found.")
         return
 
-    print(f"Processing {len(emails)} emails with AI...")
-    updates = parse_with_ai(emails)
-    print(f"AI returned {len(updates)} updates.")
+    # Filter for relevant emails to save tokens
+    keywords = ["cancel", "resched", "lecture", "class", "meeting", "event", "venue", "room", "timetable", "schedule"]
+    relevant_emails = []
+    for e in all_emails:
+        subj = e["subject"].lower()
+        if any(kw in subj for kw in keywords):
+            relevant_emails.append(e)
     
-    for update in updates:
+    if not relevant_emails:
+        print("No relevant emails after filtering.")
+        return
+
+    # Take the last 15 relevant emails and process in batches of 7 to avoid TPM limits
+    # (Groq llama-3.3-70b has approx 12k TPM limit)
+    to_process = relevant_emails[-15:]
+    print(f"Processing {len(to_process)} relevant emails in batches...")
+    
+    all_updates = []
+    for i in range(0, len(to_process), 7):
+        batch = to_process[i:i+7]
+        print(f"Processing batch of {len(batch)} emails...")
+        batch_updates = parse_with_ai(batch)
+        all_updates.extend(batch_updates)
+
+    print(f"Total AI returned {len(all_updates)} updates.")
+    
+    for update in all_updates:
         print(f"Applying update for {update.get('course_code')}...")
         try:
             # Check if this update already exists (prevent duplicates)
