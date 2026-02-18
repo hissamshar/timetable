@@ -222,7 +222,7 @@ def sync():
         return
 
     # Filter for relevant emails to save tokens
-    keywords = ["cancel", "resched", "lecture", "class", "meeting", "event", "venue", "room", "timetable", "schedule", "feedback", "registration", "deadline", "opening", "survey", "form"]
+    keywords = ["cancel", "resched", "lecture", "class", "meeting", "event", "venue", "room", "timetable", "schedule", "feedback", "registration", "deadline", "opening", "survey", "form", "ramadan", "ramazan", "prayer", "arrangement"]
     relevant_emails = []
     for e in all_emails:
         subj = e["subject"].lower()
