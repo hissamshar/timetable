@@ -99,17 +99,7 @@ export default function Home() {
     }, []);
 
     const findFaculty = (teacherName) => {
-        const placeholder = {
-            name: teacherName || "Instructor TBA",
-            designation: "Staff",
-            department: "University Faculty",
-            email: "",
-            phone: "",
-            photo_url: "",
-            isPlaceholder: true
-        };
-
-        if (!teacherName) return placeholder;
+        if (!teacherName) return null;
 
         // Aggressive normalization helper
         const normalize = (n) => n.toLowerCase()
@@ -119,7 +109,7 @@ export default function Home() {
             .trim();
 
         const lower = normalize(teacherName);
-        if (!lower) return placeholder;
+        if (!lower) return null;
 
         const nameParts = lower.split(/\s+/).filter(p => p.length >= 1);
 

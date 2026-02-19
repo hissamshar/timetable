@@ -428,13 +428,8 @@ async def download_ics(schedule: StudentSchedule):
         # Exams
         for exam in schedule.exam_schedule:
             try:
-                # Try new format first: Mon, 23 Feb 2026
-                try:
-                    dt_date = datetime.strptime(exam.date, "%a, %d %b %Y").date()
-                except:
-                    # Fallback to compact format: Mon,23,Feb,26
-                    clean_date = exam.date.replace(" ", "")
-                    dt_date = datetime.strptime(clean_date, "%a,%d,%b,%y").date()
+                clean_date = exam.date.replace(" ", "")
+                dt_date = datetime.strptime(clean_date, "%a,%d,%b,%y").date()
                 start_dt = datetime.combine(dt_date, datetime.strptime(exam.start_time, "%H:%M").time())
                 end_dt = datetime.combine(dt_date, datetime.strptime(exam.end_time, "%H:%M").time())
                 

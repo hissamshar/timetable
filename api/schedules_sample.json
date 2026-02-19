@@ -1,0 +1,2740 @@
+{
+  "exam_type": "Spring 2026",
+  "schedules": {
+    "20P-0004": {
+      "weekly_schedule": [
+        {
+          "day": "Mon",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Security",
+          "room": "Room 2",
+          "teacher": "i Sayyed"
+        },
+        {
+          "day": "Mon",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "CS300",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "2,BAI-8A: Information CS4055,B",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "SE-9A: Digital Image",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "CS4055,B",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "SE-9A: Digital Image",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Al",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Security",
+          "room": "Room 9",
+          "teacher": "i Sayyed"
+        },
+        {
+          "day": "Tue",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Proces",
+          "room": "TO",
+          "teacher": "sman Khan"
+        },
+        {
+          "day": "Wed",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Omar U",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Proces",
+          "room": "TO",
+          "teacher": "sman Khan"
+        },
+        {
+          "day": "Wed",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "BSE-6A: Fundamentals",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "SE4002,B",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Sameed SE-6A: Fundamentals",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "of Soft",
+          "room": "Room 2",
+          "teacher": "Ur Rehman"
+        },
+        {
+          "day": "Fri",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Sameed",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "of Soft",
+          "room": "Room 8",
+          "teacher": "Ur Rehman"
+        }
+      ],
+      "exam_schedule": []
+    },
+    "20P-0070": {
+      "weekly_schedule": [
+        {
+          "day": "Mon",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Entrepreneurship",
+          "room": "Room 11",
+          "teacher": "Rabia Zia"
+        },
+        {
+          "day": "Mon",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Machine Lear",
+          "room": "Room 8",
+          "teacher": "Hafeez Anwar"
+        },
+        {
+          "day": "Mon",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "CS4059,BSE-8A: Fundamen",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Gohar Ali tals",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Computing",
+          "room": "Room 5",
+          "teacher": "Usama Musharaf"
+        },
+        {
+          "day": "Tue",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "of Comp Hafeez Anwar (Room 4 AL2002,BCS-4",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": ") A: Artificial Intellige",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "MG4011,BCS-8B:",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Saad Ahm CS4059,BSE-8A: Fundamen",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "CS4104,BCS-8B: Applied",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Entrepreneurship",
+          "room": "Room 12",
+          "teacher": "Rabia Zia"
+        },
+        {
+          "day": "Thu",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "of Comp Hafeez Anwar (Room 12",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": ") CS4075,BCS-8A:",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": "Cloud",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Machine Lear",
+          "room": "Room 11",
+          "teacher": "Hafeez Anwar"
+        },
+        {
+          "day": "Fri",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Computing Usama Musharaf (",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": "Room 2)",
+          "room": "",
+          "teacher": ""
+        }
+      ],
+      "exam_schedule": []
+    },
+    "20P-0087": {
+      "weekly_schedule": [
+        {
+          "day": "Mon",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Entrepreneurship",
+          "room": "Room 11",
+          "teacher": "Rabia Zia"
+        },
+        {
+          "day": "Mon",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Hamza Raziq Kh",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Distrib",
+          "room": "Room 8",
+          "teacher": "Ali Sayyed"
+        },
+        {
+          "day": "Mon",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Intellige.. Bilal Jan (Room 1",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": ". 0)",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Computing",
+          "room": "Room 5",
+          "teacher": "Usama Musharaf"
+        },
+        {
+          "day": "Tue",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "ntellige",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Distrib",
+          "room": "Room 5",
+          "teacher": "Ali Sayyed"
+        },
+        {
+          "day": "Wed",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "MG4011,BCS-8B:",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "005,BCS-6A: Database Systems - L..",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": ".",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Entrepreneurship",
+          "room": "Room 12",
+          "teacher": "Rabia Zia"
+        },
+        {
+          "day": "Thu",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "CS4075,BCS-8A: Clou",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": "d",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Computing Usama Musharaf (Room",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": "2)",
+          "room": "",
+          "teacher": ""
+        }
+      ],
+      "exam_schedule": []
+    },
+    "20P-0097": {
+      "weekly_schedule": [
+        {
+          "day": "Mon",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "CS4084,BCS-8A: Qua",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "ntum",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Distrib",
+          "room": "Room 8",
+          "teacher": "Ali Sayyed"
+        },
+        {
+          "day": "Mon",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Computing Maqsood M Khan (CALL L",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": "ab)",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "3001,BAI-6A: Computer Networks - .",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Computing Maqsood M Khan (Ro ..",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "om 9)",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Distrib",
+          "room": "Room 5",
+          "teacher": "Ali Sayyed"
+        },
+        {
+          "day": "Tue",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "CS3001,BSE-6A: Comput",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": "er",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Networks",
+          "room": "Room 12",
+          "teacher": "M Tahir"
+        },
+        {
+          "day": "Thu",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Networks",
+          "room": "Room 8",
+          "teacher": "M Tahir"
+        }
+      ],
+      "exam_schedule": []
+    },
+    "20P-0104": {
+      "weekly_schedule": [
+        {
+          "day": "Mon",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Sameed Ur Rehman",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": ",BCS-6C: Software Engineering",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "CL2005,BSE-4B: Datab",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "ase",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "CS2005,BCS-6A:",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "S Database Systems",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Systems - L Hammad Ali Shah (Mehb",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "oob)",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Shoaib M Kh",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "5,BCS-6A: Database Systems",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "S",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "s -",
+          "room": "",
+          "teacher": ""
+        }
+      ],
+      "exam_schedule": []
+    },
+    "20P-0139": {
+      "weekly_schedule": [
+        {
+          "day": "Mon",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "ting Systems -",
+          "room": "HAL",
+          "teacher": "d Rashad"
+        },
+        {
+          "day": "Mon",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Systems                       Learn",
+          "room": "Room 10",
+          "teacher": "Basit"
+        },
+        {
+          "day": "Mon",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "ing",
+          "room": "Room 2",
+          "teacher": "d"
+        },
+        {
+          "day": "Mon",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "E-8A: Fundamentals of",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Fazl-e-",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Systems",
+          "room": "Room 10",
+          "teacher": "Basit"
+        },
+        {
+          "day": "Tue",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Hafee",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Comp",
+          "room": "Room 4",
+          "teacher": "z Anwar"
+        },
+        {
+          "day": "Wed",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "CS4059,BS",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "E-8A: Fundamentals of",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "MT4031,BSE-8A: Operations",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "CS4112,BSE",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Hafeez -8A: Deep",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Comp",
+          "room": "Room 12",
+          "teacher": "Anwar"
+        },
+        {
+          "day": "Thu",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Research",
+          "room": "Room 9",
+          "teacher": "Askar Ali"
+        },
+        {
+          "day": "Fri",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Learn Usman Waji",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "ing",
+          "room": "Room 1",
+          "teacher": "d"
+        },
+        {
+          "day": "Fri",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Research",
+          "room": "Room 6",
+          "teacher": "Askar Ali"
+        }
+      ],
+      "exam_schedule": []
+    },
+    "20P-0158": {
+      "weekly_schedule": [
+        {
+          "day": "Mon",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "CS4084,BCS-8A: Q",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "uantum Computing",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Maqs",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Maqsood M Kh CS4041,BCS-",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "9,BCS-6A: Software Engineering",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Shoa CL2005,BCS-",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Hammad",
+          "room": "",
+          "teacher": ""
+        }
+      ],
+      "exam_schedule": []
+    },
+    "20P-0178": {
+      "weekly_schedule": [
+        {
+          "day": "Mon",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Sa CS40",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Engineering",
+          "room": "Room 1",
+          "teacher": "meed Ur Rehman"
+        },
+        {
+          "day": "Mon",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "CS3009,BCS-6C: Software",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "U S4070,BCS-8B: Web",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Engineering",
+          "room": "HAL",
+          "teacher": "Sameed Ur Rehman"
+        },
+        {
+          "day": "Tue",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "CS4048,BCS-6A: Data Science",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Technologies",
+          "room": "HAL",
+          "teacher": "ajmul Hassan"
+        },
+        {
+          "day": "Wed",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "CS",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "4048,BCS-6A: Data Science",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Technologies",
+          "room": "HAL",
+          "teacher": "ajmul Hassan"
+        },
+        {
+          "day": "Thu",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "CS4075,BCS-8A: Cloud",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Computing",
+          "room": "Room 2",
+          "teacher": "Usama Musharaf"
+        }
+      ],
+      "exam_schedule": []
+    },
+    "20P-0453": {
+      "weekly_schedule": [
+        {
+          "day": "Mon",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Sami Ullah MG4011,BSE-8A: E",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "BAI-8A: Information Security",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Sami Ullah",
+          "room": "",
+          "teacher": ""
+        }
+      ],
+      "exam_schedule": []
+    },
+    "20P-0474": {
+      "weekly_schedule": [],
+      "exam_schedule": []
+    },
+    "20P-0756": {
+      "weekly_schedule": [
+        {
+          "day": "Mon",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "CS4075,BCS-8A: Cloud",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "CS4",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "084,BCS-8B: Quantum",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Computing",
+          "room": "Room 5",
+          "teacher": "Usama Musharaf"
+        },
+        {
+          "day": "Tue",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "MT3001,BCS-9A: Gr",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Ma aph Theory",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Computing",
+          "room": "RL1",
+          "teacher": "qsood M Khan"
+        },
+        {
+          "day": "Wed",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Sanaa Jeehan (R CS4084,BCS",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "oom 1) -8B: Quantum",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Com Maqsood M",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "puting",
+          "room": "Room 10",
+          "teacher": "Khan"
+        },
+        {
+          "day": "Thu",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "CS4075,BCS-8A: Cloud",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Computing Usama Musharaf (Room 2",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": ")",
+          "room": "",
+          "teacher": ""
+        }
+      ],
+      "exam_schedule": []
+    },
+    "21P-0500": {
+      "weekly_schedule": [
+        {
+          "day": "Mon",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "CS4084,BCS-",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "8A: Quantum Computing",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Maq",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Maqsood",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "CS4065,BCS-8A: Ne",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "twork Security",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Khizar Mukhtia CS4065,BCS-8A: Ne",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Khizar Mukhtia",
+          "room": "",
+          "teacher": ""
+        }
+      ],
+      "exam_schedule": []
+    },
+    "21P-8313": {
+      "weekly_schedule": [
+        {
+          "day": "Mon",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Usman Wajid (Room CS2009,BCS-8A: Desi",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "2) gn and          CS4059,BSE-8A:",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "3003,BSE-8A: Web",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Analysis  Qasim Jan (Room",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Com 1)                  Hafeez Anw",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "p",
+          "room": "Room 4",
+          "teacher": "ar"
+        },
+        {
+          "day": "Wed",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Engineering",
+          "room": "HAL",
+          "teacher": "jmul Hassan"
+        },
+        {
+          "day": "Wed",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "CS4059,BSE-8A:",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Fundamentals of",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Engineering",
+          "room": "HAL",
+          "teacher": "jmul Hassan"
+        },
+        {
+          "day": "Thu",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "CS2009,BCS-8A: Design and",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "CS4112,BSE-8A: Deep L",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Com Hafeez Anwa earning",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "p",
+          "room": "Room 12",
+          "teacher": "r"
+        },
+        {
+          "day": "Fri",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Analysis",
+          "room": "Room 12",
+          "teacher": "Qasim Jan"
+        },
+        {
+          "day": "Fri",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Usman Wajid (Room",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "1)",
+          "room": "",
+          "teacher": ""
+        }
+      ],
+      "exam_schedule": []
+    },
+    "21P-8328": {
+      "weekly_schedule": [
+        {
+          "day": "Thu",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "CS4112,BSE-8A: Deep Learning",
+          "room": "",
+          "teacher": ""
+        }
+      ],
+      "exam_schedule": []
+    },
+    "22I-0844": {
+      "weekly_schedule": [
+        {
+          "day": "Mon",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Lear.. Hafeez Anwar (",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": ". Room 8)",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "CS4070,BCS-8B: Web",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "CS4065,",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "BCS-8A: Network",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Technologies",
+          "room": "HAL",
+          "teacher": "Najmul Hassan"
+        },
+        {
+          "day": "Wed",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "MG4011,BCS-8A: Entrepren",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "eurship",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Khizar CS4065,",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Security",
+          "room": "Room 10",
+          "teacher": "Mukhtiar"
+        },
+        {
+          "day": "Thu",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Technologies",
+          "room": "HAL",
+          "teacher": "Najmul Hassan"
+        },
+        {
+          "day": "Thu",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "achine",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Khizar",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Security",
+          "room": "Room 8",
+          "teacher": "Mukhtiar"
+        },
+        {
+          "day": "Fri",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Lear Hafeez Anwar (Room 11",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": ")",
+          "room": "",
+          "teacher": ""
+        }
+      ],
+      "exam_schedule": []
+    },
+    "22I-2726": {
+      "weekly_schedule": [
+        {
+          "day": "Mon",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "CS2007,BSE-8A: Hu",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "man",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Requirement Khizar Mukhtiar (Ro",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": "om 9)",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Structures",
+          "room": "Room 3",
+          "teacher": "in Ahmed"
+        },
+        {
+          "day": "Tue",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "SL2002,",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Computer Inter M Amin (Room 10 BSE-9A: Software Design and",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": ")",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "1,BSE-4B: Software       CS2007,BS",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Sy E-8A: Human",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "CS2001,BSE-4A: Dat tware Structures",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "a MT4031,BSE-8A: Operations",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Requirement              Comput",
+          "room": "Room 3",
+          "teacher": "r Mukhtiar"
+        },
+        {
+          "day": "Thu",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Design and .. Usama Musharaf (Ro Software",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Research",
+          "room": "Room 9",
+          "teacher": "Askar Ali"
+        },
+        {
+          "day": "Thu",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": "tions",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Design an Usama Musharaf",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Research Askar Ali (Room 6",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": ")",
+          "room": "",
+          "teacher": ""
+        }
+      ],
+      "exam_schedule": []
+    },
+    "22P-0008": {
+      "weekly_schedule": [
+        {
+          "day": "Mon",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Engineering",
+          "room": "Room 5",
+          "teacher": "d Ur Rehman"
+        },
+        {
+          "day": "Mon",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Const Usman Waj CS4084,BCS",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "ructio                Underst",
+          "room": "Room 2",
+          "teacher": "id"
+        },
+        {
+          "day": "Mon",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "anding Sirat-",
+          "room": "Hall A",
+          "teacher": "Ammar"
+        },
+        {
+          "day": "Mon",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Computing Maqsood M Khan (CALL",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": "Lab)",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Constructio",
+          "room": "Room 1",
+          "teacher": "an Wajid"
+        },
+        {
+          "day": "Tue",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Comp Maqsood M",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "uting",
+          "room": "Room 9",
+          "teacher": "Khan"
+        },
+        {
+          "day": "Wed",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "09,BCS-6A: Software         CS4104",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": ",BCS-8A: Applied",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "SL1008,BC",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "S-8A: Communication and Pr",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "CS4070,BCS-8A: Web",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Engineering                   Ma",
+          "room": "Room 6",
+          "teacher": "d Ur Rehman"
+        },
+        {
+          "day": "Thu",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "chine Lear",
+          "room": "Room 3",
+          "teacher": "Anwar"
+        },
+        {
+          "day": "Thu",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Mar CS4104,B",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Technologies Najmul Hassan (HAL",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": ")",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Technologies",
+          "room": "Room 1",
+          "teacher": "mul Hassan"
+        },
+        {
+          "day": "Fri",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Mach Hafeez A",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "ine Lear",
+          "room": "Room 8",
+          "teacher": "nwar"
+        }
+      ],
+      "exam_schedule": []
+    },
+    "22P-0500": {
+      "weekly_schedule": [
+        {
+          "day": "Mon",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "CS2009,BCS-8A: D",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Di Ali Sayy esign and          CS3006,BCS-",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "strib",
+          "room": "Room 8",
+          "teacher": "ed"
+        },
+        {
+          "day": "Tue",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Analysis Qasim Jan (Ro",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Di om 1)                 Ali Sayy",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "strib",
+          "room": "Room 5",
+          "teacher": "ed"
+        },
+        {
+          "day": "Wed",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "CS4104,BCS-8A: Applied Mac",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "hine",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "MG4011,BCS-8B: Ent",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "repreneurship",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Lear",
+          "room": "Room 3",
+          "teacher": "Hafeez Anwar"
+        },
+        {
+          "day": "Thu",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "CS2009,BCS-8A: Design",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Rabia Zia (Ro and           CS4104,BCS-8A: App",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "om 12) lied Machine",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Analysis",
+          "room": "Room 12",
+          "teacher": "Qasim Jan"
+        },
+        {
+          "day": "Fri",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Lear.. Hafeez Anwar (",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": ". Room 8)",
+          "room": "",
+          "teacher": ""
+        }
+      ],
+      "exam_schedule": []
+    },
+    "22P-0502": {
+      "weekly_schedule": [
+        {
+          "day": "Mon",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "CS4084,BCS-8A: Quantum",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Machine Lear",
+          "room": "Room 8",
+          "teacher": "Hafeez Anwar"
+        },
+        {
+          "day": "Mon",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Computing Maqsood M Khan (CALL L",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": "ab)",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "070,BCS-8B: Web",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Computing",
+          "room": "Room 9",
+          "teacher": "Maqsood M Khan"
+        },
+        {
+          "day": "Tue",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "CS4065,BCS-8A: Network",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Technologies",
+          "room": "HAL",
+          "teacher": "mul Hassan"
+        },
+        {
+          "day": "Wed",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "CL2005,BCS-6B: Data",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "base Systems - L",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Security Khizar Mukhtiar (Room 10 CS4065,BCS-8A: Network",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": ")",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Technologies",
+          "room": "HAL",
+          "teacher": "mul Hassan"
+        },
+        {
+          "day": "Thu",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Hammad Ali Sha CS4104,BCS-8B: Applied",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Security",
+          "room": "Room 8",
+          "teacher": "Khizar Mukhtiar"
+        },
+        {
+          "day": "Fri",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Machine Lear",
+          "room": "Room 11",
+          "teacher": "Hafeez Anwar"
+        }
+      ],
+      "exam_schedule": []
+    },
+    "22P-0503": {
+      "weekly_schedule": [
+        {
+          "day": "Mon",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Engineering",
+          "room": "Room 5",
+          "teacher": "ed Ur Rehman"
+        },
+        {
+          "day": "Mon",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Di Ali Sayy CS3006,BCS-",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "strib",
+          "room": "Room 8",
+          "teacher": "ed"
+        },
+        {
+          "day": "Tue",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Di Ali Sayy CS4065,BC",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "strib",
+          "room": "Room 5",
+          "teacher": "ed"
+        },
+        {
+          "day": "Wed",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "009,BCS-6A: Software            CS",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "4104,BCS-8A: Applied Machine",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "MG4011,BCS-8B: Ent",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "S Khizar Mu CS4065,BC repreneurship",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "ecurity",
+          "room": "Room 10",
+          "teacher": "khtiar"
+        },
+        {
+          "day": "Thu",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Engineering",
+          "room": "Room 6",
+          "teacher": "ed Ur Rehman"
+        },
+        {
+          "day": "Thu",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Lear",
+          "room": "Room 3",
+          "teacher": "Hafeez Anwar"
+        },
+        {
+          "day": "Thu",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Rabia Zia (Ro CS4104,BCS-8A: App",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "om 12) S Khizar Mu lied Machine",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "ecurity",
+          "room": "Room 8",
+          "teacher": "khtiar"
+        },
+        {
+          "day": "Fri",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Lear.. Hafeez Anwar (",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": ". Room 8)",
+          "room": "",
+          "teacher": ""
+        }
+      ],
+      "exam_schedule": []
+    },
+    "22P-0504": {
+      "weekly_schedule": [
+        {
+          "day": "Mon",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Entrepreneurship",
+          "room": "Room 11",
+          "teacher": "Rabia Zia"
+        },
+        {
+          "day": "Mon",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "CS4084,BCS-8A: Quantum",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "CS2009,BCS-8A: Des",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "ign and",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Computing Maqsood M Khan (CALL La",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": "b)",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "CS2005,BCS-6A: Database",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Computing",
+          "room": "Room 9",
+          "teacher": "Maqsood M Khan"
+        },
+        {
+          "day": "Tue",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Analysis .. Qasim Jan (Room",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": ". 1)",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "CS2006,BCS-6B: Operatin",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": "g",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Systems",
+          "room": "Room 4",
+          "teacher": "Shoaib M Khan"
+        },
+        {
+          "day": "Wed",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "CS2005,BCS-6A: Database Syst",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "ems MG4011,BCS-8B: Entrepreneurs",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "hip",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Systems Usman Ali Shah (Room 10",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": ")",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Systems",
+          "room": "Room 9",
+          "teacher": "Usman Ali Shah"
+        },
+        {
+          "day": "Thu",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "CL2006,BCS-6A: Operatin",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": "g Systems - .",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "3:10",
+          "end_time": "4:15",
+          "subject": "..",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Analysis",
+          "room": "Room 12",
+          "teacher": "Qasim Jan"
+        },
+        {
+          "day": "Fri",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Iqra Rehman (Khybe",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": "r Lab)",
+          "room": "",
+          "teacher": ""
+        }
+      ],
+      "exam_schedule": []
+    },
+    "22P-0506": {
+      "weekly_schedule": [
+        {
+          "day": "Mon",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "CS4075,BCS-8A: Clou",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "d Computing",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Usama Musharaf (",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Room 5)",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "CS4075,BCS-8",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "A: Cloud Computing",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Usama Mus",
+          "room": "",
+          "teacher": ""
+        }
+      ],
+      "exam_schedule": []
+    },
+    "22P-3000": {
+      "weekly_schedule": [
+        {
+          "day": "Mon",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "A: Software",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "CS2007,BSE-8A: Human",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Zakria B",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Structures                Re-Engi",
+          "room": "Room 3",
+          "teacher": "Ahmed"
+        },
+        {
+          "day": "Tue",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "neer",
+          "room": "Room 3",
+          "teacher": "an"
+        },
+        {
+          "day": "Tue",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Computer Inter",
+          "room": "Room 10",
+          "teacher": "M Amin"
+        },
+        {
+          "day": "Tue",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "SE4001,BSE-8A: Software Re-Engineer",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Engineering",
+          "room": "HAL",
+          "teacher": "ul Hassan"
+        },
+        {
+          "day": "Wed",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "-8A: Human",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "MT4031,BSE-8A: Oper",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": "ations",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Engineering                Compute",
+          "room": "HAL",
+          "teacher": "ul Hassan"
+        },
+        {
+          "day": "Thu",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "r Inter Room 11)",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Structures",
+          "room": "Room 9",
+          "teacher": "Samin Ahmed"
+        },
+        {
+          "day": "Thu",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Research Askar Ali (Room MT4031,BSE-8A: Oper",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": "9) ations",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Research Askar Ali (Room",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Fri",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": "6)",
+          "room": "",
+          "teacher": ""
+        }
+      ],
+      "exam_schedule": []
+    },
+    "22P-4953": {
+      "weekly_schedule": [
+        {
+          "day": "Mon",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Logic Suleman M 1,BCS-6B: Compiler SS100",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "Design                Constructio.",
+          "room": "Room 2",
+          "teacher": "ir"
+        },
+        {
+          "day": "Mon",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": ".. m 2) CS2009,BCS-8A: Desig",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Mon",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "n            MT2005,BCS-4C:",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "8:00",
+          "end_time": "9:05",
+          "subject": "Constructio",
+          "room": "Room 1",
+          "teacher": "n Wajid"
+        },
+        {
+          "day": "Tue",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "and Analysis",
+          "room": "Room 1",
+          "teacher": "Qasim Jan"
+        },
+        {
+          "day": "Tue",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Probability and St",
+          "room": "Room 1",
+          "teacher": "Hafsa"
+        },
+        {
+          "day": "Tue",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "at al            MT2005,BCS-4C",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Tue",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": ":",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "SL1008,BCS-8A:",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "11:30",
+          "end_time": "12:35",
+          "subject": "Logic Design Suleman Mir (Room 5 Communication and Pr",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "12:40",
+          "end_time": "1:45",
+          "subject": "Probability an )              Hafsa (Room",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Wed",
+          "start_time": "2:00",
+          "end_time": "3:05",
+          "subject": "d Stat 1)",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "9:10",
+          "end_time": "10:15",
+          "subject": "CS2009,BCS-8A: De",
+          "room": "",
+          "teacher": ""
+        },
+        {
+          "day": "Thu",
+          "start_time": "10:20",
+          "end_time": "11:25",
+          "subject": "Maryam Al sign",
+          "room": "",
+          "teacher": ""
+        }
+      ],
+      "exam_schedule": []
+    }
+  }
+}
