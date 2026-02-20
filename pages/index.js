@@ -555,7 +555,7 @@ export default function Home() {
                                                                                             <span className="meta-icon">📍</span>
                                                                                             {isRescheduled && cls.live_new_room ? <span className="new-room">{cls.live_new_room}</span> : (cls.room || 'TBA')}
                                                                                         </span>
-                                                                                        {!isCanceled && (
+                                                                                        {!isCanceled && fac && (
                                                                                             <button
                                                                                                 className={`teacher-chip ${fac.isPlaceholder ? 'placeholder' : ''}`}
                                                                                                 onClick={() => setSelectedTeacher(fac)}
