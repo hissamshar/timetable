@@ -8,18 +8,19 @@ BACKUP_FILE = '/home/hisam/timetable/exam_scheduler_pro/api/schedules_index_regu
 
 # Ramzan Timings Mapping
 # Old Start Time -> (New Start Time, New End Time)
+# Afternoon slots shift EARLIER during Ramzan so classes end before Iftar
 TIME_MAPPING = {
     "8:00": ("8:00", "9:05"),
     "9:30": ("9:10", "10:15"),
     "11:00": ("10:20", "11:25"),
     "12:30": ("11:30", "12:35"),
-    "2:00": ("2:00", "3:05"),
-    "3:30": ("3:10", "4:15"),
+    "2:00": ("12:40", "1:45"),     # Shifted earlier for Ramzan
+    "3:30": ("2:00", "3:05"),      # Shifted earlier for Ramzan
     # Handling potential variations or typos in JSON if any
     "08:00": ("8:00", "9:05"),
     "09:30": ("9:10", "10:15"),
-    "14:00": ("2:00", "3:05"),
-    "15:30": ("3:10", "4:15")
+    "14:00": ("12:40", "1:45"),
+    "15:30": ("2:00", "3:05")
 }
 
 def update_timetable():
