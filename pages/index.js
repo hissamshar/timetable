@@ -294,12 +294,10 @@ export default function Home() {
                                         <span className="tab-icon">📚</span> Classes
                                         <span className="tab-count">{schedule.weekly_schedule.length}</span>
                                     </button>
-                                    {schedule.exam_schedule && schedule.exam_schedule.length > 0 && (
-                                        <button className={`tab-btn ${activeTab === 'exams' ? 'active' : ''}`} onClick={() => setActiveTab('exams')}>
-                                            <span className="tab-icon">✏️</span> Exams
-                                            <span className="tab-count">{schedule.exam_schedule.length}</span>
-                                        </button>
-                                    )}
+                                    <button className={`tab-btn ${activeTab === 'exams' ? 'active' : ''}`} onClick={() => setActiveTab('exams')}>
+                                        <span className="tab-icon">✏️</span> Exams
+                                        <span className="tab-count">{schedule.exam_schedule && schedule.exam_schedule.length > 0 ? schedule.exam_schedule.length : '—'}</span>
+                                    </button>
                                     {schedule.campus_events && schedule.campus_events.length > 0 && (
                                         <button className={`tab-btn ${activeTab === 'events' ? 'active' : ''}`} onClick={() => setActiveTab('events')}>
                                             <span className="tab-icon">📢</span> News
@@ -537,6 +535,18 @@ export default function Home() {
                                     </div>
                                 )}
 
+                                {activeTab === 'exams' && (!schedule.exam_schedule || schedule.exam_schedule.length === 0) && (
+                                    <div className="schedule-grid">
+                                        <div className="exam-upcoming-notice">
+                                            <div className="upcoming-icon">📋</div>
+                                            <h3 className="upcoming-title">Sessional II</h3>
+                                            <div className="upcoming-dates">
+                                                <span className="date-icon">📅</span> Expected: <strong>Apr 9 – 13, 2026</strong> (Thu – Mon)
+                                            </div>
+                                            <p className="upcoming-note">The datesheet has not been announced yet. It will appear here automatically once available.</p>
+                                        </div>
+                                    </div>
+                                )}
                                 {activeTab === 'exams' && schedule.exam_schedule && schedule.exam_schedule.length > 0 && (
                                     <div className="schedule-grid">
                                         <div className="exam-type-header">
@@ -814,6 +824,36 @@ export default function Home() {
                     border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 999px;
                     color: #c084fc; font-size: 0.9rem; font-weight: 700; text-transform: uppercase;
                     letter-spacing: 0.05em; box-shadow: 0 0 15px -5px rgba(168, 85, 247, 0.3);
+                }
+
+                .exam-upcoming-notice {
+                    padding: 3rem 2rem;
+                    background: rgba(255, 255, 255, 0.03);
+                    border: 1px dashed rgba(168, 85, 247, 0.3);
+                    border-radius: 20px;
+                    text-align: center;
+                    margin: 1rem 0;
+                    animation: fadeIn 0.5s ease-out;
+                }
+                .upcoming-icon { font-size: 3.5rem; margin-bottom: 1.25rem; }
+                .upcoming-title { 
+                    font-size: 1.75rem; color: #fff; margin-bottom: 0.75rem; 
+                    font-weight: 800; letter-spacing: -0.02em;
+                }
+                .upcoming-dates {
+                    display: inline-flex; align-items: center; gap: 0.5rem;
+                    padding: 0.6rem 1.5rem; background: rgba(168, 85, 247, 0.15);
+                    border-radius: 999px; color: #c084fc; font-size: 1.1rem;
+                    margin-bottom: 1.5rem; border: 1px solid rgba(168, 85, 247, 0.2);
+                }
+                .date-icon { font-size: 1.25rem; }
+                .upcoming-note { 
+                    color: rgba(255, 255, 255, 0.5); font-size: 0.95rem; 
+                    max-width: 400px; margin: 0 auto; line-height: 1.6;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to { opacity: 1; transform: translateY(0); }
                 }
 
                 .view-counter {
