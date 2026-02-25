@@ -326,36 +326,10 @@ async def parse_schedule(roll_number: str = Form(...)):
             elif c.get('teacher') == "Askar Ali":
                 c['teacher'] = "Dr. Askar Ali"
 
-            # Check if it's a lab
-            # - Room contains "Lab"
-            # - Subject contains "Lab"
-            # - Subject code starts with "CL" (e.g. CL2006)
-            # - Subject ends with "- Lab"
-            subject_upper = c.get('subject', '').upper()
-            room_upper = c.get('room', '').upper()
-            
-            is_lab = (
-                'LAB' in room_upper or 
-                'LAB' in subject_upper or 
-                subject_upper.startswith('CL') or 
-                subject_upper.endswith('- LAB')
-            )
-            
-            if is_lab:
-                try:
-                    # Parse start time
-                    start_dt = datetime.strptime(c['start_time'], "%H:%M")
-                    # Set end time - In Ramzan, labs are squashed. 
-                    # Two slots of 65 mins + 5 min break = 135 mins = 2h 15m
-                    # e.g., 8:00 -> 10:15
-                    end_dt = start_dt + timedelta(hours=2, minutes=15)
-                    # Update end time string
-                    c = c.copy() # Don't mutate original if cached
-                    c['end_time'] = end_dt.strftime("%-H:%M") # %-H for no leading zero if possible, or %H
-                    if ':' not in c['end_time']: # Fallback for some systems
-                         c['end_time'] = end_dt.strftime("%H:%M")
-                except Exception as e:
-                    print(f"Error fixing lab time: {e}")
+            # Lab duration fix DISABLED during Ramzan
+            # The Ramzan timetable script already sets correct end times for all slots.
+            # Enabling this would override correct 65-min end times with 2h15m durations.
+            # TODO: Re-enable after Ramzan ends and regular timetable is restored.
             
             weekly_schedule.append(ClassSession(**c))
 
