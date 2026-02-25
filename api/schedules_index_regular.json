@@ -2077,8 +2077,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -2093,8 +2093,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -3069,8 +3069,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -3101,8 +3101,8 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
@@ -4588,8 +4588,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -4636,8 +4636,8 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
@@ -6260,8 +6260,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -6284,8 +6284,8 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
@@ -6389,8 +6389,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database Systems",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -6421,8 +6421,8 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database Systems",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
@@ -6942,8 +6942,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -6966,8 +6966,8 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
@@ -7112,8 +7112,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -13040,8 +13040,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -15182,16 +15182,16 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database Systems",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database Systems",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
@@ -15372,8 +15372,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -15404,8 +15404,8 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
@@ -17129,8 +17129,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -17169,8 +17169,8 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
@@ -21574,8 +21574,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -21638,8 +21638,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -22257,8 +22257,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -22313,8 +22313,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -22842,8 +22842,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating Systems",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -25262,8 +25262,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -26171,8 +26171,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -26203,8 +26203,8 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
@@ -26528,8 +26528,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -29001,8 +29001,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -31086,8 +31086,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -31519,8 +31519,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -32988,8 +32988,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -33156,8 +33156,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -33644,8 +33644,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -35400,8 +35400,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -36208,8 +36208,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -36376,8 +36376,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -37032,8 +37032,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -37512,8 +37512,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -38282,8 +38282,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -38762,8 +38762,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -39316,8 +39316,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -39340,8 +39340,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -39935,8 +39935,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -40818,8 +40818,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -42655,8 +42655,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -43623,8 +43623,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -43943,8 +43943,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -44103,8 +44103,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -44675,8 +44675,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -44827,8 +44827,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -45438,8 +45438,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -45606,8 +45606,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -45942,8 +45942,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -46286,8 +46286,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -46454,8 +46454,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -46910,8 +46910,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and Stat...",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -46934,8 +46934,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and Stat...",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -47200,8 +47200,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -48193,8 +48193,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -48828,8 +48828,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -48892,8 +48892,8 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
@@ -49148,8 +49148,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -49422,8 +49422,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -49606,8 +49606,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -52974,8 +52974,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -53094,8 +53094,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -53150,8 +53150,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -54199,8 +54199,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -54809,8 +54809,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -56451,8 +56451,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -56547,8 +56547,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -56579,8 +56579,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -56881,8 +56881,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -56905,8 +56905,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -57002,16 +57002,16 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and Stat...",
           "room": "Room 1",
           "teacher": "Hafsa"
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and Stat...",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -57588,8 +57588,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -57620,24 +57620,24 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -61522,8 +61522,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -62699,8 +62699,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -62715,8 +62715,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -62821,16 +62821,16 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -62845,8 +62845,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -62869,24 +62869,24 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -63197,8 +63197,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -63277,8 +63277,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -63293,8 +63293,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -63391,8 +63391,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -63407,8 +63407,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -63642,8 +63642,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -63682,16 +63682,16 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -63706,8 +63706,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -63900,8 +63900,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -63924,8 +63924,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -64397,8 +64397,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -64413,8 +64413,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -64509,8 +64509,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -64549,16 +64549,16 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -64573,8 +64573,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -64669,8 +64669,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -64709,16 +64709,16 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -64733,8 +64733,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -64821,16 +64821,16 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -64845,8 +64845,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -64869,16 +64869,16 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -64893,8 +64893,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -65350,8 +65350,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -65446,8 +65446,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -65470,8 +65470,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -65918,8 +65918,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -65934,8 +65934,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -66687,8 +66687,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -66711,8 +66711,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -66976,8 +66976,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -67016,24 +67016,24 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -67121,16 +67121,16 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -67145,8 +67145,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -67169,24 +67169,24 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -67410,8 +67410,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -67450,16 +67450,16 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -67474,8 +67474,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -67714,8 +67714,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -67754,16 +67754,16 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -67778,8 +67778,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -68034,8 +68034,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -68074,16 +68074,16 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -68098,8 +68098,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -68756,8 +68756,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -68796,16 +68796,16 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -68820,8 +68820,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -69365,8 +69365,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -69405,16 +69405,16 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -69429,8 +69429,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -69525,8 +69525,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -69541,8 +69541,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -70271,8 +70271,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -70295,8 +70295,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -70400,8 +70400,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -70416,8 +70416,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -70788,16 +70788,16 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and Stat...",
           "room": "Room 1",
           "teacher": "Hafsa"
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database Systems",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -70812,8 +70812,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and Stat...",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -70828,24 +70828,24 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database Systems",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating Systems",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -70940,8 +70940,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -71004,8 +71004,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -71717,8 +71717,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -71877,16 +71877,16 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and Stat...",
           "room": "Room 1",
           "teacher": "Hafsa"
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database Systems",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -71901,8 +71901,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and Stat...",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -71917,24 +71917,24 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database Systems",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating Systems",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -72509,8 +72509,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -72549,16 +72549,16 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -72573,8 +72573,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -73505,16 +73505,16 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -73529,8 +73529,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -73553,24 +73553,24 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -73665,16 +73665,16 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -73689,8 +73689,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -73713,24 +73713,24 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -73825,8 +73825,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -73865,16 +73865,16 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -73889,8 +73889,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -74153,8 +74153,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -74177,8 +74177,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -74457,8 +74457,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -74513,8 +74513,8 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
@@ -74529,8 +74529,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -74945,8 +74945,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -74977,24 +74977,24 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -75660,8 +75660,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -75700,16 +75700,16 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -75724,8 +75724,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -75820,16 +75820,16 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -75844,8 +75844,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -75868,24 +75868,24 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -76501,8 +76501,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -76718,16 +76718,16 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and Stat...",
           "room": "Room 1",
           "teacher": "Hafsa"
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database Systems",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -76742,8 +76742,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and Stat...",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -76758,16 +76758,16 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database Systems",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating Systems",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -76782,8 +76782,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -77015,8 +77015,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -77055,16 +77055,16 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -77079,8 +77079,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -77495,16 +77495,16 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -77519,8 +77519,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -77543,24 +77543,24 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -77655,8 +77655,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -77695,16 +77695,16 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -77719,8 +77719,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -77928,8 +77928,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -77952,8 +77952,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -78592,16 +78592,16 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -78616,8 +78616,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -78640,24 +78640,24 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -78904,8 +78904,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -78944,16 +78944,16 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -78968,8 +78968,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -79291,8 +79291,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and Stat...",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -79315,8 +79315,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and Stat...",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -79885,16 +79885,16 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -79909,8 +79909,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -79933,24 +79933,24 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -80037,8 +80037,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -80053,8 +80053,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -80182,16 +80182,16 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -80206,8 +80206,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -80238,8 +80238,8 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
@@ -80350,8 +80350,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -80382,16 +80382,16 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -80406,8 +80406,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -80494,8 +80494,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -80510,8 +80510,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -80639,16 +80639,16 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -80663,8 +80663,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -80687,24 +80687,24 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -80967,16 +80967,16 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and Stat...",
           "room": "Room 1",
           "teacher": "Hafsa"
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database Systems",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -80991,8 +80991,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and Stat...",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -81007,24 +81007,24 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database Systems",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating Systems",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -81475,8 +81475,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -81491,8 +81491,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -82250,8 +82250,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -82290,16 +82290,16 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -82314,8 +82314,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -82578,8 +82578,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-6B: Database",
           "room": "Room 2",
           "teacher": "Sanaa Jeehan"
@@ -83179,8 +83179,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -83219,16 +83219,16 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -83243,8 +83243,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -83499,16 +83499,16 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -83523,8 +83523,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -83547,24 +83547,24 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -83795,8 +83795,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and Stat...",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -83811,8 +83811,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and Stat...",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -83925,16 +83925,16 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -83949,8 +83949,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -83973,24 +83973,24 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -84245,8 +84245,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -84285,16 +84285,16 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -84309,8 +84309,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -84998,8 +84998,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "12:30",
+          "end_time": "2:00",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -85014,8 +85014,8 @@
         },
         {
           "day": "Wed",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "MT2005,BCS-4C: Probability and",
           "room": "Room 1",
           "teacher": "Hafsa"
@@ -85303,8 +85303,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database Systems",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -85351,16 +85351,16 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database Systems",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -85767,8 +85767,8 @@
         },
         {
           "day": "Tue",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database Systems",
           "room": "Room 3",
           "teacher": "Shoaib M Khan"
@@ -85807,16 +85807,16 @@
         },
         {
           "day": "Thu",
-          "start_time": "3:30",
-          "end_time": "5:00",
+          "start_time": "2:00",
+          "end_time": "3:30",
           "subject": "CS2005,BCS-4A: Database Systems",
           "room": "Room 11",
           "teacher": "Shoaib M Khan"
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating Systems",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
@@ -85831,8 +85831,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "2:00",
-          "end_time": "3:30",
+          "start_time": "3:30",
+          "end_time": "5:00",
           "subject": "CL2005,BCS-4A: Database Systems - L...",
           "room": "Mehboob",
           "teacher": "M Mehdi"
@@ -96477,8 +96477,8 @@
         },
         {
           "day": "Fri",
-          "start_time": "9:30",
-          "end_time": "11:00",
+          "start_time": "8:00",
+          "end_time": "9:30",
           "subject": "CS2006,BCS-4A: Operating",
           "room": "Room 6",
           "teacher": "Usman Ali Shah"
