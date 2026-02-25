@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
+// v1.1.2 - Sessional II Update
 import Head from 'next/head';
 
 export default function Home() {
@@ -296,7 +297,7 @@ export default function Home() {
                                     </button>
                                     <button className={`tab-btn ${activeTab === 'exams' ? 'active' : ''}`} onClick={() => setActiveTab('exams')}>
                                         <span className="tab-icon">✏️</span> Exams
-                                        <span className="tab-count">{schedule.exam_schedule && schedule.exam_schedule.length > 0 ? schedule.exam_schedule.length : '—'}</span>
+                                        <span className="tab-count">{schedule.exam_schedule && schedule.exam_schedule.length > 0 ? schedule.exam_schedule.length : '0'}</span>
                                     </button>
                                     {schedule.campus_events && schedule.campus_events.length > 0 && (
                                         <button className={`tab-btn ${activeTab === 'events' ? 'active' : ''}`} onClick={() => setActiveTab('events')}>
