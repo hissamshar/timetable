@@ -185,6 +185,36 @@ async def parse_schedule(roll_number: str = Form(...)):
                 res = supabase.table("live_updates").select("*").execute()
                 live_data = res.data or []
                 print(f"Found {len(live_data)} updates in Supabase.")
+                
+                # --- FILTER PAST EVENTS EARLY ---
+                pkt_now = datetime.utcnow() + timedelta(hours=5)
+                day_map = {'Mon':0, 'Tue':1, 'Wed':2, 'Thu':3, 'Fri':4, 'Sat':5, 'Sun':6}
+                filtered_live_data = []
+                for l in live_data:
+                    update_day = l.get('original_day', 'Mon')[:3]
+                    if update_day != 'N/A' and update_day in day_map:
+                        try:
+                            # Parse Supabase timestamp into a PKT naive datetime
+                            dt_str = l['created_at'][:19]
+                            created_dt = datetime.strptime(dt_str, "%Y-%m-%dT%H:%M:%S")
+                            created_dt_pkt = created_dt + timedelta(hours=5)
+                            
+                            update_day_idx = day_map[update_day]
+                            created_day_idx = created_dt_pkt.weekday()
+                            
+                            days_diff = update_day_idx - created_day_idx
+                            if days_diff < 0:
+                                days_diff += 7
+                                
+                            event_date = created_dt_pkt.date() + timedelta(days=days_diff)
+                            
+                            if event_date < pkt_now.date():
+                                continue # Skip updates from the past
+                        except Exception as e:
+                            print(f"Date error: {e}")
+                    filtered_live_data.append(l)
+                live_data = filtered_live_data
+                # -----------------------------------
             except Exception as e:
                 print(f"Supabase error: {e}")
         else:
@@ -348,13 +378,6 @@ async def parse_schedule(roll_number: str = Form(...)):
                 student_course_codes.append(match.group(1))
 
         for l in live_data:
-            # Skip if the day has passed (within the current week)
-            # NEWS items might have 'N/A' for day, we should show them unless they are old
-            update_day = l.get('original_day', 'Mon')[:3]
-            if update_day != 'N/A':
-                update_day_idx = day_map.get(update_day, 0)
-                if update_day_idx < cur_day_idx:
-                    continue
 
             # Populate fields for frontend
             obj = LiveUpdate(**l)
