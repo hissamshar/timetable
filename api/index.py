@@ -64,6 +64,8 @@ class ExamSession(BaseModel):
     start_time: str
     end_time: str
     room: Optional[str] = None
+    category: Optional[str] = "Theory"
+    section: Optional[str] = None
 
 class StudentSchedule(BaseModel):
     roll_number: str
