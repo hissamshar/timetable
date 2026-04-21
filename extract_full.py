@@ -5,7 +5,10 @@ import os
 import sys
 
 student_pdf = "Student_Timetables V#5 Spring-2026.pdf"
-exam_pdf = "Final DateSheet Sessional 2 Spring-2026.pdf"
+exam_pdfs = [
+    "../Final_Exam_DateSheet_Report.pdf",
+    "../Lab Exam DateSheet_Report.pdf"
+]
 json_path = "api/schedules_index.json"
 
 def clean_text(text):
@@ -80,17 +83,17 @@ def parse_student_timetables():
     return schedules
 
 # 2. Parse Exam Datesheet
-def parse_exams():
+def parse_exams(pdf_file):
     exams = []
     
-    with pdfplumber.open(exam_pdf) as pdf:
+    with pdfplumber.open(pdf_file) as pdf:
         for page in pdf.pages:
             text = page.extract_text()
             tables = page.extract_tables()
             
             # Find dates (e.g. Thu,09,Apr,26)
             # They usually appear above the table. We can find them using regex.
-            dates = re.findall(r'(Mon|Tue|Wed|Thu|Fri|Sat|Sun),\s*\d{1,2},\s*[A-Za-z]{3},\s*\d{2,4}', text)
+            dates = re.findall(r'(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun),\s*\d{1,2},\s*[A-Za-z]{3},\s*\d{2,4}', text)
             
             if not tables: continue
             
@@ -166,9 +169,9 @@ def update_data():
         with open(json_path, 'r') as f:
             data = json.load(f)
     else:
-        data = {"exam_type": "Sessional II", "schedules": {}}
+        data = {"exam_type": "Final Exam", "schedules": {}}
         
-    data["exam_type"] = "Sessional II"
+    data["exam_type"] = "Final Exam"
     old_schedules = data.get("schedules", {})
     
     print("Parsing Student Timetables...")
@@ -182,8 +185,11 @@ def update_data():
         # Clear out exam_schedule for regeneration
         old_schedules[roll]["exam_schedule"] = []
     
-    print("Parsing Exam Datesheet...")
-    all_exams = parse_exams()
+    print("Parsing Exam Datesheets...")
+    all_exams = []
+    for pdf_file in exam_pdfs:
+        print(f"Parsing {pdf_file}...")
+        all_exams.extend(parse_exams(pdf_file))
     
     print(f"Assigning {len(all_exams)} exam slots to students...")
     # Assign exams to students

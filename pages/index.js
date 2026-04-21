@@ -540,9 +540,9 @@ export default function Home() {
                                     <div className="schedule-grid">
                                         <div className="exam-upcoming-notice">
                                             <div className="upcoming-icon">📋</div>
-                                            <h3 className="upcoming-title">Sessional II</h3>
+                                            <h3 className="upcoming-title">Final Exam</h3>
                                             <div className="upcoming-dates">
-                                                <span className="date-icon">📅</span> Expected: <strong>Apr 9 – 13, 2026</strong> (Thu – Mon)
+                                                <span className="date-icon">📅</span> Expected: <strong>May 8 – 24, 2026</strong>
                                             </div>
                                             <p className="upcoming-note">The datesheet has not been announced yet. It will appear here automatically once available.</p>
                                         </div>
