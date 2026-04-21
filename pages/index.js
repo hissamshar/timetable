@@ -550,66 +550,82 @@ export default function Home() {
                                 )}
                                 {activeTab === 'exams' && schedule.exam_schedule && schedule.exam_schedule.length > 0 && (
                                     <div className="schedule-grid">
-                                        <div className="exam-type-header">
+                                        <div className="exam-type-header" style={{ marginBottom: '1rem' }}>
                                             <span className="exam-type-badge">{schedule.exam_type || 'Examination Schedule'}</span>
                                         </div>
-                                        {schedule.exam_schedule.length === 0 ? (
-                                            <p className="empty-state">No exams found.</p>
-                                        ) : (
-                                            // Group exams by date
-                                            Object.entries(
-                                                schedule.exam_schedule.reduce((groups, exam) => {
-                                                    const date = exam.date;
-                                                    if (!groups[date]) groups[date] = [];
-                                                    groups[date].push(exam);
-                                                    return groups;
-                                                }, {})
-                                            )
-                                                .sort((a, b) => {
-                                                    // Sort dates: "Sat, 21 Feb 2026"
-                                                    const parseDate = (d) => {
-                                                        try {
-                                                            const p = d.split(', ');
-                                                            if (p.length < 2) return 0;
-                                                            const dateParts = p[1].split(' '); // ["21", "Feb", "2026"]
-                                                            const day = parseInt(dateParts[0]);
-                                                            const monthStr = dateParts[1];
-                                                            const year = parseInt(dateParts[2]);
-                                                            const months = { 'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5, 'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11 };
-                                                            return new Date(year, months[monthStr], day).getTime();
-                                                        } catch (e) { return 0; }
-                                                    };
-                                                    return parseDate(a[0]) - parseDate(b[0]);
-                                                })
-                                                .map(([date, dayExams]) => (
-                                                    <div key={date} className="day-group">
-                                                        <div className="day-header">
-                                                            <span className="day-name">{date}</span>
-                                                            <span className="day-count">
-                                                                {dayExams.length} {dayExams.length === 1 ? 'exam' : 'exams'}
-                                                            </span>
-                                                        </div>
-                                                        <div className="class-cards">
-                                                            {dayExams.map((exam, idx) => (
-                                                                <div className="class-card" key={idx}>
-                                                                    <div className="class-time">
-                                                                        <div className="time-dot" />
-                                                                        {exam.start_time} – {exam.end_time}
+                                        {(() => {
+                                            const renderExamGroup = (exams, title, icon) => {
+                                                if (!exams || exams.length === 0) return null;
+                                                return (
+                                                    <div className="exam-category-section" style={{ marginBottom: '2rem' }}>
+                                                        <h3 className="acad-section-title">
+                                                            <span className="acad-section-icon">{icon}</span> {title}
+                                                        </h3>
+                                                        {Object.entries(
+                                                            exams.reduce((groups, exam) => {
+                                                                const date = exam.date;
+                                                                if (!groups[date]) groups[date] = [];
+                                                                groups[date].push(exam);
+                                                                return groups;
+                                                            }, {})
+                                                        )
+                                                            .sort((a, b) => {
+                                                                const parseDate = (d) => {
+                                                                    try {
+                                                                        const p = d.split(', ');
+                                                                        if (p.length < 2) return 0;
+                                                                        const dateParts = p[1].split(' '); // e.g. ["21", "Feb", "2026"]
+                                                                        const day = parseInt(dateParts[0]);
+                                                                        const monthStr = dateParts[1];
+                                                                        const year = parseInt(dateParts[2]);
+                                                                        const months = { 'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5, 'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11 };
+                                                                        return new Date(year, months[monthStr], day).getTime();
+                                                                    } catch (e) { return 0; }
+                                                                };
+                                                                return parseDate(a[0]) - parseDate(b[0]);
+                                                            })
+                                                            .map(([date, dayExams]) => (
+                                                                <div key={date} className="day-group">
+                                                                    <div className="day-header">
+                                                                        <span className="day-name">{date}</span>
+                                                                        <span className="day-count">
+                                                                            {dayExams.length} {dayExams.length === 1 ? 'exam' : 'exams'}
+                                                                        </span>
                                                                     </div>
-                                                                    <div className="class-info">
-                                                                        <div className="class-subject">{exam.subject}</div>
-                                                                        <div className="class-meta">
-                                                                            <span className="meta-item">
-                                                                                <span className="meta-icon">👤</span> {exam.room || 'Instructor TBA'}
-                                                                            </span>
-                                                                        </div>
+                                                                    <div className="class-cards">
+                                                                        {dayExams.map((exam, idx) => (
+                                                                            <div className="class-card exam" key={idx}>
+                                                                                <div className="class-time">
+                                                                                    <div className="time-dot" style={{ background: '#a855f7', boxShadow: '0 0 8px #a855f7' }} />
+                                                                                    {exam.start_time} – {exam.end_time}
+                                                                                </div>
+                                                                                <div className="class-info">
+                                                                                    <div className="class-subject">{exam.subject}</div>
+                                                                                    <div className="class-meta">
+                                                                                        <span className="meta-item">
+                                                                                            <span className="meta-icon">👤</span> {exam.room || 'Instructor TBA'}
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        ))}
                                                                     </div>
                                                                 </div>
                                                             ))}
-                                                        </div>
                                                     </div>
-                                                ))
-                                        )}
+                                                );
+                                            };
+                                            
+                                            const theoryExams = schedule.exam_schedule.filter(e => e.category !== 'Lab');
+                                            const labExams = schedule.exam_schedule.filter(e => e.category === 'Lab');
+                                            
+                                            return (
+                                                <>
+                                                    {renderExamGroup(theoryExams, 'Theory Exams', '📝')}
+                                                    {renderExamGroup(labExams, 'Lab Exams', '💻')}
+                                                </>
+                                            );
+                                        })()}
                                     </div>
                                 )}
                                 {activeTab === 'academic' && (

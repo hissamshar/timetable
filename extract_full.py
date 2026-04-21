@@ -119,39 +119,50 @@ def parse_exams(pdf_file):
                         t_start, t_end = t_start.strip(), t_end.strip()
                         
                         text_cell = str(cell)
+                        # Category
+                        category = "Lab" if "Lab" in pdf_file else "Theory"
+
                         # Split by courses
-                        parts = re.split(r'(?=\b[A-Z]{2,3}[0-9]{3,4}\s*-)', text_cell)
+                        parts = re.split(r'(?=\b[A-Z]{2,3}[0-9]{3,4}(?:,[A-Z0-9\-]+)?\s*-)', text_cell)
                         for part in parts:
                             if not part.strip(): continue
                             part = part.strip()
-                            # Parse format: CS3014 - Applied Human Computer Interaction ! 1Hr | BCS-6 (St: 115) \n Teacher
                             lines = part.split("\n")
-                            course_code_match = re.search(r'^([A-Z]{2,3}[0-9]{3,4})\s*-\s*([^!]+)!\s*(.*)', lines[0])
                             
                             course_code = ""
+                            section = ""
                             subject = ""
                             teacher = ""
+                            
+                            course_code_match = re.search(r'^([A-Z]{2,3}[0-9]{3,4})(?:,([A-Z0-9\-]+))?\s*-\s*(.*?)(?:\s*-|\s*!|$)', lines[0])
+                            
                             if course_code_match:
                                 course_code = course_code_match.group(1).strip()
-                                subject_name = course_code_match.group(2).strip()
+                                section = course_code_match.group(2).strip() if course_code_match.group(2) else ""
+                                subject_name = course_code_match.group(3).strip()
                                 subject = f"{course_code} - {subject_name}"
                             else:
                                 subject = clean_text(lines[0])
                                 m2 = re.search(r'^([A-Z]{2,3}[0-9]{3,4})', subject)
                                 if m2: course_code = m2.group(1)
                             
-                            # Teacher is usually anything after the line with '|'
-                            teacher_lines = []
-                            found_pipe = False
-                            for line in lines:
-                                if "|" in line:
-                                    found_pipe = True
-                                    continue
-                                if found_pipe:
-                                    teacher_lines.append(line.strip())
-                            
-                            if teacher_lines:
-                                teacher = " ".join(teacher_lines)
+                            if category == "Lab":
+                                # Teacher is usually the last line for labs
+                                if len(lines) > 1:
+                                    teacher = lines[-1].strip()
+                            else:
+                                # Teacher is usually anything after the line with '|' for theory
+                                teacher_lines = []
+                                found_pipe = False
+                                for line in lines:
+                                    if "|" in line:
+                                        found_pipe = True
+                                        continue
+                                    if found_pipe:
+                                        teacher_lines.append(line.strip())
+                                
+                                if teacher_lines:
+                                    teacher = " ".join(teacher_lines)
                             
                             exams.append({
                                 "date": date_str.replace(" ", ""),
@@ -159,8 +170,10 @@ def parse_exams(pdf_file):
                                 "end_time": t_end,
                                 "subject": subject,
                                 "course_code": course_code,
+                                "section": section,
                                 "teacher": teacher,
-                                "room": "" # Not specified in typical datesheet cell easily, or wait, is it? We don't need room immediately or we can leave it empty.
+                                "category": category,
+                                "room": ""
                             })
     return exams
 
@@ -195,22 +208,43 @@ def update_data():
     # Assign exams to students
     matched_exams = 0
     for roll, sched in old_schedules.items():
-        # Get list of course codes the student is taking
-        student_courses = set()
+        # Get list of course codes and sections the student is taking
+        student_course_sections = set()
         for w in sched.get("weekly_schedule", []):
             subj = w.get("subject", "")
-            m = re.search(r'^([A-Z]{2,3}[0-9]{3,4})', subj)
-            if m: student_courses.add(m.group(1))
+            m = re.search(r'^([A-Z]{2,3}[0-9]{3,4})(?:,([A-Z0-9\-]+))?', subj)
+            if m:
+                c_code = m.group(1)
+                c_sec = m.group(2) if m.group(2) else ""
+                student_course_sections.add((c_code, c_sec))
             
         for exam in all_exams:
-            if exam["course_code"] and exam["course_code"] in student_courses:
+            course = exam.get("course_code", "")
+            section = exam.get("section", "")
+            category = exam.get("category", "Theory")
+            
+            if not course: continue
+            
+            takes_course = False
+            for (sc, ss) in student_course_sections:
+                if sc == course:
+                    if category == "Lab" and section:
+                        if ss == section:
+                            takes_course = True
+                            break
+                    else:
+                        takes_course = True
+                        break
+                        
+            if takes_course:
                 sched["exam_schedule"].append({
                     "date": exam["date"],
                     "start_time": exam["start_time"],
                     "end_time": exam["end_time"],
                     "subject": exam["subject"],
                     "room": exam["room"],
-                    "teacher": exam["teacher"]
+                    "teacher": exam["teacher"],
+                    "category": category
                 })
                 matched_exams += 1
 
